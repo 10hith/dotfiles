@@ -1,0 +1,93 @@
+// Zed keymap
+//
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+//
+//
+//
+[
+  {
+    "context": "Terminal",
+    "bindings": {
+      "alt-h": "workspace::ActivateNextWindow",
+      "alt-l": "workspace::ActivatePaneRight"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "ctrl-m": ["workspace::SendKeystrokes", ": m a r k s enter"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "shift-h": ["workspace::SendKeystrokes", "shift-h z z"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "shift-l": ["workspace::SendKeystrokes", "shift-l z z"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  {
+    // Normal mode only, in the editor
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "K": "editor::NewlineAbove"
+    }
+  },
+  {
+    "context": "Dock || Terminal || Editor || ProjectPanel",
+    "bindings": {
+      "ctrl-1": "workspace::ActivatePaneLeft"
+      // "ctrl-1": ["pane::ActivateItem", 1]
+      // "ctrl-1": "action::Sequence"
+    }
+  },
+  {
+    // Alt + h/j/k/l move focus between split panes
+    // (works from editor, terminal, docks, or project panel)
+    "context": "Dock || Terminal || Editor || ProjectPanel",
+    "bindings": {
+      "alt-h": "workspace::ActivatePaneLeft",
+      "alt-l": "workspace::ActivatePaneRight",
+      "alt-k": "workspace::ActivatePaneUp",
+      "alt-j": "workspace::ActivatePaneDown"
+    }
+  },
+  {
+    "bindings": {
+      "ctrl-j": "menu::SelectNext",
+      "ctrl-k": "menu::SelectPrevious"
+    }
+  },
+  {
+    "context": "Onboarding",
+    "bindings": {
+      "ctrl-1": null
+    }
+  },
+  {
+    "bindings": {
+      "alt-1": ["pane::ActivateItem", 0]
+    }
+  },
+  {
+    "context": "Workspace || Dock || Terminal || Editor || ProjectPanel",
+    "bindings": {
+      "ctrl-b": "workspace::ToggleLeftDock"
+    }
+  }
+]

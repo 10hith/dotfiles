@@ -1,0 +1,166 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl-j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt-h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt-l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt-k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt-j",
+        "command": "workbench.action.navigateDown"
+    },
+    {
+        "key": "alt-h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+l u",
+        "command": "windsurf.prioritized.command.open",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-windsurf.prioritized.command.open",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "ctrl+oem_1 k",
+        "command": "jupyter.runallcellsabove.palette",
+        "when": "isWorkspaceTrusted"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+oem_1 r",
+        "command": "jupyter.restartkernel",
+        "when": "isWorkspaceTrusted && jupyter.interactive.canRestartNotebookKernel || isWorkspaceTrusted && jupyter.notebookeditor.canrestartNotebookkernel && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    },
+    {
+        "key": "ctrl+l u",
+        "command": "windsurf.interactiveCascade.focusEditIntent",
+        "when": "windsurf.interactiveCascade.enabled && !editorReadonly"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-windsurf.interactiveCascade.focusEditIntent",
+        "when": "windsurf.interactiveCascade.enabled && !editorReadonly"
+    },
+    {
+        "key": "ctrl+l u",
+        "command": "windsurf.prioritized.command.open",
+        "when": "editorTextFocus && !windsurf.interactiveCascade.enabled"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-windsurf.prioritized.command.open",
+        "when": "editorTextFocus && !windsurf.interactiveCascade.enabled"
+    },
+    {
+        "key": "ctrl+shift+e",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "alt+enter",
+        "command": "workbench.action.terminal.runSelectedText",
+        "when": "terminalProcessSupported"
+    },
+    {
+        "key": "ctrl+oem_4",
+        "command": "-extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+oem_4",
+        "command": "-editor.action.outdentLines",
+        "when": "editorTextFocus && !editorReadonly"
+    },
+    {
+        "key": "ctrl+oem_4",
+        "command": "extension.vim_ctrl+[",
+        "when": "editorTextFocus && vim.active && vim.use<C-[> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+l l",
+        "command": "windsurf.prioritized.chat.open"
+    },
+    {
+        "key": "ctrl+l",
+        "command": "-windsurf.prioritized.chat.open",
+        "when": "!terminalFocus"
+    },
+    {
+        "key": "shift+l",
+        "command": "-notebook.toggleLineNumbers",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "ctrl+u",
+        "command": "-cursorUndo",
+        "when": "textInputFocus"
+    },
+    {
+        "key": "ctrl+h",
+        "command": "-editor.action.startFindReplaceAction",
+        "when": "editorFocus || editorIsOpen"
+    },
+    {
+        "key": "ctrl+l o",
+        "command": "chatgpt.addToChat"
+    },
+    {
+        "key": "ctrl+l i",
+        "command": "inlineChat.start",
+        "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-inlineChat.start",
+        "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
+    },
+    {
+        "key": "ctrl+shift+t",
+        "command": "-workbench.action.reopenClosedEditor"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-windsurf.prioritized.command.open",
+        "when": "editorTextFocus && !windsurf.interactiveCascade.enabled && !windsurf.isAgentModeInputBoxFocused"
+    }
+]

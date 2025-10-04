@@ -1,0 +1,116 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "lsp": {
+    "basedpyright": {
+      "settings": {
+        "typeCheckingMode": "off",
+        "basedpyright.analysis": {
+          "diagnosticMode": "workspace",
+          "inlayHints.callArgumentNames": false
+        }
+      }
+    }
+  },
+  "wsl_connections": [
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": [
+        {
+          "paths": [
+            "/home/basal"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/PycharmProjects"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/PycharmProjects/OrdeloAgent"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/PycharmProjects/OrdeloAgent/./"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/repos/dotfiles"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/repos/reality-distorted"
+          ]
+        }
+      ]
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    }
+  ],
+  "minimap": {
+    "show": "never"
+  },
+  "soft_wrap": "editor_width",
+  "vim_mode": true,
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "base_keymap": "VSCode",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Catppuccin Macchiato"
+  }
+}

@@ -1,0 +1,201 @@
+{
+    // Editor settings
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.foldingStrategy": "indentation",
+    "editor.formatOnSave": true,
+    "diffEditor.codeLens": true,
+    // terminal settings
+    "terminal.integrated.sendKeybindingsToShell": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.terminal.focusPrevious",
+        "workbench.action.terminal.focusNext"
+    ],
+    // python settings
+    "python.languageServer": "None",
+    // Vim settings
+    "vim.leader": "<space>",
+    "vim.incsearch": true,
+    "vim.hlsearch": true,
+    "vim.surround": true,
+    "vim.smartRelativeLine": true,
+    "vim.easymotion": true,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "{"
+            ]
+        },
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "L",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "ctrl+m"
+            ],
+            "commands": [
+                ":marks"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "ctrl+j"
+            ],
+            "commands": [
+                ":jumps"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "4"
+            ],
+            "commands": [
+                ":/# %%"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "6"
+            ],
+            "after": [
+                "?",
+                "# ",
+                "%",
+                "%",
+                "<CR>"
+            ],
+            "silent": true
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-f>": false,
+    },
+    // imporve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1
+    },
+    "workbench.colorCustomizations": {
+        "editorCursor.foreground": "#FF0000",
+        "editorCursor.background": "#222222",
+        "editorCursor.border": "#FF0000"
+    },
+    "editor.cursorWidth": 2, // Increase the cursor thickness/width (works for line cursor)
+    "editor.cursorBlinking": "smooth",
+    "[sql]": {
+        "editor.formatOnSave": false
+    },
+    // Other settings
+    "remote.windsurfSSH.configFile": "https://open-vsx.org/vscode/item",
+    // jupyter
+    "jupyter.interactiveWindow.creationMode": "single",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.allowUnauthorizedRemoteConnection": true,
+    "windsurf.marketplaceGalleryItemURL": "",
+    "git.ignoreMissingGitWarning": true,
+    "colorful-comments-refreshed.tags": [
+        {
+            "tag": "%%",
+            "color": "#EAF622",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "#",
+            "color": "#FF9900",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        }
+    ],
+    "remote.autoForwardPortsSource": "hybrid",
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "workbench.colorTheme": "Catppuccin Mocha",
+    "workbench.activityBar.location": "top",
+    "postgresExplorer.connections": [
+        {
+            "id": "1747204699596",
+            "name": "ordeloDb",
+            "host": "aws-0-eu-west-2.pooler.supabase.com",
+            "port": 5432,
+            "username": "postgres.pqsvhidiwiydgshynfib",
+            "database": "postgres"
+        }
+    ],
+    "workbench.iconTheme": "material-icon-theme",
+    "pgsql.serverGroups": [
+        {
+            "name": "Servers",
+            "id": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
+            "isDefault": true
+        }
+    ],
+    "pgsql.connections": [
+        {
+            "id": "55F07F7D-FC27-45A9-9095-63A588FA66B3",
+            "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
+            "authenticationType": "SqlLogin",
+            "connectTimeout": 15,
+            "applicationName": "vscode-pgsql",
+            "clientEncoding": "utf8",
+            "sslmode": "require",
+            "server": "aws-0-eu-west-2.pooler.supabase.com",
+            "user": "postgres.pqsvhidiwiydgshynfib",
+            "password": "",
+            "database": "postgres",
+            "profileName": "Ordelo",
+            "expiresOn": 0,
+            "profileSource": 0,
+            "emptyPasswordInput": false,
+            "displayName": "Ordelo",
+            "savePassword": true
+        },
+        {
+            "id": "B6689C8D-7ADC-4BC1-BACF-9E112C14B3A3",
+            "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
+            "authenticationType": "SqlLogin",
+            "connectTimeout": 15,
+            "applicationName": "vscode-pgsql",
+            "clientEncoding": "utf8",
+            "sslmode": "require",
+            "server": "aws-0-eu-west-2.pooler.supabase.com",
+            "user": "postgres.dxhxdgpdysoluooicmbt",
+            "password": "",
+            "database": "postgres",
+            "profileName": "Elai",
+            "displayName": "Elai",
+            "savePassword": true,
+            "expiresOn": 0
+        }
+    ],
+    "pgsql.enableExperimentalFeatures": true,
+    "editor.stickyScroll.enabled": false,
+    "security.workspace.trust.untrustedFiles": "open",
+    "workbench.auxiliaryActivityBar.location": "top",
+    "workbench.secondarySideBar.showLabels": false
+}
