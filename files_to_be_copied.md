@@ -4,6 +4,8 @@
 /mnt/c/Users/lohith/AppData/Roaming/Windsurf/User/keybindings.json
 /mnt/c/Users/lohith/AppData/Roaming/Windsurf/User/settings.json
 
+/mnt/c/Users/lohith/AppData/Roaming/Code/User/keybindings.json
+/mnt/c/Users/lohith/AppData/Roaming/Code/User/settings.json
 
 /mnt/c/Users/lohith/.wezterm.lua wezterm
 

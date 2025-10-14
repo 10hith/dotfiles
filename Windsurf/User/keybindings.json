@@ -1,5 +1,6 @@
 // Place your key bindings in this file to override the defaults
 [
+    // quick open navigation
     {
         "key": "ctrl-j",
         "command": "workbench.action.quickOpenNavigateNext",
@@ -10,6 +11,7 @@
         "command": "workbench.action.quickOpenNavigatePrevious",
         "when": "inQuickOpen"
     },
+    // workbench navigation
     {
         "key": "alt-h",
         "command": "workbench.action.navigateLeft"
@@ -26,6 +28,7 @@
         "key": "alt-j",
         "command": "workbench.action.navigateDown"
     },
+    // terminal navigation
     {
         "key": "alt-h",
         "command": "workbench.action.terminal.focusPrevious",
@@ -36,6 +39,29 @@
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },
+    // breadcrumbs
+    {
+        "key": "ctrl+shift+oem_period",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "breadcrumbs.focus",
+                "breadcrumbs.focusPrevious",
+                "breadcrumbs.selectFocused"
+            ]
+        }
+    },
+    {
+        "key": "alt+l",
+        "command": "breadcrumbs.focusNextWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "alt+h",
+        "command": "breadcrumbs.focusPreviousWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    // End of custom keybindings
     {
         "key": "ctrl+p",
         "command": "-extension.vim_ctrl+p",
@@ -162,5 +188,15 @@
         "key": "ctrl+i",
         "command": "-windsurf.prioritized.command.open",
         "when": "editorTextFocus && !windsurf.interactiveCascade.enabled && !windsurf.isAgentModeInputBoxFocused"
-    }
+    },
+    {
+        "key": "ctrl+shift+.",
+        "command": "-breadcrumbs.focusAndSelect",
+        "when": "breadcrumbsPossible && breadcrumbsVisible"
+    },
+    {
+        "key": "ctrl+shift+oem_period",
+        "command": "-breadcrumbs.toggleToOn",
+        "when": "!config.breadcrumbs.enabled"
+    },
 ]

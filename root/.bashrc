@@ -150,6 +150,31 @@ done
 
 export SPARK_CLASSPATH=$IGNITE_LIBS
 
+# wordpress env variables
+export MYSQL_DATABASE=wpdb
+export MYSQL_USER=wpuser
+export MYSQL_PASSWORD=mYSql27warD
+export MYSQL_RANDOM_ROOT_PASSWORD=1
+export WORDPRESS_DB_HOST=db
+export WORDPRESS_DB_USER=wpuser
+export WORDPRESS_DB_PASSWORD=mYSql27warD
+export WORDPRESS_DB_NAME=wpdb
+export WPHOSTPATH=/home/basal/wordpress
+export AI_WORDPRESS_DB_HOST=aidb
+export AIWPPATH=/home/basal/aiwp
+export CRIME_API="http://localhost:8000"
+export SBASE_LIBPQ="dbname=postgres user=postgres host=db.ndvgyrqmrznwnvxgdvgm.supabase.co port=5432 password=Flakmonkey!123"
+export GOOGLE_MAP_KEY="AIzaSyBg9PEpl7Yu_Ty9Rg-RcC1CVWxujEfP24A"
+export SBASE_DB_PSWD="VUJkwJgLjgAkNPaU"
+export PATH="/usr/local/bin/python3.11:$PATH"
+export PGDO_CIA_DB_URL="postgresql://loarna:loarna_pwd@178.62.77.30/postgres"
+export POSTGRES_USER=loarna
+export POSTGRES_PASSWORD=hustl3L!fe27
+export POSTGRES_DB=dodb
+export PG_DATA_PATH=pgdata
+export HUGGINGFACE_TOKEN="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"
+
+
 #Python
 export PATH="$HOME/.pyenv/bin:$PATH"
 eval "$(pyenv init --path)"
@@ -168,7 +193,7 @@ alias pycharmOld="nohup /opt/pycharm-community-2021.1.3/bin/pycharm.sh </dev/nul
 alias pycharm="nohup /opt/pycharm-community-2024.1.4/bin/pycharm.sh </dev/null &>/dev/null &"
 alias dbeaver="nohup dbeaver </dev/null &>/dev/null &"
 
-##
+## 
 alias setPyPath='export PYTHONPATH=$(pwd)'
 alias envLoad='export $(cat .env | xargs)'
 alias envAct='if [ -d "venv" ]; then source venv/bin/activate; elif [ -d ".venv" ]; then source .venv/bin/activate; else echo "No virtual env found"; fi'
@@ -178,6 +203,7 @@ alias intellij="nohup /opt/idea-IC-211.7628.21/bin/idea.sh </dev/null &>/dev/nul
 
 #export PYTHONPATH="${PYTHONPATH}:/home/basal/excelanalysis"
 #export PYTHONPATH="/home/basal/PycharmProjects/crimeinmyarea:/home/basal/PycharmProjects/dbtexample:/home/basal/PycharmProjects/elai"
+export WA_TOKEN='EAAgCdVdtHI0BOzxz41QsD5jZCZAMNZAop2bvHtZB0DGYk5cZClKtd2PNJsmuQKu5VZCGdOnp0Ym3lcQrPE2ElLbFqLC5IKuEeHYqHavJ2ZCdgx879SlV9FtsGVH6A7MLVbsPkWZCkQfzZBjPi6Kne5MBf7rqcmjjR4I3Y4rfnALRKCYoKmZCH5KQ7pyeZCoVr4RYzHhKgZDZD'
 export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):4713
 
 

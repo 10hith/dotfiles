@@ -88,6 +88,8 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
         dest="Zed/${source_path#*/Zed/}"
       elif [[ "$source_path" == */Windsurf/* ]]; then
         dest="Windsurf/${source_path#*/Windsurf/}"
+      elif [[ "$source_path" == */Code/User/* ]]; then
+        dest="Code/${source_path##*/}"
       else
         echo "Unable to infer destination for $source_path" >&2
         exit 1

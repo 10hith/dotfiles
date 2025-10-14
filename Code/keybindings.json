@@ -1,0 +1,95 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl-j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "alt-h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt-l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt-k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt-j",
+        "command": "workbench.action.navigateDown"
+    },
+    // terminal navigation
+    {
+        "key": "alt-h",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-l",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    // breadcrumbs navigation
+    {
+        "key": "ctrl+shift+;",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "breadcrumbs.focus",
+                "breadcrumbs.selectFocused"
+            ]
+        }
+    },
+    {
+        "key": "alt+l",
+        "command": "breadcrumbs.focusNextWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    {
+        "key": "alt+h",
+        "command": "breadcrumbs.focusPreviousWithPicker",
+        "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    // End of custom config
+    {
+        "key": "ctrl+u",
+        "command": "-extension.vim_ctrl+u",
+        "when": "editorTextFocus && vim.active && vim.use<C-u> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "-extension.vim_ctrl+p",
+        "when": "editorTextFocus && vim.active && vim.use<C-p> && !inDebugRepl || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'CommandlineInProgress' || vim.active && vim.use<C-p> && !inDebugRepl && vim.mode == 'SearchInProgressMode'"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-extension.vim_ctrl+b",
+        "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+    },
+    {
+        "key": "ctrl+v",
+        "command": "-extension.vim_ctrl+v",
+        "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+l i",
+        "command": "roo-cline.focusInput"
+    },
+    {
+        "key": "ctrl+l l",
+        "command": "roo-cline.addToContext"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    }
+]

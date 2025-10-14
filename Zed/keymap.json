@@ -11,13 +11,6 @@
 //
 [
   {
-    "context": "Terminal",
-    "bindings": {
-      "alt-h": "workspace::ActivateNextWindow",
-      "alt-l": "workspace::ActivatePaneRight"
-    }
-  },
-  {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "ctrl-m": ["workspace::SendKeystrokes", ": m a r k s enter"]

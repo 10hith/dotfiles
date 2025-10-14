@@ -95,6 +95,8 @@
         "<C-a>": false,
         "<C-c>": false,
         "<C-f>": false,
+        // "<C-h>": false,
+        // "<C-l>": false
     },
     // imporve performance
     "extensions.experimental.affinity": {
@@ -197,5 +199,8 @@
     "editor.stickyScroll.enabled": false,
     "security.workspace.trust.untrustedFiles": "open",
     "workbench.auxiliaryActivityBar.location": "top",
-    "workbench.secondarySideBar.showLabels": false
+    "workbench.secondarySideBar.showLabels": false,
+    "notebook.outline.showCodeCells": true,
+    "notebook.outline.showCodeCellSymbols": false,
+    "jupyter.showOutlineButtonInNotebookToolbar": false
 }

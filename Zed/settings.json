@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": "Material Icon Theme",
   "lsp": {
     "basedpyright": {
       "settings": {
@@ -50,10 +51,46 @@
         },
         {
           "paths": [
+            "/home/basal/repos/mwv"
+          ]
+        },
+        {
+          "paths": [
             "/home/basal/repos/reality-distorted"
           ]
         }
       ]
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": [
+        {
+          "paths": [
+            "/home/basal/repos/mwv"
+          ]
+        }
+      ]
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
+    },
+    {
+      "distro_name": "Ubuntu-20.04",
+      "user": null,
+      "projects": []
     },
     {
       "distro_name": "Ubuntu-20.04",

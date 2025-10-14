@@ -1,0 +1,206 @@
+{
+    "remote.WSL.debug": true,
+    // Editor settings
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.foldingStrategy": "indentation",
+    "editor.formatOnSave": true,
+    "diffEditor.codeLens": true,
+    // Vim settings, nice stuff
+    "vim.leader": "<space>",
+    "vim.smartRelativeLine": true,
+    "vim.easymotion": true,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "j",
+                "j"
+            ],
+            "after": [
+                "<Esc>"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "4"
+            ],
+            "commands": [
+                ":/# %%"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "6"
+            ],
+            "after": [
+                "?",
+                "# ",
+                "%",
+                "%",
+                "<CR>"
+            ],
+            "silent": true
+        }
+    ],
+    "vim.handleKeys": {
+        "<C-a>": false,
+        "<C-c>": false,
+        "<C-f>": false,
+    },
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    // "terminal.integrated.env.linux": {
+    //     "PYTHONPATH": "${workspaceFolder}"
+    // },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    // "python.languageServer": "Pylance",
+    // "python.analysis.logLevel": "Trace",
+    // "python.analysis.nodeExecutable": "/home/basal/.nvm/versions/node/v21.7.1/bin/node",
+    // "python.analysis.memory.limit": 4096,
+    // "python.languageServer": "Default",
+    "sqltools.useNodeRuntime": true,
+    "[python]": {
+        "editor.formatOnType": true
+    },
+    "security.workspace.trust.untrustedFiles": "open",
+    "notebook.output.textLineLimit": 500,
+    "jupyter.askForKernelRestart": false,
+    "window.zoomLevel": 1,
+    "editor.largeFileOptimizations": false,
+    "remote.autoForwardPortsSource": "hybrid",
+    "remote.SSH.remotePlatform": {
+        "178.62.77.30": "linux"
+    },
+    "workbench.settings.applyToAllProfiles": [],
+    "git.confirmSync": false,
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "colorful-comments-refreshed.highlightPlainText": true,
+    "colorful-comments-refreshed.tags": [
+        {
+            "tag": "%%",
+            // "color": "#FF10F0",
+            "color": "#EAF622",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "?",
+            "color": "#0076FF",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "%%",
+            "color": "#474747",
+            "strikethrough": true,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "^",
+            "color": "#EAF622",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "*",
+            "color": "#28FF00",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "&",
+            "color": "#FF06A0",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "~",
+            "color": "#BE00FF",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        },
+        {
+            "tag": "todo",
+            "color": "#FF8C00",
+            "strikethrough": false,
+            "backgroundColor": "transparent"
+        }
+    ],
+    "windowsaistudio.externalOpenAIProviders": [],
+    "aider-composer.pythonPath": "/home/basal/aiderComposerVenv/venv/bin",
+    "aider-composer.inlineDiff.enable": true,
+    "workbench.settings.openDefaultKeybindings": true,
+    "roo-cline.allowedCommands": [
+        "npm test",
+        "npm install",
+        "tsc",
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact"
+    },
+    "accessibility.voice.keywordActivation": "inlineChat",
+    "terminal.integrated.suggest.enabled": true,
+    "workbench.activityBar.location": "top",
+    "pgsql.serverGroups": [
+        {
+            "name": "Servers",
+            "id": "A3250836-A99F-46C7-A1AE-CA2F40425863",
+            "isDefault": true
+        }
+    ],
+    "pgsql.connections": [
+        {
+            "id": "56D88202-DF3D-4DD4-8882-CBF9256E97B6",
+            "groupId": "A3250836-A99F-46C7-A1AE-CA2F40425863",
+            "authenticationType": "SqlLogin",
+            "connectTimeout": 15,
+            "applicationName": "vscode-pgsql",
+            "clientEncoding": "utf8",
+            "sslmode": "require",
+            "server": "aws-0-eu-west-2.pooler.supabase.com",
+            "user": "postgres.pqsvhidiwiydgshynfib",
+            "password": "",
+            "savePassword": true,
+            "database": "postgres",
+            "profileName": "postgres",
+            "expiresOn": 0
+        }
+    ],
+    "yaml.schemas": {
+        "file:///c%3A/Users/lohith/.vscode/extensions/continue.continue-1.3.18-win32-x64/config-yaml-schema.json": [
+            ".continue/**/*.yaml"
+        ]
+    },
+    "github.copilot.chat.azureModels": {
+        "gpt41": {
+            "name": "gpt41",
+            "url": "htps://openai.com",
+            "toolCalling": true,
+            "vision": true,
+            "thinking": true,
+            "maxInputTokens": 128000,
+            "maxOutputTokens": 4096
+        }
+    },
+}
