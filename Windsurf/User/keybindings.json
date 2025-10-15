@@ -41,7 +41,7 @@
     },
     // breadcrumbs
     {
-        "key": "ctrl+shift+oem_period",
+        "key": "ctrl+shift+;",
         "command": "runCommands",
         "args": {
             "commands": [
