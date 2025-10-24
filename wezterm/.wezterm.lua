@@ -16,6 +16,8 @@ config.hide_tab_bar_if_only_one_tab = false
 config.window_background_opacity = 0.95
 config.default_prog = { "wsl.exe", "~", "-e", "zellij" }
 
+-- Disable the yes/no close confirrmation
+config.window_close_confirmation = "NeverPrompt"
 
 -- Extra convenience keys
 config.keys = {
@@ -34,3 +36,4 @@ config.keys = {
 }
 
 return config
+

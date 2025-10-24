@@ -7,16 +7,39 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "icon_theme": "Material Icon Theme",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Material Icon Theme",
+    "dark": "Material Icon Theme"
+  },
   "lsp": {
     "basedpyright": {
       "settings": {
         "typeCheckingMode": "off",
         "basedpyright.analysis": {
           "diagnosticMode": "workspace",
-          "inlayHints.callArgumentNames": false
+          "inlayHints.callArgumentNames": false,
+          "reportAny": false,
+          "reportUnknown": false,
+          "reportMissing": false,
+          "reportArgumentType": false
         }
       }
+    }
+  },
+  "jupyter": {
+    "kernel_selections": {
+      "python": ".venv"
+    }
+  },
+  // "git.inline_blame": false,
+  // "git.inline_diff": false,
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    },
+    "inline_diff": {
+      "enabled": true
     }
   },
   "wsl_connections": [
@@ -75,7 +98,13 @@
     {
       "distro_name": "Ubuntu-20.04",
       "user": null,
-      "projects": []
+      "projects": [
+        {
+          "paths": [
+            "/home/basal/PycharmProjects/elai"
+          ]
+        }
+      ]
     },
     {
       "distro_name": "Ubuntu-20.04",
@@ -146,8 +175,8 @@
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "One Light",
-    "dark": "Catppuccin Macchiato"
+    "dark": "Catppuccin Mocha"
   }
 }

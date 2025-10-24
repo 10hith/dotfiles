@@ -1,15 +1,17 @@
 // Place your key bindings in this file to override the defaults
 [
+    // Menu navigation
     {
         "key": "ctrl-j",
         "command": "workbench.action.quickOpenNavigateNext",
-        "when": "inQuickOpen"
+        // "when": "inQuickOpen"
     },
     {
         "key": "ctrl+k",
         "command": "workbench.action.quickOpenNavigatePrevious",
-        "when": "inQuickOpen"
+        // "when": "inQuickOpen"
     },
+    // Pane navigation
     {
         "key": "alt-h",
         "command": "workbench.action.navigateLeft"
@@ -58,6 +60,17 @@
         "command": "breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
     },
+    // RooCode - add context and focus input
+    {
+        "key": "ctrl+l l",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "roo-cline.addToContext",
+                "roo-cline.focusInput"
+            ]
+        }
+    },
     // End of custom config
     {
         "key": "ctrl+u",
@@ -78,14 +91,6 @@
         "key": "ctrl+v",
         "command": "-extension.vim_ctrl+v",
         "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+l i",
-        "command": "roo-cline.focusInput"
-    },
-    {
-        "key": "ctrl+l l",
-        "command": "roo-cline.addToContext"
     },
     {
         "key": "ctrl+enter",

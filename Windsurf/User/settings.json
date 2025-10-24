@@ -43,19 +43,19 @@
         },
         {
             "before": [
-                "ctrl+m"
+                "ctrl+j"
             ],
             "commands": [
-                ":marks"
+                ":reg"
             ],
             "silent": true
         },
         {
             "before": [
-                "ctrl+j"
+                "ctrl+m"
             ],
             "commands": [
-                ":jumps"
+                ":marks"
             ],
             "silent": true
         },
@@ -95,6 +95,7 @@
         "<C-a>": false,
         "<C-c>": false,
         "<C-f>": false,
+        "<C-w>": false,
         // "<C-h>": false,
         // "<C-l>": false
     },
@@ -102,11 +103,25 @@
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1
     },
+    // Editor Associations
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook",
+        "*.md": "vscode.markdown.preview.editor"
+    },
+    // jupyter
+    "jupyter.interactiveWindow.creationMode": "single",
+    "jupyter.askForKernelRestart": false,
+    "jupyter.allowUnauthorizedRemoteConnection": true,
+    // Other settings
+    "windsurf.marketplaceGalleryItemURL": "",
+    "git.ignoreMissingGitWarning": true,
+    // workbench customizations
     "workbench.colorCustomizations": {
         "editorCursor.foreground": "#FF0000",
         "editorCursor.background": "#222222",
         "editorCursor.border": "#FF0000"
     },
+    // cursor customizations
     "editor.cursorWidth": 2, // Increase the cursor thickness/width (works for line cursor)
     "editor.cursorBlinking": "smooth",
     "[sql]": {
@@ -114,12 +129,6 @@
     },
     // Other settings
     "remote.windsurfSSH.configFile": "https://open-vsx.org/vscode/item",
-    // jupyter
-    "jupyter.interactiveWindow.creationMode": "single",
-    "jupyter.askForKernelRestart": false,
-    "jupyter.allowUnauthorizedRemoteConnection": true,
-    "windsurf.marketplaceGalleryItemURL": "",
-    "git.ignoreMissingGitWarning": true,
     "colorful-comments-refreshed.tags": [
         {
             "tag": "%%",
