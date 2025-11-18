@@ -73,7 +73,8 @@
                 "4"
             ],
             "commands": [
-                ":/# %%"
+                ":/# %%",
+                ":normal! zz"
             ],
             "silent": true
         },
@@ -86,7 +87,9 @@
                 "# ",
                 "%",
                 "%",
-                "<CR>"
+                "<CR>",
+                "z",
+                "z"
             ],
             "silent": true
         }
@@ -211,5 +214,8 @@
     "workbench.secondarySideBar.showLabels": false,
     "notebook.outline.showCodeCells": true,
     "notebook.outline.showCodeCellSymbols": false,
-    "jupyter.showOutlineButtonInNotebookToolbar": false
+    "jupyter.showOutlineButtonInNotebookToolbar": false,
+    "editor.tabCompletion": "on",
+    "editor.inlineCompletionsAccessibilityVerbose": true,
+    "notebook.output.textLineLimit": 300
 }

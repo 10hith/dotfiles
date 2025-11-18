@@ -104,7 +104,7 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
     mkdir -p "$(dirname "$abs_dest")"
 
     if [[ "$dest" == "root/.bashrc" ]]; then
-      awk 'tolower($0) !~ /api_/' "$source_path" > "$abs_dest"
+      awk 'tolower($0) !~ /api_/ && $0 !~ /^export[[:space:]]+[A-Z0-9_]+=/ ' "$source_path" > "$abs_dest"
     else
       cp -p "$source_path" "$abs_dest"
     fi

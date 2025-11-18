@@ -33,8 +33,12 @@
     "bindings": {
       "K": "editor::NewlineAbove",
       "ctrl-m": ["workspace::SendKeystrokes", ": m a r k s enter"],
+      "ctrl-j": ["workspace::SendKeystrokes", ": r e g i s t e r enter"],
       "shift-h": ["workspace::SendKeystrokes", "shift-h z z"],
-      "shift-l": ["workspace::SendKeystrokes", "shift-l z z"]
+      "shift-l": ["workspace::SendKeystrokes", "shift-l z z"],
+      // "4": ["workspace::SendKeystrokes", ": / # space % % enter"],
+      "4": ["workspace::SendKeystrokes", "/ # space % % enter escape z z"],
+      "6": ["workspace::SendKeystrokes", "? # space % % enter escape z z"]
     }
   },
   {

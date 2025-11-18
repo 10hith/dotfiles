@@ -1,5 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
+    {
+        "key": "capslock",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+    },
     // quick open navigation
     {
         "key": "ctrl-j",
@@ -61,6 +66,35 @@
         "command": "breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
     },
+    // Mapping capslock for escape
+    // {
+    //     "key": "capslock",
+    //     "command": "list.cancel",
+    //     "when": "filesExplorerFocus && !inputFocus"
+    // },
+    // // Close Quick Open / Ctrl+P picker
+    // {
+    //     "key": "capslock",
+    //     "command": "workbench.action.closeQuickOpen",
+    //     "when": "inQuickOpen"
+    // },
+    // // Dismiss breadcrumbs picker
+    // {
+    //     "key": "capslock",
+    //     "command": "breadcrumbs.focusAndSelect",
+    //     "when": "breadcrumbsActive && breadcrumbsVisible"
+    // },
+    // // Keep the ones you already added for editor + notifications…
+    // {
+    //     "key": "capslock",
+    //     "command": "closeFindWidget",
+    //     "when": "editorFocus"
+    // },
+    // {
+    //     "key": "capslock",
+    //     "command": "workbench.action.closeMessages",
+    //     "when": "globalMessageVisible"
+    // },
     // End of custom keybindings
     {
         "key": "ctrl+p",
@@ -167,7 +201,7 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+l o",
+        "key": "ctrl+l c",
         "command": "chatgpt.addToChat"
     },
     {
@@ -198,5 +232,15 @@
         "key": "ctrl+shift+oem_period",
         "command": "-breadcrumbs.toggleToOn",
         "when": "!config.breadcrumbs.enabled"
+    },
+    {
+        "key": "ctrl+l g",
+        "command": "windsurf.generateCodeMap",
+        "when": "codemapsEnabled"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-windsurf.generateCodeMap",
+        "when": "codemapsEnabled"
     },
 ]
