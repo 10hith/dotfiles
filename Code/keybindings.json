@@ -1,5 +1,11 @@
 // Place your key bindings in this file to override the defaults
 [
+    // Map capsLock to escape
+    {
+        "key": "capslock capslock",
+        "command": "extension.vim_escape",
+        "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+    },
     // Menu navigation
     {
         "key": "ctrl-j",

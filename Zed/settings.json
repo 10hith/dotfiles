@@ -46,9 +46,16 @@
   },
   "jupyter": {
     "kernel_selections": {
-      "python": ".venv"
+      // "python": "C:\\Users\\lohith\\AppData\\Roaming\\jupyter\\kernels\\myenv"
+      // "python": "/home/basal/.local/share/jupyter/kernels/venv"
+      "python": "myenv"
     }
   },
+  // "jupyter": {
+  //   "kernel_selections": {
+  //     "python": ".venv"
+  //   }
+  // },
   // "git.inline_blame": false,
   // "git.inline_diff": false,
   "git": {

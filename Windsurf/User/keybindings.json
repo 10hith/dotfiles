@@ -1,7 +1,7 @@
 // Place your key bindings in this file to override the defaults
 [
     {
-        "key": "capslock",
+        "key": "capslock capslock",
         "command": "extension.vim_escape",
         "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
     },
@@ -242,5 +242,15 @@
         "key": "ctrl+shift+g",
         "command": "-windsurf.generateCodeMap",
         "when": "codemapsEnabled"
+    },
+    {
+        "key": "ctrl+l g",
+        "command": "windsurf.generateCodeMapFromContext",
+        "when": "codemapsEnabled && editorTextFocus"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-windsurf.generateCodeMapFromContext",
+        "when": "codemapsEnabled && editorTextFocus"
     },
 ]

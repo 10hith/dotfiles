@@ -29,6 +29,12 @@
     }
   },
   {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "caps_lock": "vim::NormalBefore"
+    }
+  },
+  {
     "context": "Editor && vim_mode == normal && !menu",
     "bindings": {
       "K": "editor::NewlineAbove",
