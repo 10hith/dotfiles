@@ -1,0 +1,57 @@
+# Reclaim diskspace from wsl
+https://superuser.com/questions/1606213/how-do-i-get-back-unused-disk-space-from-ubuntu-on-wsl2
+wsl --shutdown
+kill docker desktop
+
+cd C:\Users\lohith\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\
+
+On powersheel as admin
+cd %USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\
+optimize-vhd -Path .\ext4.vhdx -Mode full
+
+Remove Unused Docker Images, Containers, and Volumes
+docker system prune -a --volumes
+
+Remove volumes not used by any containers
+docker volume ls -qf dangling=true | while read volume; do
+  # Get the creation time of the volume (approximate last use)
+  created=$(docker volume inspect "$volume" --format '{{.CreatedAt}}')
+  # Convert the creation date to epoch time
+  created_epoch=$(date -d "$created" +%s)
+  # Get the current date in epoch time
+  now=$(date +%s)
+  # Calculate the difference in days
+  diff_days=$(( (now - created_epoch) / 86400 ))
+
+  # Remove the volume if it was created more than 90 days ago
+  if [ $diff_days -gt 90 ]; then
+    echo "Removing volume: $volume (unused for more than 3 months)"
+    docker volume rm "$volume"
+  fi
+done
+
+
+
+
+# Setup of Selenium
+https://cloudbytes.dev/snippets/run-selenium-and-chrome-on-wsl2
+https://www.gregbrisebois.com/posts/chromedriver-in-wsl2/
+# /usr/bin/chromedriver
+
+# local docker run
+docker run \
+ -p 80:80 \
+ -e DATA_PATH="/data" \
+ -e CRIME_API="http://localhost" \
+ -v /home/basal/live_datasets/processed:/data/ \
+10hith/crimeapp:latest
+
+docker-compose --no-deps build worker && docker-compose restart worker
+
+docker run -d -v redisinsight:/db -p 8001:8001 redislabs/redisinsight:latest
+
+# Clean up venv
+pip freeze | xargs pip uninstall -y
+pip install -r requirements.txt
+
+rsync processed/all_area_keys -ar --rsh=ssh root@178.62.77.30:/data/processed/
