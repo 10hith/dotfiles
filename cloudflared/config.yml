@@ -2,9 +2,12 @@ tunnel: 50dd9498-fa0f-4084-8d7e-15ca56060c3e
 credentials-file: /home/basal/.cloudflared/50dd9498-fa0f-4084-8d7e-15ca56060c3e.json
 
 ingress:
-  - hostname: live-track.byteloop.ai
-    service: http://localhost:3101
-  - hostname: agent.ordelo.app
-    service: http://localhost:3100
-  - service: http_status:404 
-
+    - hostname: wren-agg-test.ordelo.app
+      service: http://localhost:3101
+    - hostname: elas-agg-test.ordelo.app
+      service: http://localhost:3101
+    - hostname: rider-agent-test.ordelo.app
+      service: http://localhost:3100
+    - hostname: restaurant-test.ordelo.app
+      service: http://localhost:3000
+    - service: http_status:404

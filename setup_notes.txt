@@ -3,16 +3,22 @@ https://superuser.com/questions/1606213/how-do-i-get-back-unused-disk-space-from
 wsl --shutdown
 kill docker desktop
 
+# cleanup docker images with no tags; and purge to reclaim space
+docker image prune -a --filter "dangling=true" --force
+
 cd C:\Users\lohith\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\
 
 On powersheel as admin
 cd %USERPROFILE%\AppData\Local\Packages\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\LocalState\
 optimize-vhd -Path .\ext4.vhdx -Mode full
 
-Remove Unused Docker Images, Containers, and Volumes
-docker system prune -a --volumes
+# Remove Unused Docker Images, Containers, and Volumes
+docker system prune -a --volumes --force
 
-Remove volumes not used by any containers
+# Remove dangling/untagged Docker images only
+docker image prune -a --filter "dangling=true" --force
+
+# Remove volumes not used by any containers
 docker volume ls -qf dangling=true | while read volume; do
   # Get the creation time of the volume (approximate last use)
   created=$(docker volume inspect "$volume" --format '{{.CreatedAt}}')

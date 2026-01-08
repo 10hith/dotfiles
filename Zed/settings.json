@@ -45,10 +45,11 @@
     }
   },
   "jupyter": {
+    "enabled": true,
     "kernel_selections": {
-      // "python": "C:\\Users\\lohith\\AppData\\Roaming\\jupyter\\kernels\\myenv"
+      "python": "C:\\Users\\lohith\\AppData\\Roaming\\jupyter\\kernels\\myenv"
       // "python": "/home/basal/.local/share/jupyter/kernels/venv"
-      "python": "myenv"
+      // "python": "myenv"
     }
   },
   // "jupyter": {
@@ -72,25 +73,44 @@
       "user": null,
       "projects": [
         {
-          "paths": ["/home/basal"]
+          "paths": [
+            "/home/basal"
+          ]
         },
         {
-          "paths": ["/home/basal/PycharmProjects"]
+          "paths": [
+            "/home/basal/PycharmProjects"
+          ]
         },
         {
-          "paths": ["/home/basal/PycharmProjects/OrdeloAgent"]
+          "paths": [
+            "/home/basal/PycharmProjects/OrdeloAgent"
+          ]
         },
         {
-          "paths": ["/home/basal/PycharmProjects/OrdeloAgent/./"]
+          "paths": [
+            "/home/basal/PycharmProjects/OrdeloAgent/./"
+          ]
         },
         {
-          "paths": ["/home/basal/repos/dotfiles"]
+          "paths": [
+            "/home/basal/PycharmProjects/elai"
+          ]
         },
         {
-          "paths": ["/home/basal/repos/mwv"]
+          "paths": [
+            "/home/basal/repos/dotfiles"
+          ]
         },
         {
-          "paths": ["/home/basal/repos/reality-distorted"]
+          "paths": [
+            "/home/basal/repos/mwv"
+          ]
+        },
+        {
+          "paths": [
+            "/home/basal/repos/reality-distorted"
+          ]
         }
       ]
     },
@@ -99,7 +119,9 @@
       "user": null,
       "projects": [
         {
-          "paths": ["/home/basal/repos/mwv"]
+          "paths": [
+            "/home/basal/repos/mwv"
+          ]
         }
       ]
     },
@@ -108,7 +130,9 @@
       "user": null,
       "projects": [
         {
-          "paths": ["/home/basal/PycharmProjects/elai"]
+          "paths": [
+            "/home/basal/PycharmProjects/elai"
+          ]
         }
       ]
     },

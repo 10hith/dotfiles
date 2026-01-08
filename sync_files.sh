@@ -15,9 +15,7 @@ fi
 
 expand_pattern() {
   local pattern="$1"
-  local quoted
-  printf -v quoted '%q' "$pattern"
-  bash -lc "shopt -s nullglob dotglob; for path in $quoted; do printf '%s\\0' \"\$path\"; done"
+  GLOB_PATTERN="$pattern" bash -c 'shopt -s nullglob dotglob globstar; for path in $GLOB_PATTERN; do printf "%s\0" "$path"; done'
 }
 
 trim() {

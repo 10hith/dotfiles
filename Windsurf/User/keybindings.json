@@ -3,7 +3,7 @@
     {
         "key": "capslock capslock",
         "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active && vim.mode == 'Insert'"
+        "when": "editorTextFocus && vim.active"
     },
     // quick open navigation
     {
@@ -35,13 +35,23 @@
     },
     // terminal navigation
     {
-        "key": "alt-h",
+        "key": "shift-alt-l",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     },
     {
         "key": "alt-l",
         "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-k",
+        "command": "workbench.action.terminal.focusPreviousPane",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-j",
+        "command": "workbench.action.terminal.focusNextPane",
         "when": "terminalFocus"
     },
     // breadcrumbs
@@ -65,6 +75,19 @@
         "key": "alt+h",
         "command": "breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
+    },
+    // Send file ref to terminal; workbench.action.terminal.toggleTerminal
+    {
+        "key": "ctrl+l t",
+        "command": "workbench.action.terminal.sendSequence",
+        // "commands": [
+        //     "workbench.action.terminal.sendSequence",
+        //     "workbench.action.terminal.sendSequence"
+        // ],
+        "args": {
+            "text": "@${file}:${lineNumber}"
+        },
+        "when": "editorTextFocus && editorHasSelection"
     },
     // Mapping capslock for escape
     // {
@@ -96,6 +119,16 @@
     //     "when": "globalMessageVisible"
     // },
     // End of custom keybindings
+    {
+        "key": "ctrl+l o",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "chatgpt.addToThread",
+                "chatgpt.sidebarView.focus"
+            ]
+        }
+    },
     {
         "key": "ctrl+p",
         "command": "-extension.vim_ctrl+p",
@@ -136,21 +169,21 @@
         "command": "windsurf.interactiveCascade.focusEditIntent",
         "when": "windsurf.interactiveCascade.enabled && !editorReadonly"
     },
-    {
-        "key": "ctrl+i",
-        "command": "-windsurf.interactiveCascade.focusEditIntent",
-        "when": "windsurf.interactiveCascade.enabled && !editorReadonly"
-    },
+    // {
+    //     "key": "ctrl+i",
+    //     "command": "-windsurf.interactiveCascade.focusEditIntent",
+    //     "when": "windsurf.interactiveCascade.enabled && !editorReadonly"
+    // },
     {
         "key": "ctrl+l u",
         "command": "windsurf.prioritized.command.open",
         "when": "editorTextFocus && !windsurf.interactiveCascade.enabled"
     },
-    {
-        "key": "ctrl+i",
-        "command": "-windsurf.prioritized.command.open",
-        "when": "editorTextFocus && !windsurf.interactiveCascade.enabled"
-    },
+    // {
+    //     "key": "ctrl+i",
+    //     "command": "-windsurf.prioritized.command.open",
+    //     "when": "editorTextFocus && !windsurf.interactiveCascade.enabled"
+    // },
     {
         "key": "ctrl+shift+e",
         "command": "-pgsql.runQuery",
@@ -201,10 +234,6 @@
         "when": "editorFocus || editorIsOpen"
     },
     {
-        "key": "ctrl+l c",
-        "command": "chatgpt.addToChat"
-    },
-    {
         "key": "ctrl+l i",
         "command": "inlineChat.start",
         "when": "editorFocus && inlineChatHasEditsAgent && inlineChatPossible && !editorReadonly && !editorSimpleInput || editorFocus && inlineChatHasProvider && inlineChatPossible && !editorReadonly && !editorSimpleInput"
@@ -253,4 +282,18 @@
         "command": "-windsurf.generateCodeMapFromContext",
         "when": "codemapsEnabled && editorTextFocus"
     },
+    {
+        "key": "ctrl+l i",
+        "command": "windsurf.prioritized.command.open",
+        "when": "editorTextFocus && !windsurf.isAgentModeInputBoxFocused"
+    },
+    {
+        "key": "ctrl+i",
+        "command": "-windsurf.prioritized.command.open",
+        "when": "editorTextFocus && !windsurf.isAgentModeInputBoxFocused"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "workbench.action.toggleAuxiliaryBar"
+    }
 ]

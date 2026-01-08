@@ -15,3 +15,19 @@ Copy below to cloudflared
 ~/.cloudflared/setup.md
 ~/.cloudflared/config.yml
 ~/.cloudflared/*.sh
+
+Copy below to claude
+~/.claude/settings.json
+~/.claude/statusline-command.sh
+
+Copy below to claude/hooks
+~/.claude/hooks/*
+
+Copy below to claude/commands/create-hook
+~/.claude/commands/create-hook/*
+
+Copy below to claude/output-styles
+~/.claude/output-styles/*.md
+
+Copy below to claude/output-styles/.claude
+~/.claude/output-styles/.claude/*

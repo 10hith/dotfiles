@@ -4,9 +4,15 @@
     "editor.minimap.enabled": false,
     "editor.foldingStrategy": "indentation",
     "editor.formatOnSave": true,
+    "editor.fontSize": 16,
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.tabCompletion": "on",
+    "editor.tabFocusMode": false,
+    "editor.inlineCompletionsAccessibilityVerbose": true,
     "diffEditor.codeLens": true,
     // terminal settings
     "terminal.integrated.sendKeybindingsToShell": false,
+    "terminal.integrated.tabFocusMode": false,
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.terminal.focusPrevious",
         "workbench.action.terminal.focusNext"
@@ -16,6 +22,7 @@
     // Vim settings
     "vim.leader": "<space>",
     "vim.incsearch": true,
+    // "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.surround": true,
     "vim.smartRelativeLine": true,
@@ -23,6 +30,15 @@
     "vim.foldfix": true,
     "vim.useSystemClipboard": true,
     "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "y",
+                "l"
+            ],
+            "commands": [
+                "github.copyVscodeDevLink"
+            ]
+        },
         {
             "before": [
                 "H"
@@ -189,23 +205,23 @@
             "displayName": "Ordelo",
             "savePassword": true
         },
-        {
-            "id": "B6689C8D-7ADC-4BC1-BACF-9E112C14B3A3",
-            "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
-            "authenticationType": "SqlLogin",
-            "connectTimeout": 15,
-            "applicationName": "vscode-pgsql",
-            "clientEncoding": "utf8",
-            "sslmode": "require",
-            "server": "aws-0-eu-west-2.pooler.supabase.com",
-            "user": "postgres.dxhxdgpdysoluooicmbt",
-            "password": "",
-            "database": "postgres",
-            "profileName": "Elai",
-            "displayName": "Elai",
-            "savePassword": true,
-            "expiresOn": 0
-        }
+        // {
+        //     "id": "B6689C8D-7ADC-4BC1-BACF-9E112C14B3A3",
+        //     "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
+        //     "authenticationType": "SqlLogin",
+        //     "connectTimeout": 15,
+        //     "applicationName": "vscode-pgsql",
+        //     "clientEncoding": "utf8",
+        //     "sslmode": "require",
+        //     "server": "aws-0-eu-west-2.pooler.supabase.com",
+        //     "user": "postgres.dxhxdgpdysoluooicmbt",
+        //     "password": "",
+        //     "database": "postgres",
+        //     "profileName": "Elai",
+        //     "displayName": "Elai",
+        //     "savePassword": true,
+        //     "expiresOn": 0
+        // }
     ],
     "pgsql.enableExperimentalFeatures": true,
     "editor.stickyScroll.enabled": false,
@@ -215,7 +231,32 @@
     "notebook.outline.showCodeCells": true,
     "notebook.outline.showCodeCellSymbols": false,
     "jupyter.showOutlineButtonInNotebookToolbar": false,
-    "editor.tabCompletion": "on",
-    "editor.inlineCompletionsAccessibilityVerbose": true,
-    "notebook.output.textLineLimit": 300
+    "notebook.output.textLineLimit": 300,
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "icon": "terminal-bash"
+        },
+        "zsh": {
+            "path": "zsh"
+        },
+        "fish": {
+            "path": "fish"
+        },
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux"
+        },
+        "pwsh": {
+            "path": "pwsh",
+            "icon": "terminal-powershell"
+        },
+        "wsl": {
+            "path": "/usr/bin/bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.linux": "wsl",
+    "terminal.integrated.fontSize": 16,
+    "workbench.panel.showLabels": false,
+    "claudeCode.preferredLocation": "panel",
 }

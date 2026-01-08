@@ -136,7 +136,6 @@ unset __conda_setup
 
 
 
-
 IGNITE_LIBS="${IGNITE_HOME}/libs/*"
 
 for file in ${IGNITE_HOME}/libs/*
@@ -185,7 +184,10 @@ fi
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-#eval "$(starship init bash)"
-eval "$(carapace _carapace bash)"
+eval "$(starship init bash)"
+#eval "$(carapace _carapace bash)"
 
 . "$HOME/.cargo/env"
+
+# uv
+. "/home/basal/.deno/env"

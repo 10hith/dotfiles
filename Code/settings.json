@@ -242,7 +242,7 @@
         }
     ],
     "yaml.schemas": {
-        "file:///c%3A/Users/lohith/.vscode/extensions/continue.continue-1.3.24-win32-x64/config-yaml-schema.json": [
+        "file:///c%3A/Users/lohith/.vscode/extensions/continue.continue-1.3.28-win32-x64/config-yaml-schema.json": [
             ".continue/**/*.yaml"
         ]
     },
@@ -257,4 +257,5 @@
             "maxOutputTokens": 4096
         }
     },
+    "github.copilot.chat.customOAIModels": {},
 }
