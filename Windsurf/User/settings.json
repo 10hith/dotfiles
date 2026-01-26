@@ -205,23 +205,22 @@
             "displayName": "Ordelo",
             "savePassword": true
         },
-        // {
-        //     "id": "B6689C8D-7ADC-4BC1-BACF-9E112C14B3A3",
-        //     "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
-        //     "authenticationType": "SqlLogin",
-        //     "connectTimeout": 15,
-        //     "applicationName": "vscode-pgsql",
-        //     "clientEncoding": "utf8",
-        //     "sslmode": "require",
-        //     "server": "aws-0-eu-west-2.pooler.supabase.com",
-        //     "user": "postgres.dxhxdgpdysoluooicmbt",
-        //     "password": "",
-        //     "database": "postgres",
-        //     "profileName": "Elai",
-        //     "displayName": "Elai",
-        //     "savePassword": true,
-        //     "expiresOn": 0
-        // }
+        {
+            "id": "6C27BAA4-69F6-4CFA-82AB-4334386295AF",
+            "groupId": "D358853E-3820-456F-A4C4-CF0773CC6FB0",
+            "authenticationType": "SqlLogin",
+            "connectTimeout": 15,
+            "applicationName": "vscode-pgsql",
+            "clientEncoding": "utf8",
+            "sslmode": "require",
+            "server": "aws-0-eu-west-2.pooler.supabase.com",
+            "user": "postgres.jvzaqzydaxarywfkwexi",
+            "password": "",
+            "savePassword": true,
+            "database": "postgres",
+            "profileName": "mwv",
+            "expiresOn": 0
+        }
     ],
     "pgsql.enableExperimentalFeatures": true,
     "editor.stickyScroll.enabled": false,
@@ -259,4 +258,12 @@
     "terminal.integrated.fontSize": 16,
     "workbench.panel.showLabels": false,
     "claudeCode.preferredLocation": "panel",
+    "roo-cline.debug": false,
+    "roo-cline.allowedCommands": [
+        "git log",
+        "git diff",
+        "git show"
+    ],
+    "roo-cline.deniedCommands": [],
+    "claudeCode.selectedModel": "default",
 }

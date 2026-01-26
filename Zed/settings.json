@@ -179,7 +179,13 @@
     {
       "distro_name": "Ubuntu-20.04",
       "user": null,
-      "projects": []
+      "projects": [
+        {
+          "paths": [
+            "/home/basal/bloop/OrdeloAgent"
+          ]
+        }
+      ]
     },
     {
       "distro_name": "Ubuntu-20.04",

@@ -1,38 +1,9 @@
 {
-  "permissions": {
-    "defaultMode": "default",
-    "allow": [
-      "bashOps"
-    ]
-  },
-  "model": "opus",
-  "hooks": {
-    "PreToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/basal/.claude/hooks/pre-tool-logger.sh"
-          }
-        ]
-      }
-    ],
-    "PostToolUse": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "/home/basal/.claude/hooks/post-tool-logger.sh"
-          }
-        ]
-      }
-    ]
-  },
   "statusLine": {
     "type": "command",
     "command": "/home/basal/.claude/statusline-command.sh"
   },
-  "VISUAL": "windsurf"
+  "plansDirectory": ".claude/proPlans",
+  "VISUAL": "windsurf",
+  "model": "haiku"
 }

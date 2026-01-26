@@ -7,7 +7,7 @@
     },
     // quick open navigation
     {
-        "key": "ctrl-j",
+        "key": "ctrl+j",
         "command": "workbench.action.quickOpenNavigateNext",
         "when": "inQuickOpen"
     },
@@ -35,12 +35,13 @@
     },
     // terminal navigation
     {
-        "key": "shift-alt-l",
+        "key": "ctrl-t k",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     },
     {
         "key": "alt-l",
+        // "key": "ctrl-t j",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },

@@ -176,6 +176,7 @@ alias intellij="nohup /opt/idea-IC-211.7628.21/bin/idea.sh </dev/null &>/dev/nul
 
 #export PYTHONPATH="${PYTHONPATH}:/home/basal/excelanalysis"
 #export PYTHONPATH="/home/basal/PycharmProjects/crimeinmyarea:/home/basal/PycharmProjects/dbtexample:/home/basal/PycharmProjects/elai"
+#export WA_TOKEN='EAAgCdVdtHI0BOzxz41QsD5jZCZAMNZAop2bvHtZB0DGYk5cZClKtd2PNJsmuQKu5VZCGdOnp0Ym3lcQrPE2ElLbFqLC5IKuEeHYqHavJ2ZCdgx879SlV9FtsGVH6A7MLVbsPkWZCkQfzZBjPi6Kne5MBf7rqcmjjR4I3Y4rfnALRKCYoKmZCH5KQ7pyeZCoVr4RYzHhKgZDZD'
 
 # This helps with launching terminal with env activated
 if [ -f "./venv/bin/activate" ]; then
@@ -191,3 +192,4 @@ eval "$(starship init bash)"
 
 # uv
 . "/home/basal/.deno/env"
+

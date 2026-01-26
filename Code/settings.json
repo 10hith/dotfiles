@@ -203,12 +203,12 @@
     "aider-composer.inlineDiff.enable": true,
     "workbench.settings.openDefaultKeybindings": true,
     "roo-cline.allowedCommands": [
-        "npm test",
-        "npm install",
-        "tsc",
         "git log",
         "git diff",
-        "git show"
+        "git show",
+        "npm test",
+        "npm install",
+        "tsc"
     ],
     "emmet.includeLanguages": {
         "javascript": "javascriptreact"
@@ -244,6 +244,9 @@
     "yaml.schemas": {
         "file:///c%3A/Users/lohith/.vscode/extensions/continue.continue-1.3.28-win32-x64/config-yaml-schema.json": [
             ".continue/**/*.yaml"
+        ],
+        "file:///c%3A/Users/lohith/.vscode/extensions/continue.continue-1.3.29-win32-x64/config-yaml-schema.json": [
+            ".continue/**/*.yaml"
         ]
     },
     "github.copilot.chat.azureModels": {
@@ -258,4 +261,6 @@
         }
     },
     "github.copilot.chat.customOAIModels": {},
+    "roo-cline.debug": false,
+    "roo-cline.deniedCommands": [],
 }

@@ -77,6 +77,10 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
       fi
     fi
 
+    if [[ "$source_path" == */cloudflared/run*.sh ]]; then
+      continue
+    fi
+
     dest="$dest_hint"
 
     if [[ -z "$dest" ]]; then

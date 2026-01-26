@@ -10,4 +10,6 @@ ingress:
       service: http://localhost:3100
     - hostname: restaurant-test.ordelo.app
       service: http://localhost:3000
+    - hostname: vavi-agg-test.ordelo.app
+      service: http://localhost:4041
     - service: http_status:404
