@@ -1,9 +1,11 @@
 {
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  },
   "statusLine": {
     "type": "command",
     "command": "/home/basal/.claude/statusline-command.sh"
   },
   "plansDirectory": ".claude/proPlans",
-  "VISUAL": "windsurf",
-  "model": "haiku"
+  "VISUAL": "windsurf"
 }

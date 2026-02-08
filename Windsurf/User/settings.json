@@ -255,7 +255,7 @@
         }
     },
     "terminal.integrated.defaultProfile.linux": "wsl",
-    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.fontSize": 17,
     "workbench.panel.showLabels": false,
     "claudeCode.preferredLocation": "panel",
     "roo-cline.debug": false,

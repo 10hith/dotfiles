@@ -81,44 +81,19 @@
     {
         "key": "ctrl+l t",
         "command": "workbench.action.terminal.sendSequence",
-        // "commands": [
-        //     "workbench.action.terminal.sendSequence",
-        //     "workbench.action.terminal.sendSequence"
-        // ],
         "args": {
             "text": "@${file}:${lineNumber}"
         },
         "when": "editorTextFocus && editorHasSelection"
     },
-    // Mapping capslock for escape
-    // {
-    //     "key": "capslock",
-    //     "command": "list.cancel",
-    //     "when": "filesExplorerFocus && !inputFocus"
-    // },
-    // // Close Quick Open / Ctrl+P picker
-    // {
-    //     "key": "capslock",
-    //     "command": "workbench.action.closeQuickOpen",
-    //     "when": "inQuickOpen"
-    // },
-    // // Dismiss breadcrumbs picker
-    // {
-    //     "key": "capslock",
-    //     "command": "breadcrumbs.focusAndSelect",
-    //     "when": "breadcrumbsActive && breadcrumbsVisible"
-    // },
-    // // Keep the ones you already added for editor + notifications…
-    // {
-    //     "key": "capslock",
-    //     "command": "closeFindWidget",
-    //     "when": "editorFocus"
-    // },
-    // {
-    //     "key": "capslock",
-    //     "command": "workbench.action.closeMessages",
-    //     "when": "globalMessageVisible"
-    // },
+    {
+        "key": "ctrl+l r",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "${selectedText}\n"
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
     // End of custom keybindings
     {
         "key": "ctrl+l o",

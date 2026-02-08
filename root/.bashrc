@@ -172,7 +172,9 @@ alias envLoad='export $(cat .env | xargs)'
 alias envAct='if [ -d "venv" ]; then source venv/bin/activate; elif [ -d ".venv" ]; then source .venv/bin/activate; else echo "No virtual env found"; fi'
 alias intellij="nohup /opt/idea-IC-211.7628.21/bin/idea.sh </dev/null &>/dev/null &"
 
-
+## fzf
+source /usr/share/doc/fzf/examples/key-bindings.bash
+#source /usr/share/doc/fzf/examples/completion.bash
 
 #export PYTHONPATH="${PYTHONPATH}:/home/basal/excelanalysis"
 #export PYTHONPATH="/home/basal/PycharmProjects/crimeinmyarea:/home/basal/PycharmProjects/dbtexample:/home/basal/PycharmProjects/elai"
