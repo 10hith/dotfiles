@@ -95,7 +95,7 @@
                 {
                     "command": "workbench.action.terminal.sendSequence",
                     "args": {
-                        "text": "@${file}:${lineNumber}"
+                        "text": "${selectedText}, @${file}:${lineNumber}"
                     }
                 }
             ]
@@ -104,12 +104,28 @@
     },
     {
         "key": "ctrl+l r",
-        "command": "workbench.action.terminal.sendSequence",
+        "command": "runCommands",
         "args": {
-            "text": "${selectedText}\n"
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "${selectedText}\n"
+                    }
+                }
+            ]
         },
         "when": "editorTextFocus && editorHasSelection"
     },
+    // {
+    //     "key": "ctrl+l r",
+    //     "command": "workbench.action.terminal.sendSequence",
+    //     "args": {
+    //         "text": "${selectedText}\n"
+    //     },
+    //     "when": "editorTextFocus && editorHasSelection"
+    // },
     // End of custom keybindings
     {
         "key": "ctrl+l o",
