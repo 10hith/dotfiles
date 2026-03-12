@@ -10,70 +10,74 @@
 //
 //
 [
-  {
-    // Menu Selection
-    "bindings": {
-      "ctrl-j": "menu::SelectNext",
-      "ctrl-k": "menu::SelectPrevious"
+    {
+        // Menu Selection
+        "bindings": {
+            "ctrl-j": "menu::SelectNext",
+            "ctrl-k": "menu::SelectPrevious",
+            "ctrl-shift-enter": "repl::Run"
+        }
+    },
+    {
+        // Alt + h/j/k/l move focus between split panes
+        // (works from editor, terminal, docks, or project panel)
+        "context": "Dock || Terminal || Editor || ProjectPanel",
+        "bindings": {
+            "alt-h": "workspace::ActivatePaneLeft",
+            "alt-l": "workspace::ActivatePaneRight",
+            "alt-k": "workspace::ActivatePaneUp",
+            "alt-j": "workspace::ActivatePaneDown"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "caps_lock": "vim::NormalBefore"
+        }
+    },
+    {
+        "context": "Editor && vim_mode == normal && !menu",
+        "bindings": {
+            "K": "editor::NewlineAbove",
+            "ctrl-m": ["workspace::SendKeystrokes", ": m a r k s enter"],
+            "ctrl-j": ["workspace::SendKeystrokes", ": r e g i s t e r enter"],
+            "shift-h": ["workspace::SendKeystrokes", "shift-h z z"],
+            "shift-l": ["workspace::SendKeystrokes", "shift-l z z"],
+            // "4": ["workspace::SendKeystrokes", ": / # space % % enter"],
+            "4": [
+                "workspace::SendKeystrokes",
+                "/ # space % % enter escape z z"
+            ],
+            "6": ["workspace::SendKeystrokes", "? # space % % enter escape z z"]
+        }
+    },
+    {
+        // Adding context to agent
+        "context": "AgentPanel || (Editor && mode == full)",
+        "bindings": {
+            "ctrl-l l": "agent::QuoteSelection"
+        }
+    },
+    {
+        // Toggle side panel
+        "context": "Workspace || Dock || Terminal || Editor || ProjectPanel",
+        "bindings": {
+            "ctrl-b": "workspace::ToggleLeftDock"
+        }
+    },
+    {
+        // Doesnt seem to be working
+        "context": "Dock || Terminal || Editor || ProjectPanel",
+        "bindings": {
+            "ctrl-1": "workspace::ActivatePaneLeft"
+            // "ctrl-1": ["pane::ActivateItem", 1]
+            // "ctrl-1": "action::Sequence"
+        }
+    },
+    {
+        "context": "Onboarding",
+        "bindings": {
+            "ctrl-1": null
+        }
     }
-  },
-  {
-    // Alt + h/j/k/l move focus between split panes
-    // (works from editor, terminal, docks, or project panel)
-    "context": "Dock || Terminal || Editor || ProjectPanel",
-    "bindings": {
-      "alt-h": "workspace::ActivatePaneLeft",
-      "alt-l": "workspace::ActivatePaneRight",
-      "alt-k": "workspace::ActivatePaneUp",
-      "alt-j": "workspace::ActivatePaneDown"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      "caps_lock": "vim::NormalBefore"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == normal && !menu",
-    "bindings": {
-      "K": "editor::NewlineAbove",
-      "ctrl-m": ["workspace::SendKeystrokes", ": m a r k s enter"],
-      "ctrl-j": ["workspace::SendKeystrokes", ": r e g i s t e r enter"],
-      "shift-h": ["workspace::SendKeystrokes", "shift-h z z"],
-      "shift-l": ["workspace::SendKeystrokes", "shift-l z z"],
-      // "4": ["workspace::SendKeystrokes", ": / # space % % enter"],
-      "4": ["workspace::SendKeystrokes", "/ # space % % enter escape z z"],
-      "6": ["workspace::SendKeystrokes", "? # space % % enter escape z z"]
-    }
-  },
-  {
-    // Adding context to agent
-    "context": "AgentPanel || (Editor && mode == full)",
-    "bindings": {
-      "ctrl-l l": "agent::QuoteSelection"
-    }
-  },
-  {
-    // Toggle side panel
-    "context": "Workspace || Dock || Terminal || Editor || ProjectPanel",
-    "bindings": {
-      "ctrl-b": "workspace::ToggleLeftDock"
-    }
-  },
-  {
-    // Doesnt seem to be working
-    "context": "Dock || Terminal || Editor || ProjectPanel",
-    "bindings": {
-      "ctrl-1": "workspace::ActivatePaneLeft"
-      // "ctrl-1": ["pane::ActivateItem", 1]
-      // "ctrl-1": "action::Sequence"
-    }
-  },
-  {
-    "context": "Onboarding",
-    "bindings": {
-      "ctrl-1": null
-    }
-  }
 ]

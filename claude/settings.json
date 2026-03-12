@@ -6,6 +6,11 @@
     "type": "command",
     "command": "/home/basal/.claude/statusline-command.sh"
   },
+  "enabledPlugins": {
+    "playground@claude-plugins-official": true
+  },
   "plansDirectory": ".claude/proPlans",
+  "voiceEnabled": true,
+  "skipDangerousModePermissionPrompt": true,
   "VISUAL": "windsurf"
 }

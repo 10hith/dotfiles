@@ -148,6 +148,19 @@ done
 
 # wordpress env variables
 
+# bashPersonal
+HISTSIZE=50000
+HISTFILESIZE=100000
+HISTCONTROL=ignoredups:erasedups
+shopt -s histappend autocd
+PROMPT_COMMAND='history -a; history -n'
+stty -ixon
+set -o vi
+## fzf
+source /usr/share/doc/fzf/examples/key-bindings.bash
+if declare -F fzf-file-widget >/dev/null 2>&1; then
+  bind -x '"\et":"fzf-file-widget"'
+fi
 
 #Python
 eval "$(pyenv init --path)"
@@ -171,10 +184,7 @@ alias setPyPath='export PYTHONPATH=$(pwd)'
 alias envLoad='export $(cat .env | xargs)'
 alias envAct='if [ -d "venv" ]; then source venv/bin/activate; elif [ -d ".venv" ]; then source .venv/bin/activate; else echo "No virtual env found"; fi'
 alias intellij="nohup /opt/idea-IC-211.7628.21/bin/idea.sh </dev/null &>/dev/null &"
-
-## fzf
-source /usr/share/doc/fzf/examples/key-bindings.bash
-#source /usr/share/doc/fzf/examples/completion.bash
+alias killJupyter="ps -ef | grep jupyter | grep -v grep | awk '{print \$2}' | xargs -r kill -9"
 
 #export PYTHONPATH="${PYTHONPATH}:/home/basal/excelanalysis"
 #export PYTHONPATH="/home/basal/PycharmProjects/crimeinmyarea:/home/basal/PycharmProjects/dbtexample:/home/basal/PycharmProjects/elai"

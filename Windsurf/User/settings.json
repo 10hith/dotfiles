@@ -19,6 +19,9 @@
     ],
     // python settings
     "python.languageServer": "None",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
     // Vim settings
     "vim.leader": "<space>",
     "vim.incsearch": true,
@@ -231,6 +234,7 @@
     "notebook.outline.showCodeCellSymbols": false,
     "jupyter.showOutlineButtonInNotebookToolbar": false,
     "notebook.output.textLineLimit": 300,
+    // "terminal.integrated.copyOnSelection": false,
     "terminal.integrated.profiles.linux": {
         "bash": {
             "path": "bash",

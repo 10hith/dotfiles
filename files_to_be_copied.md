@@ -10,6 +10,7 @@
 /mnt/c/Users/lohith/.wezterm.lua wezterm
 
 ~/.bashrc root/.bashrc
+~/.inputrc root/.inputrc
 
 Copy below to cloudflared
 ~/.cloudflared/setup.md

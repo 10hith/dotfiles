@@ -66,6 +66,38 @@
         "command": "breadcrumbs.focusPreviousWithPicker",
         "when": "breadcrumbsActive && breadcrumbsVisible && listFocus && !inputFocus && !treestickyScrollFocused"
     },
+    {
+        "key": "ctrl+l t",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "cat << 'EOF'\u000D# VS Code Context\u000D\u000DFile:${file}:${lineNumber}\u000D\u000D```\u000D${selectedText}\u000D```\u000DEOF\u000D"
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key": "ctrl+l r",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "${selectedText}\n"
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
     // RooCode - add context and focus input
     {
         "key": "ctrl+l l",

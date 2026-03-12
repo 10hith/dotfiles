@@ -7,212 +7,185 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "features": {
-    "edit_prediction_provider": "copilot"
-  },
-  "terminal": {
-    "shell": {
-      "program": "C:\\Windows\\System32\\wsl.exe"
-      // "args": ["-d", "Ubuntu-20.04", "--login"]
+    "features": {
+        "edit_prediction_provider": "copilot"
     },
-    "working_directory": "current_project_directory",
-    "detect_venv": {
-      "on": {
-        "directories": [".env", "env", ".venv", "venv"],
-        "activate_script": "default"
-      }
-    }
-    // "shell": "system"
-  },
-  "icon_theme": {
-    "mode": "dark",
-    "light": "Material Icon Theme",
-    "dark": "Material Icon Theme"
-  },
-  "lsp": {
-    "basedpyright": {
-      "settings": {
-        "typeCheckingMode": "off",
-        "basedpyright.analysis": {
-          "diagnosticMode": "workspace",
-          "inlayHints.callArgumentNames": false,
-          "reportAny": false,
-          "reportUnknown": false,
-          "reportMissing": false,
-          "reportArgumentType": false
+    "terminal": {
+        "shell": {
+            "program": "C:\\Windows\\System32\\wsl.exe"
+            // "args": ["-d", "Ubuntu-20.04", "--login"]
+        },
+        "working_directory": "current_project_directory",
+        "detect_venv": {
+            "on": {
+                "directories": [".env", "env", ".venv", "venv"],
+                "activate_script": "default"
+            }
         }
-      }
-    }
-  },
-  "jupyter": {
-    "enabled": true,
-    "kernel_selections": {
-      "python": "C:\\Users\\lohith\\AppData\\Roaming\\jupyter\\kernels\\myenv"
-      // "python": "/home/basal/.local/share/jupyter/kernels/venv"
-      // "python": "myenv"
-    }
-  },
-  // "jupyter": {
-  //   "kernel_selections": {
-  //     "python": ".venv"
-  //   }
-  // },
-  // "git.inline_blame": false,
-  // "git.inline_diff": false,
-  "git": {
-    "inline_blame": {
-      "enabled": false
+        // "shell": "system"
     },
-    "inline_diff": {
-      "enabled": true
-    }
-  },
-  "wsl_connections": [
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": [
-        {
-          "paths": [
-            "/home/basal"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/PycharmProjects"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/PycharmProjects/OrdeloAgent"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/PycharmProjects/OrdeloAgent/./"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/PycharmProjects/elai"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/repos/dotfiles"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/repos/mwv"
-          ]
-        },
-        {
-          "paths": [
-            "/home/basal/repos/reality-distorted"
-          ]
+    "icon_theme": {
+        "mode": "dark",
+        "light": "Material Icon Theme",
+        "dark": "Material Icon Theme"
+    },
+    "lsp": {
+        "basedpyright": {
+            "settings": {
+                "typeCheckingMode": "off",
+                "basedpyright.analysis": {
+                    "diagnosticMode": "workspace",
+                    "inlayHints.callArgumentNames": false,
+                    "reportAny": false,
+                    "reportUnknown": false,
+                    "reportMissing": false,
+                    "reportArgumentType": false
+                }
+            }
         }
-      ]
     },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": [
-        {
-          "paths": [
-            "/home/basal/repos/mwv"
-          ]
+    // "jupyter": {
+    //     "enabled": true
+    // },
+    "jupyter": {
+        "kernel_selections": {
+            "python": "python3"
         }
-      ]
     },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": [
-        {
-          "paths": [
-            "/home/basal/PycharmProjects/elai"
-          ]
+    // "git.inline_blame": false,
+    // "git.inline_diff": false,
+    "git": {
+        "inline_blame": {
+            "enabled": false
+        },
+        "inline_diff": {
+            "enabled": true
         }
-      ]
     },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
-    },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": [
+    "wsl_connections": [
         {
-          "paths": [
-            "/home/basal/bloop/OrdeloAgent"
-          ]
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": [
+                {
+                    "paths": ["/home/basal"]
+                },
+                {
+                    "paths": ["/home/basal/PycharmProjects"]
+                },
+                {
+                    "paths": ["/home/basal/PycharmProjects/OrdeloAgent"]
+                },
+                {
+                    "paths": ["/home/basal/PycharmProjects/OrdeloAgent/./"]
+                },
+                {
+                    "paths": ["/home/basal/PycharmProjects/elai"]
+                },
+                {
+                    "paths": ["/home/basal/repos/dotfiles"]
+                },
+                {
+                    "paths": ["/home/basal/repos/mwv"]
+                },
+                {
+                    "paths": ["/home/basal/repos/reality-distorted"]
+                }
+            ]
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": [
+                {
+                    "paths": ["/home/basal/repos/mwv"]
+                }
+            ]
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": [
+                {
+                    "paths": ["/home/basal/PycharmProjects/elai"]
+                }
+            ]
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": [
+                {
+                    "paths": ["/home/basal/bloop/OrdeloAgent"]
+                }
+            ]
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
+        },
+        {
+            "distro_name": "Ubuntu-20.04",
+            "user": null,
+            "projects": []
         }
-      ]
+    ],
+    "minimap": {
+        "show": "never"
     },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
+    "soft_wrap": "editor_width",
+    "vim_mode": true,
+    "telemetry": {
+        "diagnostics": true,
+        "metrics": true
     },
-    {
-      "distro_name": "Ubuntu-20.04",
-      "user": null,
-      "projects": []
+    "base_keymap": "VSCode",
+    "ui_font_size": 16,
+    "buffer_font_size": 15,
+    "theme": {
+        "mode": "dark",
+        "light": "One Light",
+        "dark": "Ayu Mirage"
     }
-  ],
-  "minimap": {
-    "show": "never"
-  },
-  "soft_wrap": "editor_width",
-  "vim_mode": true,
-  "telemetry": {
-    "diagnostics": true,
-    "metrics": true
-  },
-  "base_keymap": "VSCode",
-  "ui_font_size": 16,
-  "buffer_font_size": 15,
-  "theme": {
-    "mode": "dark",
-    "light": "One Light",
-    "dark": "Ayu Mirage"
-  }
 }
