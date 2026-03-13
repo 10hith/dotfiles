@@ -1,0 +1,10 @@
+# ~/.bash_local - Machine-specific settings (not tracked in version control)
+
+# WSL display
+export DISPLAY=$(ip route list default | awk '{print $3}'):0
+export PULSE_SERVER=tcp:$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):4713
+
+# Auto-activate venv if present in current directory
+if [ -f "./venv/bin/activate" ]; then
+    source ./venv/bin/activate
+fi
