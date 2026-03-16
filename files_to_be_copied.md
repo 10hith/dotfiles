@@ -15,6 +15,9 @@
 ~/.bash_local root/.bash_local
 ~/.inputrc root/.inputrc
 
+Copy below to zellij
+~/.config/zellij/config.kdl
+
 Copy below to cloudflared
 ~/.cloudflared/setup.md
 ~/.cloudflared/config.yml
