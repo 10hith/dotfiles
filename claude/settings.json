@@ -2,6 +2,7 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "/home/basal/.claude/statusline-command.sh"

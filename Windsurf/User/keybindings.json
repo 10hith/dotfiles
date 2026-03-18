@@ -1,10 +1,5 @@
 // Place your key bindings in this file to override the defaults
 [
-    {
-        "key": "capslock capslock",
-        "command": "extension.vim_escape",
-        "when": "editorTextFocus && vim.active"
-    },
     // quick open navigation
     {
         "key": "ctrl+j",
@@ -109,6 +104,17 @@
             ]
         },
         "when": "editorTextFocus && editorHasSelection"
+    },
+    // Claude code - Edit in vim mode
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.gotoLine",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "ctrl+g",
+        "command": "-workbench.action.terminal.goToRecentDirectory",
+        "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
     // {
     //     "key": "ctrl+l r",
