@@ -34,5 +34,44 @@ alias pycharm="nohup /opt/pycharm-community-2024.1.4/bin/pycharm.sh </dev/null &
 alias dbeaver="nohup dbeaver </dev/null &>/dev/null &"
 alias intellij="nohup /opt/idea-IC-211.7628.21/bin/idea.sh </dev/null &>/dev/null &"
 
+# Git - Basics
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+
+# Git - Branches
+alias gb='git branch'
+alias gbd='git branch -d'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gsw='git switch'
+
+# Git - Remote
+alias gp='git pull'
+alias gP='git push'
+alias gPf='git push --force-with-lease'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+
+# Git - TUI
+alias lg='lazygit'
+
+# Git - Restore
+alias grs='git restore'
+alias grss='git restore --staged'
+
+# Docker
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias drmi='docker rmi -f'
+
+# Misc
+alias reload='source ~/.bashrc'
+alias aliases='cat ~/.bash_aliases'
+
 # Dev workflow
 alias setPyPath='export PYTHONPATH=$(pwd)'
