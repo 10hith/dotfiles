@@ -17,5 +17,6 @@
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "VISUAL": "windsurf"
+  "VISUAL": "windsurf",
+  "model": "opus"
 }

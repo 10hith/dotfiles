@@ -56,6 +56,9 @@ alias gPf='git push --force-with-lease'
 alias gf='git fetch'
 alias gfa='git fetch --all'
 
+# Git - Log
+alias gl='git log --oneline'
+
 # Git - TUI
 alias lg='lazygit'
 
