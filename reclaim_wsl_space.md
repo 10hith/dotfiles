@@ -1,5 +1,26 @@
 # Reclaim Disk Space from WSL2 + Docker
 
+## Automated Dev Environment Cleanup (run inside WSL first)
+
+Before compacting the VHD, free up space from package manager caches and stale envs:
+
+```bash
+# 1. Clear pip / uv / npm / TypeScript caches (safe, run anytime)
+~/repos/dotfiles/scripts/clean_dev_caches.sh
+
+# 2. Remove Python venvs and node_modules not touched in 30+ days (interactive)
+~/repos/dotfiles/scripts/clean_stale_envs.sh --dry-run   # preview first
+~/repos/dotfiles/scripts/clean_stale_envs.sh             # then confirm
+
+# To schedule the cache cleaner weekly (every Sunday 2am):
+# crontab -e → add: 0 2 * * 0 ~/repos/dotfiles/scripts/clean_dev_caches.sh
+```
+
+> Scripts live in `~/repos/dotfiles/scripts/` and are tracked in `files_to_be_copied.md`.
+
+---
+
+
 > Reference: https://superuser.com/questions/1606213/how-do-i-get-back-unused-disk-space-from-ubuntu-on-wsl2
 
 ---
