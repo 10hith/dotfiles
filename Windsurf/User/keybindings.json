@@ -30,23 +30,22 @@
     },
     // terminal navigation
     {
-        "key": "ctrl-t k",
+        "key": "alt-k",
         "command": "workbench.action.terminal.focusPrevious",
         "when": "terminalFocus"
     },
     {
-        "key": "alt-l",
-        // "key": "ctrl-t j",
+        "key": "alt-j",
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },
+    // {
+    //     "key": "alt-k",
+    //     "command": "workbench.action.terminal.focusPreviousPane",
+    //     "when": "terminalFocus"
+    // },
     {
-        "key": "alt-k",
-        "command": "workbench.action.terminal.focusPreviousPane",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt-j",
+        "key": "alt-l",
         "command": "workbench.action.terminal.focusNextPane",
         "when": "terminalFocus"
     },

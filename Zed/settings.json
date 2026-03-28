@@ -7,8 +7,8 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-    "features": {
-        "edit_prediction_provider": "copilot"
+    "edit_predictions": {
+        "provider": "copilot"
     },
     "terminal": {
         "shell": {
@@ -44,12 +44,9 @@
             }
         }
     },
-    // "jupyter": {
-    //     "enabled": true
-    // },
     "jupyter": {
         "kernel_selections": {
-            "python": "python3"
+            "python": ".venv/bin/python"
         }
     },
     // "git.inline_blame": false,
@@ -81,6 +78,9 @@
                 },
                 {
                     "paths": ["/home/basal/PycharmProjects/elai"]
+                },
+                {
+                    "paths": ["/home/basal/bloop/OrdeloAgent"]
                 },
                 {
                     "paths": ["/home/basal/repos/dotfiles"]
