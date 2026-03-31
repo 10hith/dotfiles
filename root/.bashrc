@@ -162,3 +162,6 @@ eval "$(starship init bash)"
 # uv
 . "/home/basal/.deno/env"
 
+
+# just global justfile
+alias jj="just --global"

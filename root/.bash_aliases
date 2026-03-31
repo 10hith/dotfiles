@@ -78,3 +78,7 @@ alias aliases='cat ~/.bash_aliases'
 
 # Dev workflow
 alias setPyPath='export PYTHONPATH=$(pwd)'
+
+# just
+alias j='just'
+alias jj='just --justfile ~/.justfile'

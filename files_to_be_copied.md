@@ -11,6 +11,7 @@
 
 ~/.bashrc root/.bashrc
 ~/.bash_aliases root/.bash_aliases
+~/.justfile root/.justfile
 ~/.bash_functions root/.bash_functions
 ~/.bash_local root/.bash_local
 ~/.inputrc root/.inputrc

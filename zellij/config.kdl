@@ -4,7 +4,7 @@
 
 keybinds clear-defaults=true {
     locked {
-        bind "Ctrl Shift g" { SwitchToMode "normal"; }
+        bind "Ctrl Shift \\" { SwitchToMode "normal"; }
     }
     pane {
         bind "left" { MoveFocus "left"; }
@@ -144,7 +144,7 @@ keybinds clear-defaults=true {
         bind "Alt [" { PreviousSwapLayout; }
         bind "Alt ]" { NextSwapLayout; }
         bind "Alt f" { ToggleFloatingPanes; }
-        bind "Ctrl Shift g" { SwitchToMode "locked"; }
+        bind "Ctrl Shift l" { SwitchToMode "locked"; }
         bind "Alt i" { MoveTab "left"; }
         bind "Alt n" { NewPane; }
         bind "Alt o" { MoveTab "right"; }
