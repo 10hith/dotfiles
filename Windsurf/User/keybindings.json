@@ -29,26 +29,26 @@
         "command": "workbench.action.navigateDown"
     },
     // terminal navigation
-    {
-        "key": "alt-k",
-        "command": "workbench.action.terminal.focusPrevious",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "alt-j",
-        "command": "workbench.action.terminal.focusNext",
-        "when": "terminalFocus"
-    },
+    // {
+    //     "key": "alt-k",
+    //     "command": "workbench.action.terminal.focusPrevious",
+    //     "when": "terminalFocus"
+    // },
+    // {
+    //     "key": "alt-j",
+    //     "command": "workbench.action.terminal.focusNext",
+    //     "when": "terminalFocus"
+    // },
     // {
     //     "key": "alt-k",
     //     "command": "workbench.action.terminal.focusPreviousPane",
     //     "when": "terminalFocus"
     // },
-    {
-        "key": "alt-l",
-        "command": "workbench.action.terminal.focusNextPane",
-        "when": "terminalFocus"
-    },
+    // {
+    //     "key": "alt-l",
+    //     "command": "workbench.action.terminal.focusNextPane",
+    //     "when": "terminalFocus"
+    // },
     // breadcrumbs
     {
         "key": "ctrl+shift+;",
@@ -115,14 +115,15 @@
         "command": "-workbench.action.terminal.goToRecentDirectory",
         "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
     },
-    // {
-    //     "key": "ctrl+l r",
-    //     "command": "workbench.action.terminal.sendSequence",
-    //     "args": {
-    //         "text": "${selectedText}\n"
-    //     },
-    //     "when": "editorTextFocus && editorHasSelection"
-    // },
+    {
+        "key": "ctrl+p",
+        "command": "-workbench.action.quickOpen"
+    },
+    {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpen",
+        "when": "!terminalFocus"
+    },
     // End of custom keybindings
     {
         "key": "ctrl+l o",

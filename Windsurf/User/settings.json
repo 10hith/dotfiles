@@ -114,6 +114,7 @@
         }
     ],
     "vim.handleKeys": {
+        "<C-p>": false,
         "<C-a>": false,
         "<C-c>": false,
         "<C-f>": false,

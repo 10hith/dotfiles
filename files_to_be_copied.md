@@ -39,7 +39,3 @@ Copy below to claude/output-styles
 
 Copy below to claude/output-styles/.claude
 ~/.claude/output-styles/.claude/*
-
-Scripts (run directly from dotfiles)
-~/repos/dotfiles/scripts/clean_dev_caches.sh
-~/repos/dotfiles/scripts/clean_stale_envs.sh
