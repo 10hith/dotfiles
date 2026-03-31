@@ -1,5 +1,6 @@
 # Global justfile — available anywhere with `just --global`
 
+
 # Show available commands
 default:
     @just --justfile ~/.justfile --list

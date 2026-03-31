@@ -80,5 +80,16 @@ alias aliases='cat ~/.bash_aliases'
 alias setPyPath='export PYTHONPATH=$(pwd)'
 
 # just
-alias j='just'
+j() {
+    case "$1" in
+        py)
+            [[ -d "venv" ]] && source venv/bin/activate || \
+            [[ -d ".venv" ]] && source .venv/bin/activate || \
+            echo "No virtual env found"
+            export PYTHONPATH=$(pwd)
+            [[ -f ".env" ]] && export $(cat .env | xargs)
+            ;;
+        *) just "$@" ;;
+    esac
+}
 alias jj='just --justfile ~/.justfile'
