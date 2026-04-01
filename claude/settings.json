@@ -5,18 +5,19 @@
   "permissions": {
     "defaultMode": "bypassPermissions"
   },
+  "model": "opus",
   "statusLine": {
     "type": "command",
     "command": "/home/basal/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "playground@claude-plugins-official": true
+    "playground@claude-plugins-official": true,
+    "superpowers@claude-plugins-official": true
   },
   "plansDirectory": ".claude/proPlans",
   "voiceEnabled": true,
   "autoMemoryEnabled": true,
   "autoDreamEnabled": true,
   "skipDangerousModePermissionPrompt": true,
-  "VISUAL": "windsurf",
-  "model": "opus"
+  "VISUAL": "windsurf"
 }
