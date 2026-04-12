@@ -39,19 +39,9 @@
         "command": "workbench.action.terminal.focusNext",
         "when": "terminalFocus"
     },
-    // {
-    //     "key": "ctrl+oem_1",
-    //     "command": "workbench.action.maximizeAuxiliaryBar",
-    //     "when": "!auxiliaryBarMaximized && terminalFocus"
-    // },
-    // {
-    //     "key": "ctrl+oem_1",
-    //     "command": "workbench.action.resetAuxiliaryBarSize",
-    //     "when": "auxiliaryBarMaximized && terminalFocus"
-    // },
     {
         "key": "ctrl+oem_1",
-        "command": "workbench.action.toggleMaximizedAuxiliaryBar",
+        "command": "workbench.action.maximizeAuxiliaryBar",
         "when": "terminalFocus"
     },
     // Terminal - Sending or running text to terminal
