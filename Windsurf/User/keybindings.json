@@ -42,7 +42,7 @@
     {
         "key": "ctrl+oem_1",
         "command": "workbench.action.maximizeAuxiliaryBar",
-        "when": "terminalFocus"
+        "when": "terminalViewShowing"
     },
     // Terminal - Sending or running text to terminal
     {
