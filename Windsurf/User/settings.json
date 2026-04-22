@@ -28,7 +28,6 @@
     // "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.surround": true,
-    "vim.smartRelativeLine": true,
     "vim.easymotion": true,
     "vim.foldfix": true,
     "vim.useSystemClipboard": true,
@@ -271,4 +270,5 @@
     ],
     "roo-cline.deniedCommands": [],
     "claudeCode.selectedModel": "default",
+    "vim.smartRelativeLine": true,
 }

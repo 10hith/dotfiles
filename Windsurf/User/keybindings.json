@@ -40,12 +40,6 @@
         "when": "terminalFocus"
     },
     {
-        "key": "ctrl+oem_1",
-        "command": "workbench.action.maximizeAuxiliaryBar",
-        "when": "terminalViewShowing"
-    },
-    // Terminal - Sending or running text to terminal
-    {
         "key": "ctrl+l t",
         "command": "runCommands",
         "args": {
@@ -54,7 +48,7 @@
                 {
                     "command": "workbench.action.terminal.sendSequence",
                     "args": {
-                        "text": "cat << 'EOF'\u000D# VS Code Context\u000D\u000DFile:${file}:${lineNumber}\u000D\u000D```\u000D${selectedText}\u000D```\u000DEOF\u000D"
+                        "text": "\u001B[200~cat << 'EOF'\u000A# VS Code Context\u000A\u000AFile:${file}:${lineNumber}\u000A\u000A```\u000A${selectedText}\u000A```\u000AEOF\u000A\u001B[201~"
                     }
                 }
             ]
@@ -278,5 +272,20 @@
     {
         "key": "ctrl+alt+b",
         "command": "workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "ctrl+oem_1",
+        "command": "workbench.action.toggleMaximizedAuxiliaryBar",
+        "when": "auxiliaryBarVisible"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.nextAuxiliaryBarView",
+        "when": "auxiliaryBarVisible"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.previousAuxiliaryBarView",
+        "when": "auxiliaryBarVisible"
     },
 ]
