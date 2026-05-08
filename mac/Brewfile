@@ -1,0 +1,22 @@
+# mac/Brewfile — install with: brew bundle --file=mac/Brewfile
+
+# Shell enhancements
+brew "starship"
+brew "zoxide"
+brew "fzf"
+
+# Terminal multiplexer & task runner
+brew "zellij"
+brew "just"
+
+# Git TUI & tools
+brew "lazygit"
+brew "git"
+brew "gh"
+
+# Useful CLI utilities
+brew "ripgrep"
+brew "fd"
+brew "bat"
+brew "jq"
+brew "wget"

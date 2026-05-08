@@ -7,6 +7,7 @@
     "editor.formatOnSave": true,
     "diffEditor.codeLens": true,
     // terminal settings
+    "terminal.external.osxExec": "WezTerm.app",
     "terminal.integrated.sendKeybindingsToShell": false,
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.terminal.focusPrevious",

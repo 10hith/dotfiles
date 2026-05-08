@@ -1,5 +1,5 @@
 tunnel: 50dd9498-fa0f-4084-8d7e-15ca56060c3e
-credentials-file: /home/basal/.cloudflared/50dd9498-fa0f-4084-8d7e-15ca56060c3e.json
+credentials-file: /Users/basavaraj/.cloudflared/50dd9498-fa0f-4084-8d7e-15ca56060c3e.json
 
 ingress:
     - hostname: rest-agent-test.ordelo.app

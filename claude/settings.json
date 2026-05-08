@@ -1,25 +1,12 @@
 {
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
-  },
-  "permissions": {
-    "defaultMode": "bypassPermissions"
-  },
   "statusLine": {
     "type": "command",
-    "command": "/home/basal/.claude/statusline-command.sh"
+    "command": "~/.claude/statusline-command.sh"
   },
-  "enabledPlugins": {
-    "playground@claude-plugins-official": true,
-    "superpowers@claude-plugins-official": true
+  "voice": {
+    "enabled": true,
+    "mode": "hold"
   },
-  "effortLevel": "xhigh",
-  "advisorModel": "opus",
-  "plansDirectory": ".claude/proPlans",
-  "autoMemoryEnabled": true,
-  "autoDreamEnabled": true,
-  "skipDangerousModePermissionPrompt": true,
   "voiceEnabled": true,
-  "VISUAL": "windsurf",
-  "model": "haiku"
+  "agentPushNotifEnabled": true
 }
