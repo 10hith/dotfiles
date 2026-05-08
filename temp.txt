@@ -1,0 +1,2 @@
+ls -ltr
+pwd

@@ -1,0 +1,131 @@
+// Place your key bindings in this file to override the defaults
+[
+    // quick open navigation
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "^+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "^+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    // editor pane navigation
+    {
+        "key": "alt+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown"
+    },
+    // terminal context copy
+    {
+        "key": "cmd+l t",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "\u001B[200~cat << 'EOF'\u000A# VS Code Context\u000A\u000AFile:${file}:${lineNumber}\u000A\u000A```\u000A${selectedText}\u000A```\u000AEOF\u000A\u001B[201~"
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key": "cmd+l r",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "${selectedText}\n"
+                    }
+                },
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    // terminal toggle - mac specific
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "cmd+l l",
+        "command": "windsurf.prioritized.chat.open",
+        "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
+    },
+    {
+        "key": "cmd+l",
+        "command": "-windsurf.prioritized.chat.open",
+        "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.toggleMaximizedAuxiliaryBar",
+        "when": "auxiliaryBarVisible"
+    },
+    // Jupyter navigation
+    {
+        "key": "ctrl+oem_1 k",
+        "command": "jupyter.runallcellsabove.palette",
+        "when": "isWorkspaceTrusted && editorTextFocus && editorLangId == 'python'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+oem_1 r",
+        "command": "jupyter.restartkernel",
+        "when": "isWorkspaceTrusted && jupyter.interactive.canRestartNotebookKernel || isWorkspaceTrusted && jupyter.notebookeditor.canrestartNotebookkernel && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    },
+    // END of ondemand configs
+    {
+        "key": "shift+cmd+e",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+]

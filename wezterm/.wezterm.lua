@@ -8,15 +8,21 @@ config.font = wezterm.font_with_fallback({
   "Fira Code",
   "Noto Color Emoji"
 })
-config.font_size = 11.5
-config.color_scheme = "Catppuccin Mocha" -- You can change to another scheme
+config.font_size = 15
+config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = true
 config.use_fancy_tab_bar = true
 config.hide_tab_bar_if_only_one_tab = false
 config.window_background_opacity = 0.95
-config.default_prog = { "wsl.exe", "~", "-e", "zellij" }
 
--- Disable the yes/no close confirrmation
+-- Launch zellij on startup (macOS)
+config.default_prog = { "/bin/zsh", "-l", "-c", "zellij" }
+
+-- macOS: use Option as Meta key, leave native option-key combos alone
+config.send_composed_key_when_left_alt_is_pressed = false
+config.send_composed_key_when_right_alt_is_pressed = true
+
+-- Disable the yes/no close confirmation
 config.window_close_confirmation = "NeverPrompt"
 
 -- Extra convenience keys
@@ -27,13 +33,16 @@ config.keys = {
     mods = "CTRL|SHIFT",
     action = wezterm.action.ReloadConfiguration,
   },
-  -- Launch zellij manually if needed
+  -- Launch a new zellij session manually if needed
   {
     key = "Z",
     mods = "CTRL|SHIFT",
     action = wezterm.action.SendString("zellij\n"),
   },
 }
+
+-- dictation on wezterm
+config.use_ime = true
 
 return config
 

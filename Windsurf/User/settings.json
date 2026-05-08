@@ -259,7 +259,7 @@
         }
     },
     "terminal.integrated.defaultProfile.linux": "wsl",
-    "terminal.integrated.fontSize": 17,
+    "terminal.integrated.fontSize": 20,
     "workbench.panel.showLabels": false,
     "claudeCode.preferredLocation": "panel",
     "roo-cline.debug": false,

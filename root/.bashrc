@@ -72,17 +72,38 @@ xterm*|rxvt*)
     ;;
 esac
 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# Alias definitions, functions, and local overrides are sourced below.
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Alias definitions.
+# You may want to put all your additions into a separate file like
+# ~/.bash_aliases, instead of adding them here directly.
+# See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-
-[ -f ~/.bash_functions ] && source ~/.bash_functions
-[ -f ~/.bash_local ] && source ~/.bash_local
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -94,74 +115,3 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/basal/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/basal/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/basal/miniconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/basal/miniconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
-
-
-
-
-IGNITE_LIBS="${IGNITE_HOME}/libs/*"
-
-for file in ${IGNITE_HOME}/libs/*
-do
-    if [ -d ${file} ] && [ "${file}" != "${IGNITE_HOME}"/libs/optional ]; then
-        IGNITE_LIBS=${IGNITE_LIBS}:${file}/*
-    fi
-done
-
-
-# wordpress env variables
-
-# bashPersonal
-eval "$(zoxide init bash)"
-HISTSIZE=50000
-HISTFILESIZE=100000
-HISTCONTROL=ignoredups:erasedups
-shopt -s histappend autocd
-PROMPT_COMMAND='history -a; history -n'
-stty -ixon
-set -o vi
-## fzf
-source /usr/share/doc/fzf/examples/key-bindings.bash
-if declare -F fzf-file-widget >/dev/null 2>&1; then
-  bind -x '"\et":"fzf-file-widget"'
-fi
-
-#Python
-eval "$(pyenv init --path)"
-eval "$(pyenv init -)"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-
-#export PYTHONPATH="${PYTHONPATH}:/home/basal/excelanalysis"
-#export PYTHONPATH="/home/basal/PycharmProjects/crimeinmyarea:/home/basal/PycharmProjects/dbtexample:/home/basal/PycharmProjects/elai"
-#export WA_TOKEN='EAAgCdVdtHI0BOzxz41QsD5jZCZAMNZAop2bvHtZB0DGYk5cZClKtd2PNJsmuQKu5VZCGdOnp0Ym3lcQrPE2ElLbFqLC5IKuEeHYqHavJ2ZCdgx879SlV9FtsGVH6A7MLVbsPkWZCkQfzZBjPi6Kne5MBf7rqcmjjR4I3Y4rfnALRKCYoKmZCH5KQ7pyeZCoVr4RYzHhKgZDZD'
-
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-eval "$(starship init bash)"
-#eval "$(carapace _carapace bash)"
-
-. "$HOME/.cargo/env"
-
-# uv
-. "/home/basal/.deno/env"
-
-
-# just global justfile
-alias jj="just --global"

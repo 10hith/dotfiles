@@ -1,0 +1,88 @@
+# ~/.zsh_aliases
+
+# ── Directory navigation ──────────────────────────────────────────────────────
+# Pattern: gT<name> = cd to project directory (update paths for Mac)
+# alias gTmyproject='cd ~/repos/myproject'
+
+# ── Color support ─────────────────────────────────────────────────────────────
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+alias ls='ls -G'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+# ── ls shortcuts ──────────────────────────────────────────────────────────────
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# ── AWS profiles ──────────────────────────────────────────────────────────────
+alias awsBtl='export AWS_PROFILE=byteloop && echo "Switched to ByteLoop"'
+alias awsErr='export AWS_PROFILE=err && echo "Switched to Err"'
+alias awsErai='export AWS_PROFILE=erai && echo "Switched to Erai"'
+
+# ── UI applications (macOS) ───────────────────────────────────────────────────
+alias charm='open -a "PyCharm"'
+alias idea='open -a "IntelliJ IDEA"'
+alias dbeaver='open -a "DBeaver"'
+
+# ── Git — basics ──────────────────────────────────────────────────────────────
+alias gs='git status'
+alias ga='git add'
+alias gaa='git add --all'
+alias gc='git commit'
+alias gcm='git commit -m'
+alias gca='git commit --amend'
+
+# ── Git — branches ────────────────────────────────────────────────────────────
+alias gb='git branch'
+alias gbd='git branch -d'
+alias gco='git checkout'
+alias gcb='git checkout -b'
+alias gsw='git switch'
+
+# ── Git — remote ──────────────────────────────────────────────────────────────
+alias gp='git pull'
+alias gP='git push'
+alias gPf='git push --force-with-lease'
+alias gf='git fetch'
+alias gfa='git fetch --all'
+
+# ── Git — log ─────────────────────────────────────────────────────────────────
+alias gl='git log --oneline'
+
+# ── Git — TUI ─────────────────────────────────────────────────────────────────
+alias lg='lazygit'
+
+# ── Git — restore ─────────────────────────────────────────────────────────────
+alias grs='git restore'
+alias grss='git restore --staged'
+
+# ── Docker ────────────────────────────────────────────────────────────────────
+alias dps='docker ps'
+alias dpsa='docker ps -a'
+alias di='docker images'
+alias drmi='docker rmi -f'
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+alias reload='source ~/.zshrc'
+alias aliases='cat ~/.zsh_aliases'
+
+# ── Dev workflow ──────────────────────────────────────────────────────────────
+alias setPyPath='export PYTHONPATH=$(pwd)'
+
+# just — smart runner: `j py` activates venv; everything else delegates to just
+j() {
+    case "$1" in
+        py)
+            [[ -d "venv" ]] && source venv/bin/activate || \
+            [[ -d ".venv" ]] && source .venv/bin/activate || \
+            echo "No virtual env found"
+            export PYTHONPATH=$(pwd)
+            [[ -f ".env" ]] && export $(cat .env | xargs)
+            ;;
+        *) just "$@" ;;
+    esac
+}
+alias jj='just --justfile ~/.justfile'
