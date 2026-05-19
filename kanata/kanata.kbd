@@ -1,0 +1,48 @@
+;; kanata.kbd — home row mods + Hyper on Caps Lock.
+;;
+;; Run with:
+;;   kanata --cfg ~/.config/kanata/kanata.kbd
+;;
+;; Why kanata vs. karabiner-elements:
+;; Karabiner can only decide tap-vs-hold based on timing. When you type "so"
+;; quickly, S is still down when O is pressed, so karabiner engages Opt and
+;; you get ø. Kanata's `tap-hold-release` decides tap-vs-hold based on the
+;; RELEASE ORDER of the keys, not just timing — so if you release S before
+;; O, kanata commits to "S was a tap" and emits "so" correctly.
+
+(defcfg
+  ;; Forward keys we don't remap (so the rest of the keyboard still works).
+  process-unmapped-keys yes
+  ;; Allow multiple tap-hold keys to be in flight simultaneously. Without
+  ;; this, overlapping rolls between home row keys cause dropped taps and
+  ;; doubled letters when typing fast.
+  concurrent-tap-hold yes)
+
+;; Physical keys we intercept.
+(defsrc
+  caps  a s d   k l ;)
+
+(defalias
+  ;; ── Home row mods ────────────────────────────────────────────────────
+  ;; (tap-hold-release <tap-ms> <hold-ms> <tap-action> <hold-action>)
+  ;;   • tap-ms : if released within this many ms (alone), it's a tap.
+  ;;   • hold-ms: if held longer than this, commits to "hold" even with no
+  ;;              further input. Raise this if you still see false holds.
+  ;;
+  ;; Rollover safety: with `tap-hold-release`, if you press the home key,
+  ;; press another key, then RELEASE the home key BEFORE the other key,
+  ;; the home key is treated as a tap. So "so" types as "so", not Opt+o.
+  a-mod    (tap-hold-release 250 200 a lctl)    ;; A → tap=a, hold=LCtrl
+  s-mod    (tap-hold-release 250 200 s lalt)    ;; S → tap=s, hold=LOpt
+  d-mod    (tap-hold-release 250 200 d lmet)    ;; D → tap=d, hold=LCmd
+  k-mod    (tap-hold-release 250 200 k rmet)    ;; K → tap=k, hold=RCmd
+  l-mod    (tap-hold-release 250 200 l ralt)    ;; L → tap=l, hold=ROpt
+  scln-mod (tap-hold-release 250 200 ; rctl)    ;; ; → tap=;, hold=RCtrl
+
+  ;; ── Caps Lock → Hyper ────────────────────────────────────────────────
+  ;; While Caps is held, send Shift+Cmd+Ctrl+Opt simultaneously. Equivalent
+  ;; to your karabiner "Caps Lock to Hyper Key" rule.
+  hyper    (multi lsft lctl lalt lmet))
+
+(deflayer base
+  @hyper  @a-mod @s-mod @d-mod  @k-mod @l-mod @scln-mod)

@@ -38,6 +38,17 @@
         "key": "alt+j",
         "command": "workbench.action.navigateDown"
     },
+    // terminal navigation
+    {
+        "key": "alt-k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
     // terminal context copy
     {
         "key": "cmd+l t",
@@ -92,9 +103,9 @@
         "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
     },
     {
-        "key": "ctrl+;",
+        "key": "ctrl+oem_1",
         "command": "workbench.action.toggleMaximizedAuxiliaryBar",
-        "when": "auxiliaryBarVisible"
+        "when": "auxiliaryBarVisible && terminal.visible"
     },
     // Jupyter navigation
     {
@@ -128,4 +139,34 @@
         "command": "-pgsql.runQuery",
         "when": "editorTextFocus && editorLangId == 'sql'"
     },
+    {
+        "key": "cmd+enter",
+        "command": "jupyter.runcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && editorLangId == 'python'"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-jupyter.runAndDebugCell",
+        "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !isCompositeNotebook && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !isCompositeNotebook && !notebookEditorFocused"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    }
 ]

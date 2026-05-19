@@ -17,6 +17,13 @@
 
 # WezTerm: ~/.wezterm.lua is a symlink → wezterm/.wezterm.lua (no sync needed)
 
+# --- LaunchAgents (installed copies synced back to repo) ---
+# Note: com.lohith.citrix-caffeinate.plist is intentionally excluded — disabled for now.
+# See mac/LAUNCHAGENTS.md for re-enable instructions.
+
+Copy below to mac
+~/Library/LaunchAgents/com.lohith.mac-defaults.plist
+
 # --- Shell dotfiles (shared) ---
 
 ~/.bashrc root/.bashrc
@@ -41,6 +48,12 @@ Copy below to zellij
 
 Copy below to karabiner
 ~/.config/karabiner/karabiner.json
+
+Copy below to kanata
+~/.config/kanata/kanata.kbd
+# com.kanata.plist is installed to /Library/LaunchDaemons/ (root-owned),
+# so it can't be reverse-synced via this script. Edit the plist in
+# dotfiles/kanata/ and re-deploy with sudo cp.
 
 Copy below to cloudflared
 ~/.cloudflared/setup.md

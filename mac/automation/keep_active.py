@@ -16,6 +16,11 @@ while True:
     subprocess.run(["open", "-b", CITRIX_BUNDLE_ID], check=False)
     time.sleep(1)  # let app come to focus
 
+    pyautogui.keyDown("cmd")
+    pyautogui.press("3")
+    pyautogui.keyUp("cmd")
+    time.sleep(1)
+
     # Scroll down (negative = down, positive = up)
     pyautogui.scroll(-100)   # scroll down
     time.sleep(1)

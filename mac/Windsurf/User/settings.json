@@ -1,4 +1,5 @@
 {
+    // "terminal.external.osxExec": "WezTerm.app",
     // Editor settings
     "editor.wordWrap": "on",
     "editor.minimap.enabled": false,
@@ -11,13 +12,13 @@
     "editor.inlineCompletionsAccessibilityVerbose": true,
     "diffEditor.codeLens": true,
     // terminal settings
-    "terminal.external.osxExec": "WezTerm.app",
     "terminal.integrated.fontSize": 17,
+    // "terminal.integrated.sendKeybindingsToShell": true,
     "terminal.integrated.sendKeybindingsToShell": false,
-    "terminal.integrated.tabFocusMode": false,
     "terminal.integrated.commandsToSkipShell": [
         "workbench.action.terminal.focusPrevious",
-        "workbench.action.terminal.focusNext"
+        "workbench.action.terminal.focusNext",
+        "workbench.action.quickOpen"
     ],
     // python settings
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
@@ -120,13 +121,17 @@
             "silent": true
         }
     ],
+    "terminal.integrated.macOptionIsMeta": true,
     "vim.handleKeys": {
         "<C-p>": false,
         "<C-a>": false,
         "<C-c>": false,
         "<C-f>": false,
         "<C-w>": false,
-        // "<C-h>": false,
+        "<A-h>": false,
+        "<A-j>": false,
+        "<A-k>": false,
+        "<A-l>": false,
         // "<C-l>": false
     },
     "workbench.activityBar.location": "top",
@@ -165,5 +170,22 @@
             "expiresOn": 0,
             "sshPassword": ""
         }
-    ]
+    ],
+    "jupyter.askForKernelRestart": false,
+    "windsurf.terminal.cascadeProfile.osx": "managed",
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "windsurf.acp.enabledAgents": {
+        "devin-cloud": true
+    },
+    "windsurf.acp.agentPreferences": {
+        "devin-cloud": {
+            "org_id": "org-222631fe60db4f2bb08980bcac0372ea",
+            "devin_version": "devin-gpt-5-5"
+        }
+    },
+    "editor.accessibilitySupport": "on",
+    "git.confirmSync": false,
+    "terminal.integrated.showCommandHint": false,
+    "claudeCode.preferredLocation": "panel"
 }

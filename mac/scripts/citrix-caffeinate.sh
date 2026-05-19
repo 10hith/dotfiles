@@ -9,6 +9,8 @@ while true; do
         if [ -z "$CAFFEINATE_PID" ] || ! kill -0 "$CAFFEINATE_PID" 2>/dev/null; then
             caffeinate -di &
             CAFFEINATE_PID=$!
+            # Citrix resets keyboard settings on new sessions — reapply immediately
+            defaults -currentHost write NSGlobalDomain KeyRepeat -int 5
         fi
     else
         if [ -n "$CAFFEINATE_PID" ] && kill -0 "$CAFFEINATE_PID" 2>/dev/null; then

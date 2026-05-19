@@ -1,3 +1,19 @@
+themes {
+    Kanagawa {
+        fg 220 215 186
+        bg 29 32 39
+        red 195 64 67
+        green 152 187 108
+        yellow 229 192 123
+        blue 122 162 247
+        magenta 149 127 184
+        orange 255 160 102
+        cyan 122 168 159
+        black 24 25 38
+        white 220 215 186
+    }
+}
+
 keybinds clear-defaults=true {
     locked {
         bind "Ctrl g" { SwitchToMode "normal"; }
@@ -141,6 +157,7 @@ keybinds clear-defaults=true {
         }
     }
     shared_except "locked" {
+        unbind "Alt p"
         bind "Alt left" { MoveFocusOrTab "left"; }
         bind "Alt down" { MoveFocus "down"; }
         bind "Alt up" { MoveFocus "up"; }
@@ -297,7 +314,7 @@ web_client {
 // Choose the theme that is specified in the themes section.
 // Default: default
 // 
-// theme "dracula"
+theme "Kanagawa"
  
 // Choose the base input mode of zellij.
 // Default: normal

@@ -85,6 +85,63 @@
                         ]
                     },
                     {
+                        "description": "Ctrl+[ to Escape (Vim-style, system-wide)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "open_bracket",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "control"
+                                        ],
+                                        "optional": [
+                                            "caps_lock"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "escape"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Citrix Viewer: Left Option also sends Left Command",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "left_option",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "left_option",
+                                        "modifiers": [
+                                            "left_command"
+                                        ]
+                                    }
+                                ],
+                                "conditions": [
+                                    {
+                                        "type": "frontmost_application_if",
+                                        "bundle_identifiers": [
+                                            "^com\\.citrix\\.receiver\\.icaviewer\\.mac$",
+                                            "^com\\.citrix\\.receiver\\.icaviewer$"
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Ctrl+HJKL to Arrow Keys (excludes Terminal and iTerm2)",
                         "manipulators": [
                             {
@@ -211,6 +268,36 @@
                                         ]
                                     }
                                 ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Z to Right Command when held",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "z",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to_if_alone": [
+                                    {
+                                        "key_code": "z"
+                                    }
+                                ],
+                                "to_if_held_down": [
+                                    {
+                                        "key_code": "right_command"
+                                    }
+                                ],
+                                "parameters": {
+                                    "basic.to_if_alone_timeout_milliseconds": 250,
+                                    "basic.to_if_held_down_threshold_milliseconds": 200
+                                },
                                 "type": "basic"
                             }
                         ]
