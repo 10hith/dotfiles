@@ -4,6 +4,7 @@
 brew "starship"
 brew "zoxide"
 brew "fzf"
+brew "eza"
 
 # Terminal multiplexer & task runner
 brew "zellij"

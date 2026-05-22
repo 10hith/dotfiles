@@ -25,14 +25,12 @@ Copy below to mac
 Copy below to mac/automation
 ~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
 
-# --- Shell dotfiles (shared) ---
+# --- Shell dotfiles (WSL/Ubuntu only — not present on Mac, kept for reference) ---
 
-~/.bashrc root/.bashrc
-~/.bash_aliases root/.bash_aliases
-~/.justfile root/.justfile
-~/.bash_functions root/.bash_functions
-~/.bash_local root/.bash_local
-~/.inputrc root/.inputrc
+# ~/.bashrc root/.bashrc
+# ~/.bash_aliases root/.bash_aliases
+# ~/.bash_functions root/.bash_functions
+# ~/.bash_local root/.bash_local
 
 # --- Mac zsh shell dotfiles ---
 
@@ -41,6 +39,7 @@ Copy below to mac/root
 ~/.zprofile
 ~/.zsh_aliases
 ~/.zsh_functions
+~/.zsh_plugins
 ~/.justfile
 ~/.inputrc
 
@@ -57,7 +56,6 @@ Copy below to kanata
 # dotfiles/kanata/ and re-deploy with sudo cp.
 
 Copy below to cloudflared
-~/.cloudflared/setup.md
 ~/.cloudflared/config.yml
 ~/.cloudflared/*.sh
 
@@ -74,5 +72,5 @@ Copy below to claude/commands/create-hook
 Copy below to claude/output-styles
 ~/.claude/output-styles/*.md
 
-Copy below to claude/output-styles/.claude
-~/.claude/output-styles/.claude/*
+# Copy below to claude/output-styles/.claude
+# ~/.claude/output-styles/.claude/*

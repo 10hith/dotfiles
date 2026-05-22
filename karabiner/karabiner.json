@@ -303,7 +303,7 @@
                         ]
                     },
                     {
-                        "description": "Quote to Right Option when held",
+                        "description": "Quote to Left Option when held",
                         "manipulators": [
                             {
                                 "type": "basic",
@@ -317,7 +317,7 @@
                                 },
                                 "to": [
                                     {
-                                        "key_code": "right_option",
+                                        "key_code": "left_option",
                                         "lazy": true
                                     }
                                 ],
