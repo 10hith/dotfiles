@@ -18,11 +18,12 @@
 # WezTerm: ~/.wezterm.lua is a symlink → wezterm/.wezterm.lua (no sync needed)
 
 # --- LaunchAgents (installed copies synced back to repo) ---
-# Note: com.lohith.citrix-caffeinate.plist is intentionally excluded — disabled for now.
-# See mac/LAUNCHAGENTS.md for re-enable instructions.
 
 Copy below to mac
 ~/Library/LaunchAgents/com.lohith.mac-defaults.plist
+
+Copy below to mac/automation
+~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
 
 # --- Shell dotfiles (shared) ---
 

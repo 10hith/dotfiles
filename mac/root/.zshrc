@@ -54,6 +54,6 @@ export PATH="$HOME/.local/bin:$PATH"
 eval "$(starship init zsh)"
 
 # ── Auto-start Zellij ────────────────────────────────────────────────────────
-# if [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
-#     zellij
-# fi
+if [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
+    zellij
+fi

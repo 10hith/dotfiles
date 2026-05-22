@@ -18,9 +18,9 @@
     <true/>
 
     <key>StandardOutPath</key>
-    <string>/dev/null</string>
+    <string>/Users/basavaraj/Library/Logs/citrix-caffeinate.log</string>
 
     <key>StandardErrorPath</key>
-    <string>/dev/null</string>
+    <string>/Users/basavaraj/Library/Logs/citrix-caffeinate.log</string>
 </dict>
 </plist>

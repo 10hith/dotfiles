@@ -119,6 +119,34 @@
                 "z"
             ],
             "silent": true
+        },
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
+        }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
+        }
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
         }
     ],
     "terminal.integrated.macOptionIsMeta": true,
@@ -128,11 +156,6 @@
         "<C-c>": false,
         "<C-f>": false,
         "<C-w>": false,
-        "<A-h>": false,
-        "<A-j>": false,
-        "<A-k>": false,
-        "<A-l>": false,
-        // "<C-l>": false
     },
     "workbench.activityBar.location": "top",
     "workbench.sideBar.location": "left",

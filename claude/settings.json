@@ -1,4 +1,7 @@
 {
+  "permissions": {
+    "defaultMode": "auto"
+  },
   "statusLine": {
     "type": "command",
     "command": "~/.claude/statusline-command.sh"
@@ -6,12 +9,14 @@
   "enabledPlugins": {
     "swift-lsp@claude-plugins-official": true
   },
-  "effortLevel": "medium",
+  "effortLevel": "high",
+  "advisorModel": "opus",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
   "agentPushNotifEnabled": true,
   "voiceEnabled": true,
-  "vim": true
+  "vim": true,
+  "plansDirectory": ".plans"
 }

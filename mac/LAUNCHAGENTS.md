@@ -5,29 +5,16 @@
 | Agent | Plist | Purpose |
 |---|---|---|
 | com.lohith.mac-defaults | mac/com.lohith.mac-defaults.plist | Re-applies KeyRepeat and other defaults at login |
+| com.lohith.citrix-caffeinate | mac/automation/com.lohith.citrix-caffeinate.plist | Keeps macOS awake while Citrix Viewer is running; re-applies KeyRepeat on new Citrix sessions |
 
-## Disabled
+## Notes
 
 ### com.lohith.citrix-caffeinate
 
-Keeps macOS awake while Citrix Viewer is running, and re-applies keyboard settings when a new Citrix session starts.
+**Script:** `mac/scripts/citrix-caffeinate.sh` (polls every 30s)
+**Plist:** `mac/automation/com.lohith.citrix-caffeinate.plist`
+**Logs:** `~/Library/Logs/citrix-caffeinate.log`
 
-**Script:** `mac/scripts/citrix-caffeinate.sh`
-**Plist:** `mac/com.lohith.citrix-caffeinate.plist`
+Was previously disabled due to unspecified "issues at launch" — re-enabled 2026-05-20 with logging on so any recurrence is debuggable.
 
-Disabled because it was causing issues at launch. Re-enable when needed:
-
-```bash
-# 1. Install the plist
-cp ~/dotfiles/mac/com.lohith.citrix-caffeinate.plist ~/Library/LaunchAgents/
-
-# 2. Load it (no reboot needed)
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
-
-# 3. Verify it's running
-launchctl list | grep citrix-caffeinate
-
-# To disable again:
-launchctl bootout gui/$(id -u) ~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
-rm ~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
-```
+See `mac/automation/README.md` for install/disable steps and the related `keep_active.py` automation.

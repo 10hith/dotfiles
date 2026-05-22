@@ -273,32 +273,32 @@
                         ]
                     },
                     {
-                        "description": "Z to Right Command when held",
+                        "description": "Semicolon to Right Command when held",
                         "manipulators": [
                             {
+                                "type": "basic",
                                 "from": {
-                                    "key_code": "z",
+                                    "key_code": "semicolon",
                                     "modifiers": {
                                         "optional": [
                                             "any"
                                         ]
                                     }
                                 },
-                                "to_if_alone": [
+                                "to": [
                                     {
-                                        "key_code": "z"
+                                        "key_code": "right_command",
+                                        "lazy": true
                                     }
                                 ],
-                                "to_if_held_down": [
+                                "to_if_alone": [
                                     {
-                                        "key_code": "right_command"
+                                        "key_code": "semicolon"
                                     }
                                 ],
                                 "parameters": {
-                                    "basic.to_if_alone_timeout_milliseconds": 250,
-                                    "basic.to_if_held_down_threshold_milliseconds": 200
-                                },
-                                "type": "basic"
+                                    "basic.to_if_alone_timeout_milliseconds": 200
+                                }
                             }
                         ]
                     }
@@ -318,12 +318,24 @@
                             },
                             "to": [
                                 {
-                                    "key_code": "right_option"
+                                    "key_code": "left_control"
                                 }
                             ]
                         }
                     ],
                     "treat_as_built_in_keyboard": true
+                }
+            ],
+            "simple_modifications": [
+                {
+                    "from": {
+                        "apple_vendor_top_case_key_code": "keyboard_fn"
+                    },
+                    "to": [
+                        {
+                            "key_code": "left_control"
+                        }
+                    ]
                 }
             ],
             "name": "Default profile",
