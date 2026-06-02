@@ -1,0 +1,10 @@
+# ~/.config/yazi/keymap.toml
+# Mac:    ~/.config/yazi/keymap.toml
+# Ubuntu: ~/.config/yazi/keymap.toml
+
+[manager]
+prepend_keymap = [
+  { on = "<Tab>", run = "plugin max-preview",  desc = "Maximize or restore the preview pane" },
+  { on = "`",     run = "plugin hide-preview", desc = "Hide or show the preview pane" },
+  { on = "f",     run = "plugin jump-to-char", desc = "Jump to a file by first char" },
+]

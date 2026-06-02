@@ -12,8 +12,11 @@ import time
 CITRIX_BUNDLE_ID = "com.citrix.receiver.icaviewer.mac"
 
 while True:
-    # Activate Citrix Viewer directly (bypasses Karabiner hyper key mapping)
-    subprocess.run(["open", "-b", CITRIX_BUNDLE_ID], check=False)
+    # Use AppleScript activate — more reliable than `open -b` for already-running apps
+    subprocess.run(
+        ["osascript", "-e", f'tell application id "{CITRIX_BUNDLE_ID}" to activate'],
+        check=False,
+    )
     time.sleep(1)  # let app come to focus
 
     pyautogui.keyDown("cmd")

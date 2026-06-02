@@ -172,7 +172,7 @@ setPyPath       # export PYTHONPATH=$(pwd)
 
 ## Zellij — Terminal Multiplexer
 
-Starts automatically when you open a terminal. Key bindings:
+S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 automatically when you open a terminal. Key bindings:
 
 | Key | Action |
 |-----|--------|
@@ -189,6 +189,47 @@ Starts automatically when you open a terminal. Key bindings:
 zellij attach   # re-attach to a detached session
 zellij ls       # list sessions
 ```
+
+---
+
+## Yazi — File Manager
+
+A terminal file manager with rich previews (images, PDFs, videos, syntax-highlighted text), git status per file, and vim-style navigation.
+
+```zsh
+yy              # open yazi; terminal cd's to wherever you quit — primary entry point
+y               # open yazi without cd-on-quit (browse only)
+```
+
+### Navigation
+
+| Key | Action |
+|-----|--------|
+| `h` / `l` | Go up / into directory |
+| `j` / `k` | Move down / up in file list |
+| `Enter` | Open file with default opener |
+| `o` | Open file with a picker |
+| `f` | Jump to file by first char (type a letter) |
+
+### File operations
+
+| Key | Action |
+|-----|--------|
+| `y` | Yank (copy) selected file |
+| `x` | Cut selected file |
+| `p` | Paste |
+| `d` | Move to trash |
+| `r` | Rename |
+| `Space` | Toggle selection |
+
+### Preview pane
+
+| Key | Action |
+|-----|--------|
+| `Tab` | Maximize / restore preview pane |
+| `` ` `` | Hide / show preview pane |
+
+Previews: syntax-highlighted code (bat), images, PDFs, video thumbnails. Files show git status indicators (M, A, ?) the same way `ll` does with `eza --git`.
 
 ---
 

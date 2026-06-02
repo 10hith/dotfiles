@@ -69,6 +69,38 @@ sudo install lazygit -D -t /usr/local/bin/
 rm lazygit lazygit.tar.gz
 ```
 
+### yazi (file manager)
+
+```zsh
+# Install yazi + ya CLI via cargo (cargo is available via .cargo/env in .zshrc)
+cargo install --locked yazi-fm yazi-cli
+
+# Preview dependencies
+sudo apt install -y ffmpegthumbnailer poppler-utils imagemagick p7zip-full
+```
+
+Deploy config (from repo root):
+
+```zsh
+mkdir -p ~/.config/yazi
+cp yazi/yazi.toml    ~/.config/yazi/yazi.toml
+cp yazi/keymap.toml  ~/.config/yazi/keymap.toml
+cp yazi/init.lua     ~/.config/yazi/init.lua
+```
+
+Install plugins and flavor (one-time, after yazi is installed):
+
+```zsh
+ya pkg add yazi-rs/plugins:full-border
+ya pkg add yazi-rs/plugins:max-preview
+ya pkg add yazi-rs/plugins:hide-preview
+ya pkg add yazi-rs/plugins:git
+ya pkg add yazi-rs/plugins:jump-to-char
+ya pkg add "yazi-rs/flavors:catppuccin-mocha"
+```
+
+---
+
 ### just (task runner)
 
 ```zsh
@@ -151,6 +183,8 @@ gs                        # git status alias
 ls                        # should show eza output with icons
 cat ~/.zshrc              # should show bat syntax-highlighted output
 zplugin-update            # updates all zsh plugins
+yazi --version            # file manager
+yy                        # open yazi with cd-on-quit (navigate somewhere, quit, shell follows)
 ```
 
 ---

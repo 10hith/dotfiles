@@ -24,19 +24,29 @@ bindkey -v
 # ── Completion ────────────────────────────────────────────────────────────────
 autoload -Uz compinit && compinit
 
-# ── Aliases & functions ───────────────────────────────────────────────────────
+# ── Aliases, functions & plugins ─────────────────────────────────────────────
 [ -f ~/.zsh_aliases ]   && source ~/.zsh_aliases
 [ -f ~/.zsh_functions ] && source ~/.zsh_functions
+[ -f ~/.zsh_plugins ]   && source ~/.zsh_plugins
 [ -f ~/.zsh_local ]     && source ~/.zsh_local    # machine-specific, not committed
 
 # ── fzf ──────────────────────────────────────────────────────────────────────
-[ -f "$(brew --prefix fzf)/shell/key-bindings.zsh" ] && \
-    source "$(brew --prefix fzf)/shell/key-bindings.zsh"
-[ -f "$(brew --prefix fzf)/shell/completion.zsh" ] && \
-    source "$(brew --prefix fzf)/shell/completion.zsh"
+if [[ -f "$(brew --prefix fzf)/shell/key-bindings.zsh" ]]; then
+  source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+  source "$(brew --prefix fzf)/shell/completion.zsh"
+fi
 
-# Bind Alt-T to fzf file picker (mirrors WSL setup)
-bindkey '\et' fzf-file-widget 2>/dev/null
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --strip-cwd-prefix'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS='
+  --height=60%
+  --layout=reverse
+  --border=rounded
+  --prompt="  "
+  --pointer="  "
+  --preview-window=right:65%:wrap:border-left
+'
+export FZF_CTRL_T_OPTS="--preview 'bat --color=always --style=plain,numbers --line-range=:500 {}'"
 
 # ── zoxide ────────────────────────────────────────────────────────────────────
 eval "$(zoxide init zsh)"

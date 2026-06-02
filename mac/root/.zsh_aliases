@@ -68,6 +68,7 @@ alias drmi='docker rmi -f'
 # ── Misc ──────────────────────────────────────────────────────────────────────
 alias reload='source ~/.zshrc'
 alias aliases='cat ~/.zsh_aliases'
+alias y='yazi'
 
 # ── Dev workflow ──────────────────────────────────────────────────────────────
 alias setPyPath='export PYTHONPATH=$(pwd)'

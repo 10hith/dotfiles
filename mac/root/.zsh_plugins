@@ -25,6 +25,9 @@ _zplugin_load zsh-users zsh-autosuggestions
 _zplugin_load zsh-users zsh-history-substring-search
 _zplugin_load zdharma-continuum fast-syntax-highlighting
 
-# Must bind after zsh-history-substring-search is loaded
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+# Must bind after zsh-history-substring-search is loaded.
+# Bind in both vi keymaps — plain bindkey only covers emacs/viins.
+bindkey -M viins '^[[A' history-substring-search-up
+bindkey -M viins '^[[B' history-substring-search-down
+bindkey -M vicmd '^[[A' history-substring-search-up
+bindkey -M vicmd '^[[B' history-substring-search-down

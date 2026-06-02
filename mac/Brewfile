@@ -21,3 +21,10 @@ brew "fd"
 brew "bat"
 brew "jq"
 brew "wget"
+
+# Yazi file manager + preview dependencies
+brew "yazi"
+brew "ffmpegthumbnailer"
+brew "poppler"
+brew "imagemagick"
+brew "sevenzip"
