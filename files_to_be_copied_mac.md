@@ -43,6 +43,9 @@ Copy below to mac/root
 ~/.justfile
 ~/.inputrc
 
+Copy below to zsh
+~/zsh/starship.toml
+
 Copy below to zellij
 ~/.config/zellij/config.kdl
 
@@ -74,3 +77,6 @@ Copy below to claude/output-styles
 
 # Copy below to claude/output-styles/.claude
 # ~/.claude/output-styles/.claude/*
+
+Copy below to nvim
+~/.config/nvim/init.lua

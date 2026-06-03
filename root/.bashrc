@@ -115,3 +115,7 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# ── Default editor ────────────────────────────────────────────────────────────
+export EDITOR=nvim
+export VISUAL=nvim

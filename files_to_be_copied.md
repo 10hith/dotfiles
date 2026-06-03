@@ -39,3 +39,6 @@ Copy below to claude/output-styles
 
 Copy below to claude/output-styles/.claude
 ~/.claude/output-styles/.claude/*
+
+Copy below to nvim
+~/.config/nvim/init.lua

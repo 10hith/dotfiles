@@ -152,6 +152,7 @@
     "terminal.integrated.macOptionIsMeta": true,
     "vim.handleKeys": {
         "<C-p>": false,
+        "<C-;>": true,
         "<C-a>": false,
         "<C-c>": false,
         "<C-f>": false,

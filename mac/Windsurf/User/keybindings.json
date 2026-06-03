@@ -105,7 +105,8 @@
     {
         "key": "ctrl+oem_1",
         "command": "workbench.action.toggleMaximizedAuxiliaryBar",
-        "when": "auxiliaryBarVisible && terminal.visible"
+        // "when": "auxiliaryBarVisible && terminal.visible"
+        "when": "terminal.visible"
     },
     // Jupyter navigation
     {
@@ -168,5 +169,13 @@
         "key": "ctrl+shift+g",
         "command": "-workbench.view.scm",
         "when": "workbench.scm.active"
+    },
+    {
+        "key": "shift+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b\r"
+        },
+        "when": "terminalFocus"
     }
 ]

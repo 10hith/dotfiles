@@ -61,9 +61,14 @@ export PATH="$PATH:/Applications/Windsurf.app/Contents/Resources/app/bin"
 export PATH="$HOME/.local/bin:$PATH"
 
 # ── Starship prompt ───────────────────────────────────────────────────────────
+export STARSHIP_CONFIG="$HOME/zsh/starship.toml"
 eval "$(starship init zsh)"
 
 # ── Auto-start Zellij ────────────────────────────────────────────────────────
 if [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
     zellij
 fi
+
+# ── Default editor ────────────────────────────────────────────────────────────
+export EDITOR=nvim
+export VISUAL=nvim

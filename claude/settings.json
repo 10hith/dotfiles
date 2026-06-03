@@ -7,16 +7,31 @@
     "command": "~/.claude/statusline-command.sh"
   },
   "enabledPlugins": {
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "playground@claude-plugins-official": true,
+    "understand-anything@understand-anything": true
   },
-  "effortLevel": "high",
+  "extraKnownMarketplaces": {
+    "understand-anything": {
+      "source": {
+        "source": "github",
+        "repo": "Lum1104/Understand-Anything"
+      }
+    }
+  },
+  "sandbox": {
+    "enabled": false
+  },
+  "effortLevel": "xhigh",
   "advisorModel": "opus",
+  "plansDirectory": ".plans",
   "voice": {
     "enabled": true,
     "mode": "hold"
   },
+  "theme": "dark",
   "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true,
   "voiceEnabled": true,
-  "vim": true,
-  "plansDirectory": ".plans"
+  "vim": true
 }

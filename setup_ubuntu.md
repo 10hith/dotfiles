@@ -57,6 +57,26 @@ cargo install zellij
 # https://github.com/zellij-org/zellij/releases
 ```
 
+### neovim (editor)
+
+```zsh
+# The apt version is often outdated; install the latest AppImage instead:
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz
+tar -C ~/.local -xzf nvim-linux-x86_64.tar.gz
+rm nvim-linux-x86_64.tar.gz
+# Add to PATH (already included if ~/.local/bin is in PATH via .bashrc)
+export PATH="$HOME/.local/nvim-linux-x86_64/bin:$PATH"
+```
+
+Deploy config (from repo root):
+
+```zsh
+mkdir -p ~/.config/nvim
+cp nvim/init.lua ~/.config/nvim/init.lua
+```
+
+On first launch, lazy.nvim and plugins (tokyonight, treesitter) install automatically.
+
 ### lazygit (git TUI)
 
 ```zsh
