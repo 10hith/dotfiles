@@ -2,7 +2,7 @@
 
 add_newline = false
 
-format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$python $time\n$character"
+format = "$directory$os$git_branch$git_status$nodejs$rust$golang$php$python$fill$time\n$character"
 
 [os]
 disabled = false
@@ -56,9 +56,13 @@ format = "[$symbol $version( \\($virtualenv\\))](yellow) "
 detect_extensions = ["py"]
 detect_files = [".python-version", "Pipfile", "pyproject.toml", "setup.py", "setup.cfg", "requirements.txt"]
 
+[fill]
+symbol = "."
+style = "dimmed white"
+
 [time]
 disabled = false
-format = "[$time](bold yellow) "
+format = "[$time](bold yellow)"
 time_format = "%H:%M"
 
 [character]
