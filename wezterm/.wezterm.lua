@@ -3,6 +3,7 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- General appearance
+config.font = wezterm.font("BlexMono Nerd Font Mono")
 config.font_size = 17
 
 config.enable_tab_bar = false
