@@ -21,6 +21,7 @@ This script reads `files_to_be_copied.md` and copies the listed configuration fi
 - `Windsurf/User/` - Windsurf editor settings and keybindings
 - `Zed/` - Zed editor settings and keymap
 - `wezterm/` - WezTerm terminal configuration (`.wezterm.lua`)
+- `ghostty/` - Ghostty terminal config (`config`, symlinked to `~/.config/ghostty/config` on Mac). See `ghostty/README.md` for the cursor-trail shader setup.
 - `root/` - Shell configuration (`.bashrc`, sanitized of secrets)
 - `cloudflared/` - Cloudflare tunnel configuration
 - `claude/` - Claude Code configuration (settings, hooks, commands, output-styles)

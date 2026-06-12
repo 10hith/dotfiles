@@ -72,3 +72,6 @@ fi
 # ── Default editor ────────────────────────────────────────────────────────────
 export EDITOR=nvim
 export VISUAL=nvim
+
+# Added by Devin
+export PATH="/Users/basavaraj/.codeium/windsurf/bin:$PATH"

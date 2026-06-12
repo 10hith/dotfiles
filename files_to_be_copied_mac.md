@@ -17,6 +17,8 @@
 
 # WezTerm: ~/.wezterm.lua is a symlink → wezterm/.wezterm.lua (no sync needed)
 
+# Ghostty: ~/.config/ghostty/config is a symlink → ghostty/config (no sync needed).
+
 # --- LaunchAgents (installed copies synced back to repo) ---
 
 Copy below to mac

@@ -521,7 +521,9 @@ theme "Kanagawa"
  
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL
-// scrollback_editor "/usr/bin/vim"
+// Pinned to nvim because `zsh -l -c zellij` is non-interactive and doesn't
+// source ~/.zshrc, so $EDITOR isn't visible to zellij.
+scrollback_editor "/opt/homebrew/bin/nvim"
  
 // A fixed name to always give the Zellij session.
 // Consider also setting `attach_to_session true,`
