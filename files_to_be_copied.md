@@ -15,6 +15,7 @@
 ~/.bash_functions root/.bash_functions
 ~/.bash_local root/.bash_local
 ~/.inputrc root/.inputrc
+~/.vimrc root/.vimrc
 
 Copy below to zellij
 ~/.config/zellij/config.kdl
