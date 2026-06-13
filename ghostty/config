@@ -9,7 +9,7 @@ font-size = 17
 # --- Colors: coolnight (copied from wezterm/.wezterm.lua:16-26) ---
 background = 011423
 foreground = CBE0F0
-cursor-color = 47FF9C
+cursor-color = 1FB8FF
 selection-background = 033259
 selection-foreground = CBE0F0
 
