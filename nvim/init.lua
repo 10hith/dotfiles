@@ -1,6 +1,10 @@
+-- ── Leader ────────────────────────────────────────────────────────────────────
+vim.g.mapleader      = " "
+vim.g.maplocalleader = " "
+
 -- ── Bootstrap lazy.nvim ──────────────────────────────────────────────────────
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git", "clone", "--filter=blob:none",
     "https://github.com/folke/lazy.nvim.git",
@@ -10,18 +14,26 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- ── Options ───────────────────────────────────────────────────────────────────
-vim.opt.number         = true          -- line numbers
+vim.opt.number         = true
 vim.opt.relativenumber = false
-vim.opt.termguicolors  = true          -- full color support (fixes zellij bleed)
+vim.opt.termguicolors  = true          -- full color (fixes zellij color bleed)
 vim.opt.background     = "dark"
-vim.opt.mouse          = "a"           -- mouse support
-vim.opt.wrap           = false         -- no line wrapping
-vim.opt.scrolloff      = 8             -- keep 8 lines visible above/below cursor
+vim.opt.mouse          = "a"
+vim.opt.wrap           = false
+vim.opt.scrolloff      = 8
 vim.opt.splitright     = true
 vim.opt.splitbelow     = true
-vim.opt.ignorecase     = true          -- case-insensitive search
-vim.opt.smartcase      = true          -- ... unless you type uppercase
-vim.opt.clipboard      = "unnamedplus" -- use system clipboard
+vim.opt.ignorecase     = true
+vim.opt.smartcase      = true
+vim.opt.clipboard      = "unnamedplus" -- system clipboard
+vim.opt.undofile       = true          -- persistent undo across sessions
+vim.opt.signcolumn     = "yes"         -- avoid jitter when gitsigns/LSP arrive
+
+-- ── Keymaps ───────────────────────────────────────────────────────────────────
+local map = vim.keymap.set
+map("n", "<leader>w", "<cmd>write<cr>",      { desc = "Save" })
+map("n", "<leader>q", "<cmd>quit<cr>",       { desc = "Quit" })
+map("n", "<Esc>",     "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
 
 -- ── Plugins ───────────────────────────────────────────────────────────────────
 require("lazy").setup({
@@ -36,10 +48,12 @@ require("lazy").setup({
     end,
   },
 
-  -- Treesitter: better syntax highlighting
+  -- Treesitter: syntax highlighting. Pinned to master because the main branch
+  -- dropped the .setup{} API; staying on master keeps this file flat.
   {
     "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",
+    branch = "master",
+    build  = ":TSUpdate",
     config = function()
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
@@ -64,12 +78,11 @@ require("lazy").setup({
         },
       })
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<C-p>", builtin.find_files,  { desc = "Find files" })
-      vim.keymap.set("n", "@",     builtin.treesitter,  { desc = "Symbols in file" })
-      vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Live grep" })
+      map("n", "<C-p>",     builtin.find_files, { desc = "Find files" })
+      map("n", "@",         builtin.treesitter, { desc = "Symbols in file" })
+      map("n", "<leader>g", builtin.live_grep,  { desc = "Live grep" })
     end,
   },
 }, {
-  -- Disable lazy.nvim UI notifications on startup
   change_detection = { notify = false },
 })
