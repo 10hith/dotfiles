@@ -25,6 +25,38 @@ Assumed machine state (verified 2026-06-17 on this Mac, Apple Silicon, Ghostty t
 
 ---
 
+## Replicating on a new machine (fast path)
+
+This repo already contains the full, working config under `nvim/`, including a **pinned
+`lazy-lock.json`**. To reproduce this exact setup, copy it in rather than rebuilding — you
+get the same plugin versions, basedpyright config, and auto-venv autocmd:
+
+```bash
+# 1. Clone this dotfiles repo (adjust path as needed)
+git clone https://github.com/10hith/dotfiles.git ~/dotfiles
+
+# 2. Back up any existing nvim config (reversible)
+mv ~/.config/nvim ~/.config/nvim.bak 2>/dev/null || true
+
+# 3. Drop in the tracked config
+mkdir -p ~/.config/nvim
+cp -R ~/dotfiles/nvim/. ~/.config/nvim/
+
+# 4. Launch — lazy.nvim installs the *pinned* versions from lazy-lock.json
+nvim
+```
+
+Then inside nvim: `:Mason` to confirm `basedpyright`, `ruff`, `debugpy` (or
+`:MasonInstall basedpyright ruff debugpy`), and `:LazyHealth` to verify.
+
+Prerequisites still apply: Neovim ≥0.9, a Nerd Font in your terminal, and `git`, `rg`,
+`fd`, `node`, `python3` on PATH (full list in the from-scratch steps below).
+
+> The numbered steps below document how this config was **built from scratch** — use them
+> for a fresh setup or to understand/modify the config, not for plain replication.
+
+---
+
 ## Step 0 — Nerd Font in Ghostty (one-time)
 
 ```bash
@@ -228,8 +260,16 @@ sync so the whole dir is tracked:
 - Track at least: `lua/config/options.lua`, `lua/config/autocmds.lua`, `lua/config/keymaps.lua`,
   `lua/plugins/*.lua`, `init.lua`, `lazyvim.json` (if used), and `lazy-lock.json`
   (keep it — pins plugin versions for reproducible installs).
-- Update `files_to_be_copied.md` to copy `~/.config/nvim/**` into `nvim/` (replacing the old
-  single-file `nvim/init.lua` entry), then run `./sync_files.sh`.
+- `files_to_be_copied.md` has per-subdir blocks (`nvim`, `nvim/lua/config`, `nvim/lua/plugins`)
+  for this — needed because the sync script flattens each block with `basename`.
+- **Note:** `sync_files.sh` is `set -e` and dies on the first missing source. On macOS the
+  manifest's `/mnt/c/...` (Windows/WSL) paths don't exist, so the script can't run here — it's
+  effectively WSL-only. Capture nvim changes on the Mac with a manual copy instead:
+  ```bash
+  cp -p ~/.config/nvim/{init.lua,lazy-lock.json,stylua.toml} ~/dotfiles/nvim/
+  cp -p ~/.config/nvim/lua/config/*.lua  ~/dotfiles/nvim/lua/config/
+  cp -p ~/.config/nvim/lua/plugins/*.lua ~/dotfiles/nvim/lua/plugins/
+  ```
 
 ---
 
