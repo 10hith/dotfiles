@@ -43,3 +43,11 @@ Copy below to claude/output-styles/.claude
 
 Copy below to nvim
 ~/.config/nvim/init.lua
+~/.config/nvim/lazy-lock.json
+~/.config/nvim/stylua.toml
+
+Copy below to nvim/lua/config
+~/.config/nvim/lua/config/*.lua
+
+Copy below to nvim/lua/plugins
+~/.config/nvim/lua/plugins/*.lua
