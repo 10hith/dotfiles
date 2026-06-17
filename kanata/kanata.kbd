@@ -1,48 +1,135 @@
-;; kanata.kbd — home row mods + Hyper on Caps Lock.
+;;==============================================================================
+;; kanata.kbd  —  converted from Karabiner-Elements
+;; Target: macOS · ISO keyboard (British layout)
 ;;
-;; Run with:
-;;   kanata --cfg ~/.config/kanata/kanata.kbd
+;; Install:  brew install kanata
+;; Run:      sudo kanata --cfg ~/.config/kanata/kanata.kbd
+;;   or symlink: ln -s ~/dotfiles/kanata/kanata.kbd ~/.config/kanata/kanata.kbd
 ;;
-;; Why kanata vs. karabiner-elements:
-;; Karabiner can only decide tap-vs-hold based on timing. When you type "so"
-;; quickly, S is still down when O is pressed, so karabiner engages Opt and
-;; you get ø. Kanata's `tap-hold-release` decides tap-vs-hold based on the
-;; RELEASE ORDER of the keys, not just timing — so if you release S before
-;; O, kanata commits to "S was a tap" and emits "so" correctly.
+;; LIMITATIONS vs Karabiner-Elements:
+;;
+;;   1. Citrix Viewer rules OMITTED — Kanata has no per-app conditionals.
+;;      The Citrix-specific rules (Left Option→also Cmd, J+K→Right Cmd,
+;;      Semicolon/Quote hold variants for Citrix) cannot be reproduced.
+;;      Keep Karabiner installed alongside Kanata if you still need Citrix remaps.
+;;
+;;   2. Ctrl+HJKL and Ctrl+[ apply in ALL apps — Karabiner excluded Terminal
+;;      and iTerm2. Kanata has no mechanism to exclude specific processes.
+;;
+;;   3. Fn → Left Ctrl NOT included — the Fn key is captured at firmware level
+;;      on Apple keyboards and is generally inaccessible to Kanata on macOS.
+;;==============================================================================
 
 (defcfg
-  ;; Forward keys we don't remap (so the rest of the keyboard still works).
+  ;; Forward keys we don't explicitly remap so the rest of the keyboard works.
   process-unmapped-keys yes
-  ;; Allow multiple tap-hold keys to be in flight simultaneously. Without
-  ;; this, overlapping rolls between home row keys cause dropped taps and
-  ;; doubled letters when typing fast.
-  concurrent-tap-hold yes)
+  ;; Allow multiple tap-hold keys to be held simultaneously.
+  ;; Critical for ; ' / hold keys when typing quickly.
+  concurrent-tap-hold yes
+)
 
-;; Physical keys we intercept.
+;;------------------------------------------------------------------------------
+;; Physical key layout  (ISO / British keyboard)
+;;------------------------------------------------------------------------------
 (defsrc
-  caps  a s d   k l ;)
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft 102d z    x    c    v    b    n    m    ,    .    /    rsft
+       lctl lalt lmet           spc            rmet ralt
+)
 
+;;------------------------------------------------------------------------------
+;; Aliases
+;;------------------------------------------------------------------------------
 (defalias
-  ;; ── Home row mods ────────────────────────────────────────────────────
-  ;; (tap-hold-release <tap-ms> <hold-ms> <tap-action> <hold-action>)
-  ;;   • tap-ms : if released within this many ms (alone), it's a tap.
-  ;;   • hold-ms: if held longer than this, commits to "hold" even with no
-  ;;              further input. Raise this if you still see false holds.
+  ;; ── British ISO layout fixes ────────────────────────────────────────────────
   ;;
-  ;; Rollover safety: with `tap-hold-release`, if you press the home key,
-  ;; press another key, then RELEASE the home key BEFORE the other key,
-  ;; the home key is treated as a tap. So "so" types as "so", not Opt+o.
-  a-mod    (tap-hold-release 250 200 a lctl)    ;; A → tap=a, hold=LCtrl
-  s-mod    (tap-hold-release 250 200 s lalt)    ;; S → tap=s, hold=LOpt
-  d-mod    (tap-hold-release 250 200 d lmet)    ;; D → tap=d, hold=LCmd
-  k-mod    (tap-hold-release 250 200 k rmet)    ;; K → tap=k, hold=RCmd
-  l-mod    (tap-hold-release 250 200 l ralt)    ;; L → tap=l, hold=ROpt
-  scln-mod (tap-hold-release 250 200 ; rctl)    ;; ; → tap=;, hold=RCtrl
+  ;; grv ↔ 102d swap is done in deflayer (grv→102d, 102d→grv).
+  ;; Shift+grv → Shift+102d (tilde ~) follows automatically from the swap.
+  ;;
+  ;; Shift+3 → Option+3  (produces # on Apple British ISO layout)
+  ;; Both shifts are released before the action so output is Alt+3, not Shift+Alt+3.
+  3sf (fork 3 (multi (release-key lsft) (release-key rsft) lalt 3) (lsft))
 
-  ;; ── Caps Lock → Hyper ────────────────────────────────────────────────
-  ;; While Caps is held, send Shift+Cmd+Ctrl+Opt simultaneously. Equivalent
-  ;; to your karabiner "Caps Lock to Hyper Key" rule.
-  hyper    (multi lsft lctl lalt lmet))
+  ;; ── Caps Lock → Hyper (Ctrl+Shift+Alt+Cmd) ─────────────────────────────────
+  ;; Fires on every press with no tap action (matching Karabiner behaviour).
+  hyp (multi lsft lctl lalt lmet)
 
+  ;; ── Tap-hold modifier keys ──────────────────────────────────────────────────
+  ;; Using tap-hold-release: hold is only committed when ANOTHER key is pressed
+  ;; AND released while this key is down — avoids false holds during fast typing.
+  ;;
+  ;; ── Home row mods (left hand) ───────────────────────────────────────────────
+  ;; tap-hold-release-timeout: hold fires ONLY after the timeout expires.
+  ;; Key overlap during fast typing does NOT trigger hold — you must
+  ;; physically sit on the key for 350ms+ to activate the modifier.
+  ;; Raise the timeout if you still get false holds; lower it if holds feel sluggish.
+  ;;
+  ;; A → tap: a    hold: Left Shift
+  a-m (tap-hold-release-timeout 200 350 a lsft lsft)
+  ;; S → tap: s    hold: Left Ctrl
+  s-m (tap-hold-release-timeout 200 350 s lctl lctl)
+  ;; D → tap: d    hold: Left Alt
+  d-m (tap-hold-release-timeout 200 350 d lalt lalt)
+  ;; F → tap: f    hold: Left Cmd
+  f-m (tap-hold-release-timeout 200 350 f lmet lmet)
+
+  ;; ── Right-hand tap-hold modifier keys ───────────────────────────────────────
+  ;; Semicolon → tap: ;    hold: Right Cmd
+  sem (tap-hold-release-timeout 200 350 ; rmet rmet)
+  ;; Quote     → tap: '    hold: Left Alt
+  quo (tap-hold-release-timeout 200 350 ' lalt lalt)
+  ;; Slash     → tap: /    hold: Left Ctrl
+  sls (tap-hold-release-timeout 200 350 / lctl lctl)
+
+  ;; ── Ctrl+[ → Escape  (Vim-style, system-wide) ──────────────────────────────
+  ;; Ctrl is released before Esc so output is plain Escape, not Ctrl+Escape.
+  cbr (switch
+        ((input real lctl)) (multi (release-key lctl) esc) break
+        ()                  [                              break)
+
+  ;; ── Ctrl+HJKL → Arrow keys ──────────────────────────────────────────────────
+  ;; Ctrl is released before the arrow key so the cursor moves one char/line,
+  ;; not one word/paragraph as Ctrl+Arrow would.
+  cth (switch
+        ((input real lctl)) (multi (release-key lctl) left) break
+        ()                  h                               break)
+  ctj (switch
+        ((input real lctl)) (multi (release-key lctl) down) break
+        ()                  j                               break)
+  ctk (switch
+        ((input real lctl)) (multi (release-key lctl) up)   break
+        ()                  k                               break)
+  ctl (switch
+        ((input real lctl)) (multi (release-key lctl) rght) break
+        ()                  l                               break)
+
+  ;; ── Alt+Tab → Cmd+Tab  (Windows-style app switcher) ────────────────────────
+  ;; Alt+Shift+Tab → Cmd+Shift+Tab (reverse cycle). Shift is preserved.
+  atb (switch
+        ((input real lalt)) (multi (release-key lalt) lmet tab) break
+        ()                  tab                                 break)
+)
+
+;;------------------------------------------------------------------------------
+;; J+K simultaneously (within 50 ms) → Hyper (Shift+Ctrl+Alt+Cmd)
+;; Individual J / K fall through to @ctj / @ctk so Ctrl+J/K → arrows still works.
+;;------------------------------------------------------------------------------
+(defchords jk-chord 50
+  (j  ) @ctj
+  (  k) @ctk
+  (j k) (multi lsft lctl lalt lmet)
+)
+
+;;------------------------------------------------------------------------------
+;; Base layer
+;;------------------------------------------------------------------------------
 (deflayer base
-  @hyper  @a-mod @s-mod @d-mod  @k-mod @l-mod @scln-mod)
+  ;; grv ↔ 102d swap (British ISO: grave/backtick ↔ §/± key)
+  102d 1    2    @3sf 4    5    6    7    8    9    0    -    =    bspc
+  @atb q    w    e    r    t    y    u    i    o    p    @cbr ]    \
+  @hyp @a-m @s-m @d-m @f-m g    @cth (chord jk-chord j) (chord jk-chord k) @ctl @sem @quo ret
+  lsft grv  z    x    c    v    b    n    m    ,    .    @sls rsft
+       lctl lalt lmet           spc            rmet ralt
+)
