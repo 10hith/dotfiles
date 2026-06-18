@@ -41,7 +41,7 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
 
   src=""
   dest_hint=""
-  IFS=' ' read -r src dest_hint <<< "$line"
+  IFS=' ' read -r src dest_hint <<<"$line"
 
   if [[ -z "$src" ]]; then
     continue
@@ -57,7 +57,7 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
   mapfile -d '' -t expanded < <(expand_pattern "$src")
 
   if ((${#expanded[@]} == 0)); then
-    if (( has_glob )); then
+    if ((has_glob)); then
       echo "Warning: no matches for pattern $src" >&2
       continue
     else
@@ -68,7 +68,7 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
 
   for source_path in "${expanded[@]}"; do
     if [[ ! -e "$source_path" ]]; then
-      if (( has_glob )); then
+      if ((has_glob)); then
         echo "Warning: skipping missing match $source_path" >&2
         continue
       else
@@ -106,7 +106,7 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
     mkdir -p "$(dirname "$abs_dest")"
 
     if [[ "$dest" == "root/.bashrc" ]]; then
-      awk 'tolower($0) !~ /api_/ && $0 !~ /^export[[:space:]]+[A-Z0-9_]+=/ ' "$source_path" > "$abs_dest"
+      awk 'tolower($0) !~ /api_/ && $0 !~ /^export[[:space:]]+[A-Z0-9_]+=/ ' "$source_path" >"$abs_dest"
     else
       cp -p "$source_path" "$abs_dest"
     fi
@@ -114,4 +114,4 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
     echo "Copied $source_path -> $dest"
   done
 
-done < "$list_file"
+done <"$list_file"
