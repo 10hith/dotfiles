@@ -158,6 +158,24 @@ vim.keymap.set("n", "4", function()
   vim.cmd("normal! zz")
 end, { desc = "Next # %% cell, centered", silent = true })
 
+-- Jump to nearest `# %%` cell marker above and center it (mirrors old VSCode-vim "6" mapping)
+vim.keymap.set("n", "6", function()
+  vim.fn.search("# %%", "b")
+  vim.cmd("normal! zz")
+end, { desc = "Previous # %% cell, centered", silent = true })
+
+-- VSCode-neovim only: override LazyVim/flash.nvim's "s"/"S" with VSCode commands.
+-- `vim.g.vscode` is only set when running inside the vscode-neovim extension,
+-- so plain nvim keeps flash.nvim's "s"/"S" untouched.
+if vim.g.vscode then
+  vim.keymap.set("n", "s", function()
+    require("vscode").action("flash-vscode.start")
+  end, { desc = "Flash (VSCode)" })
+  vim.keymap.set("n", "S", function()
+    require("vscode").action("flash-vscode.jump.treesitterSelection")
+  end, { desc = "Flash Treesitter (VSCode)" })
+end
+
 local ok, wk = pcall(require, "which-key")
 if ok then
   wk.add({ { "<leader>a", group = "action", mode = { "n", "x" } } })
