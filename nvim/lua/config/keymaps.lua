@@ -152,6 +152,12 @@ vim.keymap.set("n", "<leader>aS", function()
   send_to_pane(l, l, true)
 end, { desc = "Send line to pane + submit" })
 
+-- Jump to nearest `# %%` cell marker below and center it (mirrors old VSCode-vim "4" mapping)
+vim.keymap.set("n", "4", function()
+  vim.fn.search("# %%")
+  vim.cmd("normal! zz")
+end, { desc = "Next # %% cell, centered", silent = true })
+
 local ok, wk = pcall(require, "which-key")
 if ok then
   wk.add({ { "<leader>a", group = "action", mode = { "n", "x" } } })
