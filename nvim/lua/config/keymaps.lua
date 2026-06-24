@@ -36,34 +36,12 @@ local function str(v)
   return tostring(v)
 end
 
--- Split a list-panes table row on 2+ spaces (titles may contain single spaces).
-local function split_cols(line)
-  local t = {}
-  for field in (line .. "  "):gmatch("(.-)  +") do
-    t[#t + 1] = field
-  end
-  return t
-end
-
--- pane_id -> running command. The --json output omits the command, so read the
--- table (--state --command), whose columns are: PANE_ID TYPE TITLE COMMAND CWD ...
-local function pane_commands()
-  local out = vim.system({ "zellij", "action", "list-panes", "--state", "--command" }):wait()
-  local cmds = {}
-  if out.code == 0 then
-    for line in (out.stdout or ""):gmatch("[^\n]+") do
-      local f = split_cols(line)
-      if f[1] and f[1] ~= "PANE_ID" then
-        cmds[f[1]] = f[4]
-      end
-    end
-  end
-  return cmds
-end
-
--- All non-floating terminal panes in the session except nvim's own pane.
+-- Other terminal panes in nvim's *current tab* (excludes plugins, floating,
+-- suppressed and exited panes, plus nvim's own pane). Scoping to the current tab
+-- keeps the picker short even with many tabs/panes open. The --json output also
+-- carries `pane_command` directly, so no second `list-panes` call is needed.
 local function candidate_panes()
-  local out = vim.system({ "zellij", "action", "list-panes", "--json", "--all" }):wait()
+  local out = vim.system({ "zellij", "action", "list-panes", "--json" }):wait()
   if out.code ~= 0 then
     return {}
   end
@@ -71,15 +49,34 @@ local function candidate_panes()
   if not ok then
     return {}
   end
-  local cmds = pane_commands()
   local self_id = tonumber(vim.env.ZELLIJ_PANE_ID) -- reliably set inside zellij
+  -- nvim's tab = the tab containing nvim's own pane. (list-panes spans all tabs;
+  -- there's no per-tab query flag, so we filter on tab_id ourselves.)
+  local my_tab
+  for _, p in ipairs(panes or {}) do
+    if self_id and p.id == self_id then
+      my_tab = p.tab_id
+      break
+    end
+  end
   local res = {}
   for _, p in ipairs(panes or {}) do
-    if not p.is_plugin and not p.is_floating and not p.is_suppressed and not p.exited and not (self_id and p.id == self_id) then
-      local pid = "terminal_" .. p.id
+    if
+      not p.is_plugin
+      and not p.is_floating
+      and not p.is_suppressed
+      and not p.exited
+      and not (self_id and p.id == self_id)
+      and (my_tab == nil or p.tab_id == my_tab) -- same tab (fallback: all, if self not found)
+    then
+      -- pane_command is only sometimes present in the JSON; fall back to the title.
+      local cmd = p.pane_command
+      if cmd == nil or cmd == vim.NIL then
+        cmd = nil
+      end
       res[#res + 1] = {
-        id = pid,
-        label = string.format("[%s] %s — %s", str(p.tab_name), cmds[pid] or "?", str(p.title)),
+        id = "terminal_" .. p.id,
+        label = cmd and string.format("%s — %s", cmd, str(p.title)) or str(p.title),
       }
     end
   end

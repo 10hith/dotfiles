@@ -18,6 +18,11 @@ require("lazy").setup({
   spec = {
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- LazyVim extras must come after lazyvim.plugins and before your own plugins
+    -- (LazyVim enforces this import order). Python: basedpyright + ruff + dap +
+    -- neotest + venv-selector. basedpyright is selected via vim.g.lazyvim_python_lsp
+    -- in config/options.lua.
+    { import = "lazyvim.plugins.extras.lang.python" },
     -- import/override with your plugins
     { import = "plugins" },
   },

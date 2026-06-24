@@ -119,15 +119,26 @@ vim.g.lazyvim_python_ruff = "ruff" -- default; "ruff_lsp" selects the old LSP
 
 ### 3b. Turn on the extra
 
-Create `~/.config/nvim/lua/plugins/python.lua`. (Using a file — instead of `:LazyExtras` —
-keeps it trackable in this dotfiles repo.)
+Add the extra's import to the lazy.nvim spec in `~/.config/nvim/lua/config/lazy.lua`.
+It **must** sit after `lazyvim.plugins` and before your own `{ import = "plugins" }` —
+LazyVim enforces this order and warns at startup otherwise ("The order of your
+`lazy.nvim` imports is incorrect"). Importing an extra from a file under `lua/plugins/`
+places it *after* your own plugins and triggers that warning, so enable it here instead:
 
 ```lua
-return {
-  -- Enable LazyVim's Python language extra (basedpyright + ruff + dap + neotest + venv).
-  { import = "lazyvim.plugins.extras.lang.python" },
-}
+require("lazy").setup({
+  spec = {
+    { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+    -- Python language extra: basedpyright + ruff + dap + neotest + venv-selector.
+    { import = "lazyvim.plugins.extras.lang.python" },
+    { import = "plugins" }, -- your own plugins come last
+  },
+  -- ...rest of the starter's setup table unchanged...
+})
 ```
+
+(Alternative: `:LazyExtras` toggles extras via `lazyvim.json`, which is also trackable —
+but editing `lazy.lua` keeps the whole spec explicit in one tracked file.)
 
 ---
 
@@ -184,13 +195,13 @@ a fresh nvim, or also use Method B (which is per-project automatically).
 ### Method B (optional — pins basedpyright per project root)
 
 LSP-only, but project-aware: basedpyright starts once per project root, and this picks the
-`.venv` relative to that root each time. Safe to use alongside Method A. Merge into the
-`return { ... }` table in `~/.config/nvim/lua/plugins/python.lua`:
+`.venv` relative to that root each time. Safe to use alongside Method A. The extra's import
+already lives in `lazy.lua` (Step 3b); this is a plain plugin override, so create
+`~/.config/nvim/lua/plugins/python.lua` with **only** the lspconfig override below — do
+**not** add the extras import here, or you'll re-trigger the import-order warning:
 
 ```lua
 return {
-  { import = "lazyvim.plugins.extras.lang.python" },
-
   -- Point basedpyright at the project's .venv automatically (per project root).
   {
     "neovim/nvim-lspconfig",
@@ -249,6 +260,45 @@ nvim .                # .venv auto-activates; basedpyright resolves imports
 
 Without a `.venv` present, basedpyright falls back to the system `python3` and will flag
 third-party imports as unresolved — that's expected; create the venv.
+
+---
+
+## Using flash.nvim (fast on-screen jumps)
+
+**flash.nvim** ships with LazyVim — nothing to install. It lets you jump anywhere on
+screen by typing a few characters and then a one-key label. The override file
+`~/.config/nvim/lua/plugins/flash.lua` is currently a **no-op** (every line commented out),
+so flash runs with LazyVim's defaults below.
+
+### Default keymaps (LazyVim)
+
+| Key | Modes | Action |
+|-----|-------|--------|
+| `s` | normal, visual, operator | **Flash jump** — type 2 chars, then press the label to teleport there |
+| `S` | normal, visual, operator | **Flash Treesitter** — label + select syntax nodes (functions, blocks, args) |
+| `r` | operator-pending | **Remote Flash** — run an operator at a remote spot (e.g. `yr` to yank elsewhere, cursor returns) |
+| `R` | operator, visual | **Treesitter Search** — search + treesitter selection combined |
+| `<c-s>` | command-line / search | **Toggle Flash** while typing a `/` or `?` search |
+| `<c-space>` | normal, visual, operator | Treesitter incremental selection (`<c-space>` grow, `<bs>` shrink) |
+
+### Everyday use
+
+- **Jump:** press `s`, type the 2 chars before where you want to land, then the highlighted
+  label. With one match it jumps immediately.
+- **Operators:** flash works after operators — `ds<char><label>` deletes to a far spot,
+  `ys` / `cs` / `=s` likewise. `r` lets the operator act remotely without moving the cursor.
+- **f / F / t / T are enhanced** by flash's `char` mode (on by default): after `f`, labels
+  appear so you can reach *any* matching char on the line, and `;` / `,` repeat as usual.
+- **Search:** start a normal search with `/`, and flash labels the matches — press a label to
+  jump straight to one. Use `<c-s>` mid-search to toggle flash on/off.
+
+### Customizing (uncomment the override)
+
+To make flash labels **persist on every `/` search** (instead of toggling with `<c-s>`),
+uncomment the block in `lua/plugins/flash.lua` — that sets `modes.search.enabled = true`.
+Uncommenting the `keys` table lets you remap any of the above; uncommenting
+`char.jump_labels = true` adds labels to `f`/`t` immediately. Restart nvim (or `:Lazy reload
+flash.nvim`) after editing.
 
 ---
 
