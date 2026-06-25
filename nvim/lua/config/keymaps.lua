@@ -175,6 +175,20 @@ if vim.g.vscode then
   vim.keymap.set("n", "S", function()
     require("vscode").action("flash-vscode.jump.treesitterSelection")
   end, { desc = "Flash Treesitter (VSCode)" })
+
+  -- <leader><leader> (space space) opens VSCode's quick open file browser.
+  vim.keymap.set("n", "<leader><leader>", function()
+    require("vscode").action("workbench.action.quickOpen")
+  end, { desc = "Quick Open (VSCode)" })
+
+  -- <leader>e opens VSCode's file explorer. Defined here in neovim (rather than
+  -- as a `space e` chord in VSCode's keybindings.json) so that space only acts
+  -- as leader when the editor is focused — a VSCode `space e` chord armed
+  -- everywhere makes space hang waiting for a chord in quick open / the
+  -- secondary bar, and also swallows the leader before vscode-neovim sees it.
+  vim.keymap.set("n", "<leader>e", function()
+    require("vscode").action("workbench.view.explorer")
+  end, { desc = "Explorer (VSCode)" })
 end
 
 -- Replace LazyVim's default <leader>ss (LSP document symbols) with
