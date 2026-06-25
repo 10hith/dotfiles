@@ -164,9 +164,10 @@ vim.keymap.set("n", "6", function()
   vim.cmd("normal! zz")
 end, { desc = "Previous # %% cell, centered", silent = true })
 
--- VSCode-neovim only: override LazyVim/flash.nvim's "s"/"S" with VSCode commands.
--- `vim.g.vscode` is only set when running inside the vscode-neovim extension,
--- so plain nvim keeps flash.nvim's "s"/"S" untouched.
+-- VSCode-neovim only: bind "9"/"0" to the flash-vscode extension's commands
+-- (mirrors flash.nvim's "9"/"0" in lua/plugins/flash.lua, which only fires in
+-- standalone nvim since flash.nvim never receives real keystrokes in VSCode).
+-- `vim.g.vscode` is only set when running inside the vscode-neovim extension.
 if vim.g.vscode then
   vim.keymap.set("n", "s", function()
     require("vscode").action("flash-vscode.start")
@@ -175,6 +176,14 @@ if vim.g.vscode then
     require("vscode").action("flash-vscode.jump.treesitterSelection")
   end, { desc = "Flash Treesitter (VSCode)" })
 end
+
+-- Replace LazyVim's default <leader>ss (LSP document symbols) with
+-- Cmd+Shift+O, so symbol search lives on a single chord instead of a leader
+-- sequence. Delete the old mapping first so muscle memory doesn't linger.
+pcall(vim.keymap.del, "n", "<leader>ss")
+vim.keymap.set("n", "<D-S-o>", function()
+  Snacks.picker.lsp_symbols()
+end, { desc = "Goto Symbol" })
 
 local ok, wk = pcall(require, "which-key")
 if ok then
