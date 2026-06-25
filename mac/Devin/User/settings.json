@@ -1,0 +1,220 @@
+{
+    // "terminal.external.osxExec": "WezTerm.app",
+    // Editor settings
+    "editor.wordWrap": "on",
+    "editor.minimap.enabled": false,
+    "editor.foldingStrategy": "indentation",
+    "editor.formatOnSave": true,
+    "editor.fontSize": 16,
+    "editor.copyWithSyntaxHighlighting": false,
+    "editor.tabCompletion": "on",
+    "editor.tabFocusMode": false,
+    "editor.inlineCompletionsAccessibilityVerbose": true,
+    "diffEditor.codeLens": true,
+    // cursor customizations
+    "editor.cursorSmoothCaretAnimation": "explicit",
+    "editor.cursorBlinking": "smooth",
+    "editor.cursorWidth": 2,
+    "editor.smoothScrolling": true,
+    "workbench.list.smoothScrolling": true,
+    "terminal.integrated.smoothScrolling": true,
+    // terminal settings
+    "terminal.external.osxExec": "Ghostty.app",
+    "terminal.integrated.fontSize": 17,
+    "terminal.integrated.sendKeybindingsToShell": false,
+    "terminal.integrated.commandsToSkipShell": [
+        "workbench.action.terminal.focusPrevious",
+        "workbench.action.terminal.focusNext",
+        "workbench.action.quickOpen",
+        "workbench.action.nextAuxiliaryBarView"
+    ],
+    // python settings
+    "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+    "python.languageServer": "None",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}"
+    ],
+    // Vim settings
+    "vim.leader": "<space>",
+    "vim.timeout": 300,
+    "vim.incsearch": true,
+    // To improve performance
+    "extensions.experimental.affinity": {
+        "vscodevim.vim": 1,
+        "asvetliakov.vscode-neovim": 1
+    },
+    // "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.surround": true,
+    "vim.foldfix": true,
+    "vim.useSystemClipboard": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "y",
+                "l"
+            ],
+            "commands": [
+                "github.copyVscodeDevLink"
+            ]
+        },
+        {
+            "before": [
+                "H"
+            ],
+            "after": [
+                "{"
+            ]
+        },
+        {
+            "before": [
+                "L"
+            ],
+            "after": [
+                "L",
+                "z",
+                "z"
+            ]
+        },
+        {
+            "before": [
+                "ctrl+j"
+            ],
+            "commands": [
+                ":reg"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "ctrl+m"
+            ],
+            "commands": [
+                ":marks"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "K"
+            ],
+            "commands": [
+                "lineBreakInsert"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "4"
+            ],
+            "commands": [
+                ":/# %%",
+                ":normal! zz"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "6"
+            ],
+            "after": [
+                "?",
+                "# ",
+                "%",
+                "%",
+                "<CR>",
+                "z",
+                "z"
+            ],
+            "silent": true
+        },
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
+        },
+    ],
+    "vim.operatorPendingModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "'"
+            ],
+            "after": [
+                "`"
+            ]
+        }
+    ],
+    "terminal.integrated.macOptionIsMeta": true,
+    // "vim.handleKeys": {
+    //     "<C-p>": false,
+    //     "<C-;>": true,
+    //     "<C-a>": false,
+    //     "<C-c>": false,
+    //     "<C-f>": false,
+    //     "<C-w>": false,
+    // },
+    "workbench.activityBar.location": "top",
+    "workbench.sideBar.location": "left",
+    "pgsql.serverGroups": [
+        {
+            "name": "Servers",
+            "id": "240604AC-F8B6-4B2B-9E42-3FDF567F2D56",
+            "isDefault": true
+        }
+    ],
+    "workbench.colorTheme": "Catppuccin Macchiato",
+    // SQL customizations
+    "[sql]": {
+        "editor.formatOnSave": false
+    },
+    "pgsql.connections": [
+        {
+            "id": "7828B466-E427-420C-B3FE-0BAFD9FB7D43",
+            "groupId": "240604AC-F8B6-4B2B-9E42-3FDF567F2D56",
+            "authenticationType": "SqlLogin",
+            "connectTimeout": 15,
+            "applicationName": "vscode-pgsql",
+            "clientEncoding": "utf8",
+            "sslmode": "require",
+            "sshSavePassword": true,
+            "savePassword": true,
+            "sslRootCertMode": "none",
+            "server": "aws-0-eu-west-2.pooler.supabase.com",
+            "user": "postgres.pqsvhidiwiydgshynfib",
+            "password": "",
+            "profileName": "ordelo, <default> (postgres.pqsvhidiwiydgshynfib)",
+            "expiresOn": 0,
+            "sshPassword": ""
+        }
+    ],
+    "jupyter.askForKernelRestart": false,
+    "windsurf.terminal.cascadeProfile.osx": "managed",
+    "explorer.confirmDelete": false,
+    "git.autofetch": true,
+    "windsurf.acp.enabledAgents": {
+        "devin-cloud": true
+    },
+    "windsurf.acp.agentPreferences": {
+        "devin-cloud": {
+            "org_id": "org-222631fe60db4f2bb08980bcac0372ea",
+            "devin_version": "devin-gpt-5-5"
+        }
+    },
+    "editor.accessibilitySupport": "on",
+    "git.confirmSync": false,
+    "terminal.integrated.showCommandHint": false,
+    "claudeCode.preferredLocation": "panel",
+    "devin.terminal.cascadeProfile.osx": "managed",
+    "devin.acp.enabledAgents": {
+        "devin-cloud": true
+    },
+    "devin.acp.agentPreferences": {
+        "devin-cloud": {
+            "org_id": "org-222631fe60db4f2bb08980bcac0372ea",
+            "devin_version": "devin-gpt-5-5"
+        }
+    }
+}

@@ -1,0 +1,186 @@
+// Place your key bindings in this file to override the defaults
+[
+    // quick open navigation
+    {
+        "key": "cmd+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "cmd+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "^+j",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+    },
+    {
+        "key": "^+k",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+    },
+    // editor pane navigation
+    {
+        "key": "alt+h",
+        "command": "workbench.action.navigateLeft"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.navigateRight"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.navigateUp"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.navigateDown"
+    },
+    // terminal navigation
+    {
+        "key": "alt-k",
+        "command": "workbench.action.terminal.focusPrevious",
+        "when": "terminalFocus"
+    },
+    {
+        "key": "alt-j",
+        "command": "workbench.action.terminal.focusNext",
+        "when": "terminalFocus"
+    },
+    // terminal context copy
+    {
+        "key": "cmd+l t",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.terminal.toggleTerminal",
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "\u001B[200~cat << 'EOF'\u000A# VS Code Context\u000A\u000AFile:${file}:${lineNumber}\u000A\u000A```\u000A${selectedText}\u000A```\u000AEOF\u000A\u001B[201~"
+                    }
+                }
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    {
+        "key": "cmd+l r",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                {
+                    "command": "workbench.action.terminal.sendSequence",
+                    "args": {
+                        "text": "${selectedText}\n"
+                    }
+                },
+            ]
+        },
+        "when": "editorTextFocus && editorHasSelection"
+    },
+    // terminal toggle - mac specific
+    {
+        "key": "ctrl+'",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "cmd+l l",
+        "command": "windsurf.prioritized.chat.open",
+        "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
+    },
+    {
+        "key": "cmd+l",
+        "command": "-windsurf.prioritized.chat.open",
+        "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
+    },
+    {
+        "key": "ctrl+oem_1",
+        "command": "workbench.action.toggleMaximizedAuxiliaryBar",
+        // "when": "auxiliaryBarVisible && terminal.visible"
+        "when": "terminal.visible"
+    },
+    // Jupyter navigation
+    {
+        "key": "ctrl+oem_1 k",
+        "command": "jupyter.runallcellsabove.palette",
+        "when": "isWorkspaceTrusted && editorTextFocus && editorLangId == 'python'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "pgsql.runCurrentStatement",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+oem_1 r",
+        "command": "jupyter.restartkernel",
+        "when": "isWorkspaceTrusted && jupyter.interactive.canRestartNotebookKernel || isWorkspaceTrusted && jupyter.notebookeditor.canrestartNotebookkernel && notebookKernel =~ /^ms-toolsai.jupyter\\//"
+    },
+    // END of ondemand configs
+    {
+        "key": "shift+cmd+e",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "jupyter.runcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && editorLangId == 'python'"
+    },
+    {
+        "key": "ctrl+shift+enter",
+        "command": "-jupyter.runAndDebugCell",
+        "when": "isWorkspaceTrusted && jupyter.ispythonnotebook && !notebookKernel && notebookCellType == 'code' || isWorkspaceTrusted && jupyter.ispythonnotebook && notebookCellType == 'code' && notebookKernel =~ /^ms-toolsai.jupyter\\// && resource not in 'jupyter.notebookeditor.debugDocuments'"
+    },
+    {
+        "key": "cmd+enter",
+        "command": "jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !isCompositeNotebook && !notebookEditorFocused"
+    },
+    {
+        "key": "ctrl+enter",
+        "command": "-jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !isCompositeNotebook && !notebookEditorFocused"
+    },
+    {
+        "key": "shift+cmd+g",
+        "command": "workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
+    },
+    {
+        "key": "shift+enter",
+        "command": "workbench.action.terminal.sendSequence",
+        "args": {
+            "text": "\u001b\r"
+        },
+        "when": "terminalFocus"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-workbench.view.explorer",
+        "when": "viewContainer.workbench.view.explorer.enabled"
+    }
+]

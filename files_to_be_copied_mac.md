@@ -11,6 +11,9 @@
 ~/Library/Application Support/Windsurf/User/settings.json mac/Windsurf/User/settings.json
 ~/Library/Application Support/Windsurf/User/keybindings.json mac/Windsurf/User/keybindings.json
 
+~/Library/Application Support/Devin/User/settings.json mac/Devin/User/settings.json
+~/Library/Application Support/Devin/User/keybindings.json mac/Devin/User/keybindings.json
+
 # Zed: not yet configured on Mac — uncomment once installed
 # ~/Library/Application Support/Zed/settings.json mac/Zed/settings.json
 # ~/Library/Application Support/Zed/keymap.json mac/Zed/keymap.json
