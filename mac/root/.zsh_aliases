@@ -27,6 +27,10 @@ alias charm='open -a "PyCharm"'
 alias idea='open -a "IntelliJ IDEA"'
 alias dbeaver='open -a "DBeaver"'
 
+# ── Automation (macOS) ────────────────────────────────────────────────────────
+# Keep the Citrix session from idling out (Ctrl+C to stop). See mac/automation/README.md
+alias citrix-keep-alive='caffeinate -d uv run ~/dotfiles/mac/automation/keep_active.py'
+
 # ── Git — basics ──────────────────────────────────────────────────────────────
 alias gs='git status'
 alias ga='git add'

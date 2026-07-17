@@ -81,6 +81,13 @@ command = /bin/zsh -l -c zellij
 shell-integration = zsh
 shell-integration-features = cursor,sudo,title
 
+# --- Quick Terminal ---
+# Default quick-terminal height is too short for zellij's min layout size
+# (needs 24 rows; default gave ~13), so "Open the Quick Terminal" shortcut
+# actions would launch zellij/spf but it'd abort with "Terminal size too
+# small". 60% of screen height gives plenty of room.
+quick-terminal-size = 60%
+
 # --- macOS / input ---
 # Left Option = Alt so zellij's Alt-h/j/k/l bindings fire; right Option keeps
 # native macOS composed keys (matches wezterm send_composed_key_when_*).

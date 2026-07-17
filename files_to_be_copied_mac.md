@@ -45,6 +45,7 @@ Copy below to mac/root
 ~/.zsh_aliases
 ~/.zsh_functions
 ~/.zsh_plugins
+# ~/.zsh_local — machine-specific secrets, deliberately NOT synced (see .zshrc)
 ~/.justfile
 ~/.inputrc
 

@@ -26,7 +26,8 @@
         "workbench.action.terminal.focusPrevious",
         "workbench.action.terminal.focusNext",
         "workbench.action.quickOpen",
-        "workbench.action.nextAuxiliaryBarView"
+        "workbench.action.nextAuxiliaryBarView",
+        "workbench.action.toggleMaximizedAuxiliaryBar"
     ],
     // python settings
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",

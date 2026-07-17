@@ -103,10 +103,9 @@
         "when": "!terminalFocus && !windsurf.deepwikiPanel.focused"
     },
     {
-        "key": "ctrl+oem_1",
+        "key": "ctrl+shift+'",
         "command": "workbench.action.toggleMaximizedAuxiliaryBar",
-        // "when": "auxiliaryBarVisible && terminal.visible"
-        "when": "terminal.visible"
+        "when": "auxiliaryBarVisible || terminal.visible"
     },
     // Jupyter navigation
     {
