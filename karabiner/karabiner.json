@@ -511,6 +511,28 @@
                         ]
                     },
                     {
+                        "description": "Right Command + Left Shift + R to Right Click",
+                        "manipulators": [
+                            {
+                                "type": "basic",
+                                "from": {
+                                    "key_code": "r",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "right_command",
+                                            "left_shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "pointing_button": "button2"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
                         "description": "Use Alt+Tab as App Switcher (like Windows)",
                         "manipulators": [
                             {
