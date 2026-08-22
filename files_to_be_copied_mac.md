@@ -70,7 +70,6 @@ Copy below to kanata
 # dotfiles/kanata/ and re-deploy with sudo cp.
 
 Copy below to cloudflared
-~/.cloudflared/config.yml
 ~/.cloudflared/*.sh
 
 Copy below to claude
