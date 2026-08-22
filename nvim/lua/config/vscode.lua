@@ -34,3 +34,10 @@ vim.keymap.set("n", "<leader>e", function()
   require("vscode").action("workbench.view.explorer")
 end, { desc = "Explorer (VSCode)" })
 
+-- gr mirrors LazyVim's default LSP "references" keymap. Under vscode-neovim
+-- neovim's LSP never attaches (VSCode provides LSP), so LazyVim's gr is inert
+-- here — route it to VSCode's "Go to References" peek view instead.
+vim.keymap.set("n", "gr", function()
+  require("vscode").action("editor.action.referenceSearch.trigger")
+end, { desc = "Goto References (VSCode)" })
+
