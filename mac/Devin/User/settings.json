@@ -32,18 +32,26 @@
     // python settings
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
     "python.languageServer": "None",
-    "python.analysis.extraPaths": [
-        "${workspaceFolder}"
-    ],
-    // Vim settings
-    "vim.leader": "<space>",
-    "vim.timeout": 300,
-    "vim.incsearch": true,
     // To improve performance
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1,
         "asvetliakov.vscode-neovim": 1
     },
+    "terminal.integrated.macOptionIsMeta": true,
+    // "vim.handleKeys": {
+    //     "<C-p>": false,
+    //     "<C-;>": true,
+    //     "<C-a>": false,
+    //     "<C-c>": false,
+    //     "<C-f>": false,
+    //     "<C-w>": false,
+    // },
+    "workbench.activityBar.location": "top",
+    "workbench.sideBar.location": "left",
+    // Vim settings
+    "vim.leader": "<space>",
+    "vim.timeout": 300,
+    "vim.incsearch": true,
     // "vim.useCtrlKeys": true,
     "vim.hlsearch": true,
     "vim.surround": true,
@@ -148,17 +156,6 @@
             ]
         }
     ],
-    "terminal.integrated.macOptionIsMeta": true,
-    // "vim.handleKeys": {
-    //     "<C-p>": false,
-    //     "<C-;>": true,
-    //     "<C-a>": false,
-    //     "<C-c>": false,
-    //     "<C-f>": false,
-    //     "<C-w>": false,
-    // },
-    "workbench.activityBar.location": "top",
-    "workbench.sideBar.location": "left",
     "pgsql.serverGroups": [
         {
             "name": "Servers",
@@ -202,6 +199,9 @@
         "devin-cloud": {
             "org_id": "org-222631fe60db4f2bb08980bcac0372ea",
             "devin_version": "devin-gpt-5-5"
+        },
+        "devin-cli": {
+            "model": "kimi-k3-high"
         }
     },
     "editor.accessibilitySupport": "on",
@@ -216,6 +216,9 @@
         "devin-cloud": {
             "org_id": "org-222631fe60db4f2bb08980bcac0372ea",
             "devin_version": "devin-gpt-5-5"
+        },
+        "devin-cli": {
+            "model": "kimi-k3-high"
         }
     }
 }

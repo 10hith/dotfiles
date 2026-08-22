@@ -1,6 +1,8 @@
 # Ghostty Config
 
-Ghostty terminal config with coolnight palette, BlexMono Nerd Font, zellij auto-launch, and an optional cursor-trail shader.
+Ghostty terminal config with coolnight palette, BlexMono Nerd Font, and an optional cursor-trail shader.
+
+The multiplexer auto-start lives in `mac/root/.zshrc` (currently `herdr`), not here — Ghostty just opens an interactive login zsh, so every zsh (Ghostty, VSCode terminal, wezterm, ssh) behaves the same.
 
 ## Deploy (Mac)
 

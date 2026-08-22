@@ -81,6 +81,17 @@
         },
         "when": "editorTextFocus && editorHasSelection"
     },
+    // flash-vim
+    {
+        "key": "s",
+        "command": "flash-vscode.startSelection",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
+    {
+        "key": "shift+s",
+        "command": "flash-vscode.jump.treesitterSelection",
+        "when": "editorTextFocus && neovim.mode == normal"
+    },
     // terminal toggle - mac specific
     {
         "key": "ctrl+'",
@@ -181,5 +192,18 @@
         "key": "shift+cmd+e",
         "command": "-workbench.view.explorer",
         "when": "viewContainer.workbench.view.explorer.enabled"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-fastapi-vscode.searchPathOperations"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "workbench.view.explorer"
+    },
+    {
+        "key": "cmd+b",
+        "command": "-workbench.action.toggleAuxiliaryBar",
+        "when": "workbenchMode == 'windsurf-agent-window'"
     }
 ]

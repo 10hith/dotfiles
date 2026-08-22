@@ -22,6 +22,7 @@ This script reads `files_to_be_copied.md` and copies the listed configuration fi
 - `Zed/` - Zed editor settings and keymap
 - `wezterm/` - WezTerm terminal configuration (`.wezterm.lua`)
 - `ghostty/` - Ghostty terminal config (`config`, symlinked to `~/.config/ghostty/config` on Mac). See `ghostty/README.md` for the cursor-trail shader setup.
+- `herdr/` - herdr terminal workspace manager config (`config.toml`, symlinked to `~/.config/herdr/config.toml` on Mac). Only `config.toml` is tracked; the rest of `~/.config/herdr/` is runtime state (`session.json`, logs, sockets). herdr is the multiplexer auto-started by `mac/root/.zshrc` (it replaced zellij; the old block is kept commented there).
 - `root/` - Shell configuration (`.bashrc`, sanitized of secrets)
 - `cloudflared/` - Cloudflare tunnel configuration
 - `claude/` - Claude Code configuration (settings, hooks, commands, output-styles)

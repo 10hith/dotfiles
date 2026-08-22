@@ -75,9 +75,12 @@ copy-on-select = clipboard
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1.5
 
-# --- Shell / zellij ---
-# Auto-launch zellij in a login zsh, like wezterm/.wezterm.lua:29
-command = /bin/zsh -l -c zellij
+# --- Shell / multiplexer ---
+# No `command` override: Ghostty launches an interactive login zsh, which
+# sources ~/.zshrc — that's where the multiplexer (herdr) auto-starts, so the
+# same behaviour applies to every zsh (VSCode terminal, wezterm, ssh, ...).
+# `zsh -l -c <cmd>` is non-interactive and skips ~/.zshrc, hence not used.
+# command = /bin/zsh -l -c zellij
 shell-integration = zsh
 shell-integration-features = cursor,sudo,title
 
@@ -96,6 +99,31 @@ macos-option-as-alt = left
 # Convenience keys mirroring wezterm's CTRL|SHIFT R / CTRL|SHIFT Z
 keybind = super+shift+r=reload_config
 keybind = super+shift+z=text:zellij\n
+
+# Hand cmd+1..9 to herdr (switch_workspace = "cmd+1..9" in
+# ~/.config/herdr/config.toml). Ghostty binds these to goto_tab/last_tab by
+# default in BOTH the logical (super+N) and physical (super+digit_N) form, so
+# both must be unbound or the keys never reach the app. herdr owns tabs now,
+# so losing Ghostty's native tab switching costs nothing.
+# ctrl+1..9 (herdr focus_agent) needs no unbind — Ghostty doesn't claim it.
+keybind = super+1=unbind
+keybind = super+2=unbind
+keybind = super+3=unbind
+keybind = super+4=unbind
+keybind = super+5=unbind
+keybind = super+6=unbind
+keybind = super+7=unbind
+keybind = super+8=unbind
+keybind = super+9=unbind
+keybind = super+digit_1=unbind
+keybind = super+digit_2=unbind
+keybind = super+digit_3=unbind
+keybind = super+digit_4=unbind
+keybind = super+digit_5=unbind
+keybind = super+digit_6=unbind
+keybind = super+digit_7=unbind
+keybind = super+digit_8=unbind
+keybind = super+digit_9=unbind
 
 # --- Misc ---
 scrollback-limit = 10000000

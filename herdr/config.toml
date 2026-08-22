@@ -2,14 +2,8 @@ onboarding = false
 
 [keys]
 prefix = ";"
-# Indexed bindings must end in 1..9 (the digit is part of the chord, not a
-# follow-up keystroke), so `prefix+a` then a number isn't possible.
-# herdr's docs call ctrl+alt the one modifier family left free by every
-# terminal/OS; cmd/super is explicitly "depends on your terminal". So ctrl+alt
-# is the primary for workspaces, with cmd kept as a second binding (needs the
-# super+N / super+digit_N unbinds in ghostty/config, else Ghostty eats them for
-# goto_tab). ctrl+1..9 is unclaimed by Ghostty and arrives via the kitty
-# keyboard protocol.
+open_notification_target = ""   # free up prefix+o
+last_pane = "prefix+o"
 focus_agent = "ctrl+1..9"
 switch_workspace = ["ctrl+alt+1..9", "cmd+1..9"]
 

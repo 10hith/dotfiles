@@ -1,24 +1,10 @@
 return {
-  "neovim/nvim-lspconfig",
-  opts = {
-    servers = {
-      basedpyright = {
-        settings = {
-          basedpyright = {
-            analysis = {
-              typeCheckingMode = "off",
-              diagnosticMode = "openFilesOnly",
-              reportMissingImports = "none",
-              reportMissingModuleSource = "none",
-              reportUnknownVariableType = "none",
-              reportUnknownMemberType = "none",
-              reportUnknownParameterType = "none",
-              reportUnknownArgumentType = "none",
-              reportMissingParameterType = "none",
-              reportMissingTypeArgument = "none",
-            },
-          },
-        },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      diagnostics = {
+        virtual_text = false,
+        underline = false, -- uncomment to remove squiggly lines too
       },
     },
   },

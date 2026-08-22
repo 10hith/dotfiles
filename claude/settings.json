@@ -2,7 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "sonnet",
   "hooks": {
     "SessionStart": [
       {
@@ -37,7 +37,7 @@
   "sandbox": {
     "enabled": false
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "advisorModel": "opus",
   "plansDirectory": ".plans",
   "tui": "fullscreen",
@@ -46,8 +46,41 @@
     "mode": "hold"
   },
   "theme": "dark",
+  "editorMode": "vim",
   "agentPushNotifEnabled": true,
   "skipAutoPermissionPrompt": true,
+  "autoMode": {
+    "soft_deny": [
+      "$defaults",
+      "Bash(*/notebooks/prod_deployment_checker.py:*)",
+      "Database writes (update/delete) against ordelo_config, restaurant_master, rider_master, delivery_dispatch tables when targeting prod-mode records"
+    ],
+    "environment": [
+      "### Org-wide",
+      "**Organization**: Byteloop-AI-Limited (GitHub org; repos include OrdeloAgent, restaurant-agents, elai, pricing-service, payment-service, restaurant-frontend, bnat, sfcs, sfcs-ui, and others)",
+      "**Cloud provider(s)**: AWS (Secrets Manager, per config/aws_setting.py and 'aws secretsmanager' marker)",
+      "**Repository visibility**: private (Byteloop-AI-Limited/OrdeloAgent — confirmed via gh); note Byteloop-AI-Limited/elai-menu-images is PUBLIC",
+      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Secrets management**: AWS Secrets Manager (config/aws_setting.py), with local fallback files .env_ordelo_agent, .env_ssm, env.json (gitignored)",
+      "**Default / protected branches**: default branch `dev`; no protected branches listed via gh (rulesets not queryable here — non-empty rulesets status is unresolved, do not assume unprotected)",
+      "**CI/CD deploy targets**: Docker (start.sh — gunicorn + uvicorn worker); prod/test switching via notebooks/prod_deployment_checker.py and WABA webhook updates",
+      "**Network posture**: None configured",
+      "**Source control**: GitHub — trusted repo Byteloop-AI-Limited/OrdeloAgent and its remote(s); sibling org repos (restaurant-agents, elai, pricing-service, etc.) seen in gh org listing and other local checkouts but not corroborated as in-scope for this project — treat as candidates only",
+      "**Trusted internal domains**: None configured",
+      "**Trusted cloud buckets**: None configured",
+      "**Key internal services**: Supabase/PostgreSQL (client_ordelo REST client + AsyncPostgresSaver checkpointer); WhatsApp Business API (WABA) via pywa",
+      "**Internal package registry**: None configured",
+      "**Sensitive data locations & audiences**: .env*, .env copy, env_with_key.json, env.json, .env_openrouter, .agents/skills/huashu-design/.env.example, upload_secrets.sh, notebooks/prod_deployment_checker.py, notebooks/db_queries/non_prod_init.sql — credential/config files; customer_master, rider_master, restaurant_master DB tables hold personal data (names, addresses, phone numbers) — share only with cleared engineering audiences",
+      "**Data retention / declassification**: None configured",
+      "**Sensitive remote targets**: any host/namespace/table containing `prod` or `production` as a whole segment — e.g. prod Supabase/DB config, notebooks/prod_deployment_checker.py --mode prod, WABA prod webhook",
+      "**Protected deployment namespaces / environments**: prod/production restaurant configs switched via notebooks/prod_deployment_checker.py (--mode prod), and prod webhook/DB rows in ordelo_config, restaurant_master, rider_master",
+      "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
+      "### User-specific",
+      "**Primary use of Claude Code**: software development — AI-powered food delivery orchestration backend (FastAPI, LangGraph, Supabase/Postgres, WhatsApp Business API)",
+      "**Trusted repo**: Byteloop-AI-Limited/OrdeloAgent (private) — this repo and its origin remote; routine work under this repo's own paths is in scope",
+      "**Org-specific CLIs**: uv (package manager, 2× this project), fd; gh (GitHub CLI) seen in cross-project usage"
+    ]
+  },
   "voiceEnabled": true,
   "vim": true
 }

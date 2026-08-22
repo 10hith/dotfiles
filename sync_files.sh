@@ -57,24 +57,14 @@ while IFS= read -r raw_line || [[ -n "$raw_line" ]]; do
   mapfile -d '' -t expanded < <(expand_pattern "$src")
 
   if ((${#expanded[@]} == 0)); then
-    if ((has_glob)); then
-      echo "Warning: no matches for pattern $src" >&2
-      continue
-    else
-      echo "Source not found: $src" >&2
-      exit 1
-    fi
+    echo "Warning: skipping missing source: $src" >&2
+    continue
   fi
 
   for source_path in "${expanded[@]}"; do
     if [[ ! -e "$source_path" ]]; then
-      if ((has_glob)); then
-        echo "Warning: skipping missing match $source_path" >&2
-        continue
-      else
-        echo "Source not found: $source_path" >&2
-        exit 1
-      fi
+      echo "Warning: skipping missing source: $source_path" >&2
+      continue
     fi
 
     if [[ "$source_path" == */cloudflared/run*.sh ]]; then

@@ -64,10 +64,17 @@ export PATH="$HOME/.local/bin:$PATH"
 export STARSHIP_CONFIG="$HOME/zsh/starship.toml"
 eval "$(starship init zsh)"
 
-# ── Auto-start Zellij ────────────────────────────────────────────────────────
-if [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
-    zellij
+# ── Auto-start multiplexer ───────────────────────────────────────────────────
+# herdr sets HERDR_PANE_ID inside its panes; ZELLIJ guard keeps a manually
+# started zellij session from spawning herdr in each of its panes.
+if [[ -z "$HERDR_PANE_ID" ]] && [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
+    herdr
 fi
+
+# Previous auto-start (revert by swapping the blocks):
+# if [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
+#     zellij
+# fi
 
 # ── Default editor ────────────────────────────────────────────────────────────
 export EDITOR=nvim

@@ -22,6 +22,10 @@
 
 # Ghostty: ~/.config/ghostty/config is a symlink → ghostty/config (no sync needed).
 
+# herdr: ~/.config/herdr/config.toml is a symlink → herdr/config.toml (no sync
+# needed). Only config.toml is tracked — the rest of ~/.config/herdr/ is runtime
+# state (session.json, herdr*.log, sockets, release-notes.json), so never glob it.
+
 # --- LaunchAgents (installed copies synced back to repo) ---
 
 Copy below to mac
@@ -48,6 +52,7 @@ Copy below to mac/root
 # ~/.zsh_local — machine-specific secrets, deliberately NOT synced (see .zshrc)
 ~/.justfile
 ~/.inputrc
+~/.vimrc
 
 Copy below to zsh
 ~/zsh/starship.toml
@@ -86,3 +91,8 @@ Copy below to claude/output-styles
 
 Copy below to nvim
 ~/.config/nvim/init.lua
+
+# ~/.local/bin/vim shims plain `vim` invocations to nvim (Apple's bundled
+# /usr/bin/vim lacks +clipboard, which broke herdr's edit_scrollback popup).
+Copy below to mac/local-bin
+~/.local/bin/vim

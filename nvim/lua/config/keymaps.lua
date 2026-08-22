@@ -6,7 +6,7 @@
 -- Operate on the visual selection (or current line in normal mode), prefixing a
 -- `# file:line` comment header:
 --   <leader>ay  copy it to the system clipboard
---   <leader>as  send it into another zellij pane (bracketed paste, no submit), then focus that pane
+--   <leader>as  send it into an agent window (bracketed paste, no submit), then focus that agent
 --   <leader>aS  same but submit (Enter) and stay in nvim
 local function ref(l1, l2)
   local file = vim.fn.expand("%:.") -- path relative to cwd
@@ -36,90 +36,84 @@ local function str(v)
   return tostring(v)
 end
 
--- Other terminal panes in nvim's *current tab* (excludes plugins, floating,
--- suppressed and exited panes, plus nvim's own pane). Scoping to the current tab
--- keeps the picker short even with many tabs/panes open. The --json output also
--- carries `pane_command` directly, so no second `list-panes` call is needed.
-local function candidate_panes()
-  local out = vim.system({ "zellij", "action", "list-panes", "--json" }):wait()
+-- Find a target herdr agent window. Search order: agents in the current tab,
+-- then agents elsewhere in the current workspace, then agents in any
+-- workspace. Always returns (at most) the first match in that tier — no
+-- picker, since herdr can have many agents across many workspaces.
+local function candidate_agents()
+  local out = vim.system({ "herdr", "agent", "list" }):wait()
   if out.code ~= 0 then
     return {}
   end
-  local ok, panes = pcall(vim.json.decode, out.stdout)
+  local ok, decoded = pcall(vim.json.decode, out.stdout)
   if not ok then
     return {}
   end
-  local self_id = tonumber(vim.env.ZELLIJ_PANE_ID) -- reliably set inside zellij
-  -- nvim's tab = the tab containing nvim's own pane. (list-panes spans all tabs;
-  -- there's no per-tab query flag, so we filter on tab_id ourselves.)
-  local my_tab
-  for _, p in ipairs(panes or {}) do
-    if self_id and p.id == self_id then
-      my_tab = p.tab_id
-      break
-    end
-  end
-  local res = {}
-  for _, p in ipairs(panes or {}) do
-    if
-      not p.is_plugin
-      and not p.is_floating
-      and not p.is_suppressed
-      and not p.exited
-      and not (self_id and p.id == self_id)
-      and (my_tab == nil or p.tab_id == my_tab) -- same tab (fallback: all, if self not found)
-    then
-      -- pane_command is only sometimes present in the JSON; fall back to the title.
-      local cmd = p.pane_command
-      if cmd == nil or cmd == vim.NIL then
-        cmd = nil
+  local agents = (decoded.result and decoded.result.agents) or {}
+  local self_pane = vim.env.HERDR_PANE_ID -- reliably set inside a herdr pane
+  local my_tab = vim.env.HERDR_TAB_ID
+  local my_workspace = vim.env.HERDR_WORKSPACE_ID
+
+  local function collect(predicate)
+    local res = {}
+    for _, a in ipairs(agents) do
+      if a.pane_id ~= self_pane and predicate(a) then
+        res[#res + 1] = a
       end
-      res[#res + 1] = {
-        id = "terminal_" .. p.id,
-        label = cmd and string.format("%s — %s", cmd, str(p.title)) or str(p.title),
-      }
     end
+    return res
   end
-  return res
+
+  local tier = collect(function(a)
+    return my_tab ~= nil and a.tab_id == my_tab
+  end)
+  if #tier == 0 then
+    tier = collect(function(a)
+      return my_workspace ~= nil and a.workspace_id == my_workspace
+    end)
+  end
+  if #tier == 0 then
+    tier = collect(function()
+      return true
+    end)
+  end
+  return tier
 end
 
--- Bracketed-paste `text` into pane_id. submit => send Enter and stay in nvim;
--- otherwise move focus to the target so you can finish the message there.
+local function describe(agent)
+  return string.format("%s — %s", str(agent.agent), str(agent.terminal_title_stripped))
+end
+
+-- Deliver `text` to the agent hosting pane_id. submit => atomically paste +
+-- Enter via `agent prompt` and stay in nvim; otherwise bracketed-paste the
+-- text (no submit) and focus that agent so you can finish the message there.
+-- `pane send-text` does not bracketed-paste on its own — embedded newlines
+-- get treated as separate Enter-submitted lines by the shell — so the
+-- non-submit path wraps the payload in paste-mode escapes itself.
 local function deliver(pane_id, text, submit)
-  vim.system({ "zellij", "action", "write-chars", "--pane-id", pane_id, "\27[200~" .. text .. "\27[201~" }):wait()
   if submit then
-    vim.system({ "zellij", "action", "write-chars", "--pane-id", pane_id, "\r" }):wait()
+    vim.system({ "herdr", "agent", "prompt", pane_id, text }):wait()
   else
-    vim.system({ "zellij", "action", "focus-pane-id", pane_id }):wait()
+    vim.system({ "herdr", "pane", "send-text", pane_id, "\27[200~" .. text .. "\27[201~" }):wait()
+    vim.system({ "herdr", "agent", "focus", pane_id }):wait()
   end
 end
 
 local function send_to_pane(l1, l2, submit)
   local text = payload(l1, l2)
-  if not vim.env.ZELLIJ then -- graceful fallback outside zellij
+  if not vim.env.HERDR_ENV then -- graceful fallback outside herdr
     vim.fn.setreg("+", text)
-    vim.notify("Not in zellij — copied to clipboard instead", vim.log.levels.WARN)
+    vim.notify("Not in herdr — copied to clipboard instead", vim.log.levels.WARN)
     return
   end
-  local panes = candidate_panes()
-  if #panes == 0 then
-    vim.notify("No target pane found", vim.log.levels.WARN)
+  local agents = candidate_agents()
+  if #agents == 0 then
+    vim.notify("No agent window found", vim.log.levels.WARN)
     return
   end
-  if #panes == 1 then
-    deliver(panes[1].id, text, submit)
-    return
-  end
-  vim.ui.select(panes, {
-    prompt = "Send snippet to pane:",
-    format_item = function(p)
-      return p.label
-    end,
-  }, function(choice)
-    if choice then
-      deliver(choice.id, text, submit)
-    end
-  end)
+  local target = agents[1]
+  deliver(target.pane_id, text, submit)
+  vim.notify("Sent to " .. describe(target), vim.log.levels.INFO)
 end
 
 local function vrange()
@@ -164,40 +158,23 @@ vim.keymap.set("n", "6", function()
   vim.cmd("normal! zz")
 end, { desc = "Previous # %% cell, centered", silent = true })
 
--- VSCode-neovim only: bind "9"/"0" to the flash-vscode extension's commands
--- (mirrors flash.nvim's "9"/"0" in lua/plugins/flash.lua, which only fires in
--- standalone nvim since flash.nvim never receives real keystrokes in VSCode).
--- `vim.g.vscode` is only set when running inside the vscode-neovim extension.
-if vim.g.vscode then
-  vim.keymap.set("n", "s", function()
-    require("vscode").action("flash-vscode.start")
-  end, { desc = "Flash (VSCode)" })
-  vim.keymap.set("n", "S", function()
-    require("vscode").action("flash-vscode.jump.treesitterSelection")
-  end, { desc = "Flash Treesitter (VSCode)" })
+-- VSCode-neovim only keymaps live in their own module (require is a no-op in
+-- standalone nvim, where the module returns early on the vim.g.vscode guard).
+require("config.vscode")
 
-  -- <leader><leader> (space space) opens VSCode's quick open file browser.
-  vim.keymap.set("n", "<leader><leader>", function()
-    require("vscode").action("workbench.action.quickOpen")
-  end, { desc = "Quick Open (VSCode)" })
-
-  -- <leader>e opens VSCode's file explorer. Defined here in neovim (rather than
-  -- as a `space e` chord in VSCode's keybindings.json) so that space only acts
-  -- as leader when the editor is focused — a VSCode `space e` chord armed
-  -- everywhere makes space hang waiting for a chord in quick open / the
-  -- secondary bar, and also swallows the leader before vscode-neovim sees it.
-  vim.keymap.set("n", "<leader>e", function()
-    require("vscode").action("workbench.view.explorer")
-  end, { desc = "Explorer (VSCode)" })
+-- LSP document symbols: keep LazyVim's default <leader>ss (works everywhere)
+-- and additionally bind Cmd+Shift+O to the same picker. The Cmd chord relies
+-- on the terminal forwarding the kitty keyboard protocol through herdr, which
+-- isn't guaranteed, so <leader>ss stays as the reliable fallback rather than
+-- being deleted.
+if not vim.g.vscode then
+  vim.keymap.set("n", "<leader>ss", function()
+    Snacks.picker.lsp_symbols()
+  end, { desc = "Goto Symbol" })
+  vim.keymap.set("n", "<D-S-o>", function()
+    Snacks.picker.lsp_symbols()
+  end, { desc = "Goto Symbol" })
 end
-
--- Replace LazyVim's default <leader>ss (LSP document symbols) with
--- Cmd+Shift+O, so symbol search lives on a single chord instead of a leader
--- sequence. Delete the old mapping first so muscle memory doesn't linger.
-pcall(vim.keymap.del, "n", "<leader>ss")
-vim.keymap.set("n", "<D-S-o>", function()
-  Snacks.picker.lsp_symbols()
-end, { desc = "Goto Symbol" })
 
 local ok, wk = pcall(require, "which-key")
 if ok then
