@@ -69,7 +69,9 @@
             "password": "",
             "profileName": "ordelo, <default> (postgres.pqsvhidiwiydgshynfib)",
             "expiresOn": 0,
-            "sshPassword": ""
+            "sshPassword": "",
+            "profileSource": 0,
+            "emptyPasswordInput": false
         }
     ],
     "jupyter.askForKernelRestart": false,

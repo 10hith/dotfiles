@@ -23,20 +23,24 @@
     },
     // editor pane navigation
     {
-        "key": "alt+h",
-        "command": "workbench.action.navigateLeft"
+        "key": "; h",
+        "command": "workbench.action.navigateLeft",
+        "when": "neovim.mode != insert"
     },
     {
-        "key": "alt+l",
-        "command": "workbench.action.navigateRight"
+        "key": "; l",
+        "command": "workbench.action.navigateRight",
+        "when": "neovim.mode != insert"
     },
     {
-        "key": "alt+k",
-        "command": "workbench.action.navigateUp"
+        "key": "; k",
+        "command": "workbench.action.navigateUp",
+        "when": "neovim.mode != insert"
     },
     {
-        "key": "alt+j",
-        "command": "workbench.action.navigateDown"
+        "key": "; j",
+        "command": "workbench.action.navigateDown",
+        "when": "neovim.mode != insert"
     },
     // terminal navigation
     {

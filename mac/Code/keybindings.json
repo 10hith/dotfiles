@@ -24,19 +24,23 @@
     // editor pane navigation
     {
         "key": "; h",
-        "command": "workbench.action.navigateLeft"
+        "command": "workbench.action.navigateLeft",
+        "when": "neovim.mode != insert"
     },
     {
         "key": "; l",
-        "command": "workbench.action.navigateRight"
+        "command": "workbench.action.navigateRight",
+        "when": "neovim.mode != insert"
     },
     {
         "key": "; k",
-        "command": "workbench.action.navigateUp"
+        "command": "workbench.action.navigateUp",
+        "when": "neovim.mode != insert"
     },
     {
         "key": "; j",
-        "command": "workbench.action.navigateDown"
+        "command": "workbench.action.navigateDown",
+        "when": "neovim.mode != insert"
     },
     // terminal navigation
     {
