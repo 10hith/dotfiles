@@ -95,11 +95,11 @@
         "command": "workbench.action.toggleMaximizedAuxiliaryBar",
         "when": "auxiliaryBarVisible || terminal.visible"
     },
-    // Jupyter navigation
+    // Jupyter + pgsql commands
     {
         "key": "cmd+enter",
-        "command": "jupyter.runcell",
-        "when": "editorTextFocus && isWorkspaceTrusted && editorLangId == 'python'"
+        "command": "jupyter.runcurrentcell",
+        "when": "editorTextFocus && isWorkspaceTrusted && jupyter.hascodecells && !editorHasSelection && !isCompositeNotebook && !notebookEditorFocused"
     },
     {
         "key": "ctrl+oem_1 k",
@@ -112,13 +112,56 @@
         "when": "editorTextFocus && editorLangId == 'sql'"
     },
     {
-        "key": "ctrl+enter",
-        "command": "pgsql.runCurrentStatement",
-        "when": "editorTextFocus && editorLangId == 'sql'"
-    },
-    {
         "key": "ctrl+oem_1 r",
         "command": "jupyter.restartkernel",
         "when": "isWorkspaceTrusted && jupyter.interactive.canRestartNotebookKernel || isWorkspaceTrusted && jupyter.notebookeditor.canrestartNotebookkernel && notebookKernel =~ /^ms-toolsai.jupyter\\//"
     },
+    {
+        "key": "cmd+l l",
+        "command": "claude-vscode.insertAtMention",
+        "when": "editorTextFocus && claude-vscode.sideBarActive"
+    },
+    {
+        "key": "alt+k",
+        "command": "-claude-vscode.insertAtMention",
+        "when": "editorTextFocus"
+    },
+    {
+        "key": "cmd+l i",
+        "command": "claude-vscode.focus",
+        "when": "editorTextFocus && !config.claudeCode.useTerminal && claude-vscode.sideBarActive"
+    },
+    {
+        "key": "cmd+escape",
+        "command": "-claude-vscode.focus",
+        "when": "editorTextFocus && !config.claudeCode.useTerminal"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "workbench.action.nextAuxiliaryBarView"
+    },
+    {
+        "key": "ctrl+alt+k",
+        "command": "workbench.action.previousAuxiliaryBarView"
+    },
+    {
+        "key": "cmd+l i",
+        "command": "chatgpt.sidebarSecondaryView.focus",
+        "when": "chatgpt.sidebarView.visible && editorTextFocus"
+    },
+    {
+        "key": "cmd+l l",
+        "command": "chatgpt.addToThread",
+        "when": "editorTextFocus && chatgpt.sidebarView.visible"
+    },
+    {
+        "key": "shift+cmd+e",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "shift+enter",
+        "command": "-pgsql.runQuery",
+        "when": "editorTextFocus && editorLangId == 'sql'"
+    }
 ]

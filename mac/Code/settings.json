@@ -31,7 +31,10 @@
     ],
     // python settings
     "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
-    "python.languageServer": "Default",
+    "python.languageServer": "Pylance",
+    "pylint.args": [
+        "--disable=await-outside-async,redefined-outer-name"
+    ],
     // To improve performance
     "extensions.experimental.affinity": {
         "vscodevim.vim": 1,
@@ -57,7 +60,7 @@
             "id": "7828B466-E427-420C-B3FE-0BAFD9FB7D43",
             "groupId": "240604AC-F8B6-4B2B-9E42-3FDF567F2D56",
             "authenticationType": "SqlLogin",
-            "connectTimeout": 15,
+            "connectTimeout": 55,
             "applicationName": "vscode-pgsql",
             "clientEncoding": "utf8",
             "sslmode": "require",
@@ -71,11 +74,15 @@
             "expiresOn": 0,
             "sshPassword": "",
             "profileSource": 0,
-            "emptyPasswordInput": false
+            "emptyPasswordInput": false,
+            "displayName": "ordelo, <default> (postgres.pqsvhidiwiydgshynfib)"
         }
     ],
     "jupyter.askForKernelRestart": false,
     "windsurf.terminal.cascadeProfile.osx": "managed",
     "explorer.confirmDelete": false,
     "git.autofetch": true,
+    "claudeCode.preferredLocation": "panel",
+    "editor.accessibilitySupport": "on",
+    "workbench.colorTheme": "Catppuccin Macchiato",
 }
