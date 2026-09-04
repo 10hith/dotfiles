@@ -26,7 +26,6 @@ Copy below to cloudflared
 ~/.cloudflared/*.sh
 
 Copy below to claude
-~/.claude/settings.json
 ~/.claude/statusline-command.sh
 
 Copy below to claude/hooks
