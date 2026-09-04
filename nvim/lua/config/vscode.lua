@@ -41,6 +41,13 @@ vim.keymap.set("n", "<leader>sg", function()
   require("vscode").action("workbench.action.quickTextSearch")
 end, { desc = "Quick Text Search (VSCode)" })
 
+-- <leader>gg mirrors LazyVim's lazygit keymap. Under vscode-neovim there's no
+-- terminal lazygit integration, so route it to VSCode's source control view
+-- instead.
+vim.keymap.set("n", "<leader>gg", function()
+  require("vscode").action("workbench.view.scm")
+end, { desc = "Source Control (VSCode)" })
+
 -- gr mirrors LazyVim's default LSP "references" keymap. Under vscode-neovim
 -- neovim's LSP never attaches (VSCode provides LSP), so LazyVim's gr is inert
 -- here — route it to VSCode's "Go to References" peek view instead.

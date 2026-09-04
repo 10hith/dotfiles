@@ -22,26 +22,26 @@
         "when": "inQuickOpen"
     },
     // editor pane navigation
-    {
-        "key": "; h",
-        "command": "workbench.action.navigateLeft",
-        "when": "neovim.mode != insert"
-    },
-    {
-        "key": "; l",
-        "command": "workbench.action.navigateRight",
-        "when": "neovim.mode != insert"
-    },
-    {
-        "key": "; k",
-        "command": "workbench.action.navigateUp",
-        "when": "neovim.mode != insert"
-    },
-    {
-        "key": "; j",
-        "command": "workbench.action.navigateDown",
-        "when": "neovim.mode != insert"
-    },
+    // {
+    //     "key": "; h",
+    //     "command": "workbench.action.navigateLeft",
+    //     "when": "neovim.mode != insert"
+    // },
+    // {
+    //     "key": "; l",
+    //     "command": "workbench.action.navigateRight",
+    //     "when": "neovim.mode != insert"
+    // },
+    // {
+    //     "key": "; k",
+    //     "command": "workbench.action.navigateUp",
+    //     "when": "neovim.mode != insert"
+    // },
+    // {
+    //     "key": "; j",
+    //     "command": "workbench.action.navigateDown",
+    //     "when": "neovim.mode != insert"
+    // },
     // terminal navigation
     {
         "key": "alt-k",
@@ -163,5 +163,14 @@
         "key": "shift+enter",
         "command": "-pgsql.runQuery",
         "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "workbench.view.scm"
+    },
+    {
+        "key": "ctrl+shift+g",
+        "command": "-workbench.view.scm",
+        "when": "workbench.scm.active"
     }
 ]
