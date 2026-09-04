@@ -34,6 +34,13 @@ vim.keymap.set("n", "<leader>e", function()
   require("vscode").action("workbench.view.explorer")
 end, { desc = "Explorer (VSCode)" })
 
+-- <leader>sg mirrors LazyVim's live-grep keymap. Under vscode-neovim there's
+-- no telescope, so route it to VSCode's quick text search (floating find in
+-- files) instead.
+vim.keymap.set("n", "<leader>sg", function()
+  require("vscode").action("workbench.action.quickTextSearch")
+end, { desc = "Quick Text Search (VSCode)" })
+
 -- gr mirrors LazyVim's default LSP "references" keymap. Under vscode-neovim
 -- neovim's LSP never attaches (VSCode provides LSP), so LazyVim's gr is inert
 -- here — route it to VSCode's "Go to References" peek view instead.
