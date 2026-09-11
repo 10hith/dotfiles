@@ -172,7 +172,7 @@ setPyPath       # export PYTHONPATH=$(pwd)
 
 ## Zellij — Terminal Multiplexer
 
-S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 automatically when you open a terminal. Key bindings:
+Starts automatically when you open a terminal. Key bindings:
 
 | Key | Action |
 |-----|--------|
