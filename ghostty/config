@@ -125,5 +125,20 @@ keybind = super+digit_7=unbind
 keybind = super+digit_8=unbind
 keybind = super+digit_9=unbind
 
+# Hand cmd+shift+g to nvim (<D-S-g> = lazygit in
+# nvim/lua/config/keymaps.lua). Ghostty binds it to navigate_search:previous by
+# default, which swallows the chord before nvim ever sees it. Cost: Ghostty's
+# terminal-search "find previous" loses its shortcut. super+g (find next) is
+# left bound, so the pair is asymmetric on purpose — only the half nvim needs
+# is given up.
+keybind = super+shift+g=unbind
+
+# Hand ctrl+tab to nvim (<C-Tab> = BufferLinePick in
+# nvim/lua/config/keymaps.lua). Ghostty binds it to next_tab by default. Same
+# rationale as the cmd+1..9 unbinds above: herdr owns tabs, so Ghostty's native
+# tab cycling is dead weight here. ctrl+shift+tab (previous_tab) is left bound
+# — nothing in nvim wants it.
+keybind = ctrl+tab=unbind
+
 # --- Misc ---
 scrollback-limit = 10000000

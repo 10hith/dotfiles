@@ -174,6 +174,32 @@ if not vim.g.vscode then
   vim.keymap.set("n", "<D-S-o>", function()
     Snacks.picker.lsp_symbols()
   end, { desc = "Goto Symbol" })
+
+  -- Same idea for the file picker: Cmd+P mirrors LazyVim's <leader><space>
+  -- ("Find Files (Root Dir)"), which stays bound as the fallback. Confirmed
+  -- working: Ghostty claims super+shift+p (command palette) but leaves super+p
+  -- free, and herdr only claims cmd+1..9, so the chord reaches nvim intact.
+  vim.keymap.set("n", "<D-p>", function()
+    LazyVim.pick("files")()
+  end, { desc = "Find Files (Root Dir)" })
+
+  -- And for lazygit: Cmd+Shift+G mirrors LazyVim's <leader>gg ("Lazygit (Root
+  -- Dir)"), which stays bound as the fallback. Unlike Cmd+P, this chord needs
+  -- help from the terminal — Ghostty binds super+shift+g to
+  -- navigate_search:previous by default, so ghostty/config unbinds it to let
+  -- the key through. Root dir (not cwd) to match <leader>gg; <leader>gG is the
+  -- cwd variant.
+  vim.keymap.set("n", "<D-S-g>", function()
+    Snacks.lazygit({ cwd = LazyVim.root.git() })
+  end, { desc = "Lazygit (Root Dir)" })
+
+  -- And Ctrl+Tab for the buffer picker, mirroring LazyVim's <leader>bj (which
+  -- stays bound). Not a Cmd chord, but it needs the same kitty keyboard
+  -- protocol support: in legacy terminal encoding Ctrl+Tab is byte-identical
+  -- to Tab, so nvim can only tell them apart when the terminal sends the
+  -- disambiguating escape. Ghostty binds ctrl+tab to next_tab by default, so
+  -- ghostty/config unbinds it to let the key through.
+  vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLinePick<cr>", { desc = "Pick Buffer" })
 end
 
 local ok, wk = pcall(require, "which-key")

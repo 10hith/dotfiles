@@ -87,7 +87,7 @@ j() {
             [[ -d ".venv" ]] && source .venv/bin/activate || \
             echo "No virtual env found"
             export PYTHONPATH=$(pwd)
-            [[ -f ".env" ]] && export $(cat .env | xargs)
+            [[ -f ".env" ]] && envLoad
             ;;
         *) just "$@" ;;
     esac

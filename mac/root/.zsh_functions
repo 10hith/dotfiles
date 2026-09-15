@@ -1,7 +1,43 @@
 # ~/.zsh_functions - Custom shell functions
 
 envLoad() {
-    export $(cat .env | xargs)
+    local env_file="${1:-.env}"
+    local line key value line_number=0
+
+    if [[ ! -f "$env_file" ]]; then
+        print -u2 "envLoad: environment file not found: $env_file"
+        return 1
+    fi
+
+    while IFS= read -r line || [[ -n "$line" ]]; do
+        ((line_number++))
+        line=${line%$'\r'}
+
+        # Skip blank lines and comments, but otherwise preserve values verbatim.
+        [[ -z "${line//[[:space:]]/}" || "$line" == \#* || "$line" == [[:space:]]#* ]] && continue
+        [[ "$line" == export[[:space:]]* ]] && line=${line#export }
+
+        if [[ "$line" != *=* ]]; then
+            print -u2 "envLoad: invalid entry at $env_file:$line_number (expected KEY=VALUE)"
+            return 1
+        fi
+
+        key=${line%%=*}
+        value=${line#*=}
+        if [[ ! "$key" =~ '^[A-Za-z_][A-Za-z0-9_]*$' ]]; then
+            print -u2 "envLoad: invalid variable name at $env_file:$line_number"
+            return 1
+        fi
+
+        # Match the usual dotenv convention without making quoted values literal.
+        if [[ ${#value} -ge 2 && "$value" == \"*\" ]]; then
+            value=${value[2,-2]}
+        elif [[ ${#value} -ge 2 && "$value" == \'*\' ]]; then
+            value=${value[2,-2]}
+        fi
+
+        export "$key=$value"
+    done < "$env_file"
 }
 
 envAct() {
