@@ -5,6 +5,8 @@ brew "starship"
 brew "zoxide"
 brew "fzf"
 brew "eza"
+tap "Giammarco-Ferranti/deja"
+brew "Giammarco-Ferranti/deja/deja"   # autosuggestions (loaded by .zsh_plugins)
 
 # Terminal multiplexer & task runner
 brew "zellij"

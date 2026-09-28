@@ -49,6 +49,21 @@ sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.lis
 sudo apt update && sudo apt install -y eza
 ```
 
+### deja (autosuggestions)
+
+[deja](https://github.com/Giammarco-Ferranti/deja) provides the ghost-text autosuggestions (fuzzy, directory-aware, next-command prediction). The installer downloads the release binary to `~/.local/bin/deja` and verifies its checksum:
+
+```zsh
+# SHELL=/bin/sh stops the installer appending its own init lines to ~/.zshrc —
+# .zsh_plugins loads deja itself, and loading it twice double-sources the integration.
+curl -fsSL https://raw.githubusercontent.com/Giammarco-Ferranti/deja/main/install.sh | SHELL=/bin/sh sh
+~/.local/bin/deja import    # one-time: seed deja from ~/.zsh_history
+```
+
+Optional — if you skip this, `.zsh_plugins` falls back to `zsh-autosuggestions` automatically (unlike the Mac, there's no Homebrew so it won't auto-install deja).
+
+To update later: rerun the installer, then `deja daemon --restart`.
+
 ### zellij (terminal multiplexer)
 
 ```zsh
@@ -163,11 +178,11 @@ fzf integration is sourced automatically in `.zshrc` from `/usr/share/doc/fzf/ex
 cp ubuntu/root/.zshrc ~/.zshrc
 cp ubuntu/root/.zsh_aliases ~/.zsh_aliases
 cp ubuntu/root/.zsh_functions ~/.zsh_functions
-cp ubuntu/root/.zsh_plugins ~/.zsh_plugins
+cp mac/root/.zsh_plugins ~/.zsh_plugins
 cp mac/root/.justfile ~/.justfile
 ```
 
-> `.justfile` is shared with the Mac setup — no Ubuntu-specific version needed.
+> `.zsh_plugins` and `.justfile` are shared with the Mac setup — no Ubuntu-specific versions needed. `.zsh_plugins`' Homebrew auto-install is skipped when `brew` isn't present.
 
 What each file does:
 
@@ -176,7 +191,7 @@ What each file does:
 | `.zshrc` | Main config — history, vi mode, completions, fzf, zoxide, starship |
 | `.zsh_aliases` | git, docker, AWS, navigation aliases |
 | `.zsh_functions` | `envLoad`, `envAct`, `killJupyter` |
-| `.zsh_plugins` | Self-managed plugin loader — auto-installs plugins on first launch |
+| `.zsh_plugins` | Self-managed plugin loader — auto-installs plugins on first launch; deja autosuggestions (falls back to zsh-autosuggestions) |
 | `.justfile` | Global just recipes |
 
 ---
@@ -187,7 +202,9 @@ What each file does:
 source ~/.zshrc
 ```
 
-Plugins (`zsh-autosuggestions`, `zsh-history-substring-search`, `fast-syntax-highlighting`) are cloned automatically into `~/.zsh/plugins/` on first launch — no manual step required.
+Plugins (`deja`, `zsh-history-substring-search`, `fast-syntax-highlighting`) are cloned automatically into `~/.zsh/plugins/` on first launch — no manual step required.
+
+Autosuggestions use deja when its binary is installed (see [deja](#deja-autosuggestions) above), otherwise `zsh-autosuggestions` is cloned and loaded instead — never both. Keys: `→` or `Ctrl+L` accepts, `Ctrl+N` cycles alternatives, Tab stays normal completion. See `tips.md` for the full list.
 
 ---
 
@@ -203,6 +220,7 @@ gs                        # git status alias
 ls                        # should show eza output with icons
 cat ~/.zshrc              # should show bat syntax-highlighted output
 zplugin-update            # updates all zsh plugins
+deja ping                 # autosuggestion daemon → pong (skip if using the zsh-autosuggestions fallback)
 yazi --version            # file manager
 yy                        # open yazi with cd-on-quit (navigate somewhere, quit, shell follows)
 ```

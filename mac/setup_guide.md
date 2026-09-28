@@ -35,7 +35,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 brew bundle --file=mac/Brewfile
 ```
 
-Installs: `starship`, `zoxide`, `fzf`, `eza`, `zellij`, `just`, `lazygit`, `git`, `gh`, `ripgrep`, `fd`, `bat`, `jq`, `wget`
+Installs: `starship`, `zoxide`, `fzf`, `eza`, `deja` (from the `Giammarco-Ferranti/deja` tap), `zellij`, `just`, `lazygit`, `git`, `gh`, `ripgrep`, `fd`, `bat`, `jq`, `wget`
 
 ---
 
@@ -75,9 +75,9 @@ cp mac/root/.inputrc ~/.inputrc
 |---|---|
 | `.zprofile` | Login shell — Homebrew env, cargo PATH |
 | `.zshrc` | Main config — history, vi mode, completions, fzf, zoxide, starship |
-| `.zsh_aliases` | git, docker, AWS, navigation, and app aliases |
+| `.zsh_aliases` | git, docker, AWS, navigation, and app aliases; `ls`/`ll`/`la`/`l`/`tree` → `eza` (auto-installed via brew if missing), `cat` → `bat`, `grep` → `rg`, `n` → `nvim` |
 | `.zsh_functions` | `envLoad`, `envAct`, `killJupyter` |
-| `.zsh_plugins` | Self-managed plugin loader — auto-installs plugins on first launch |
+| `.zsh_plugins` | Self-managed plugin loader — auto-installs plugins on first launch; deja autosuggestions (falls back to zsh-autosuggestions) |
 | `.justfile` | Global just recipes |
 | `.inputrc` | Vi-mode readline with `[N]`/`[I]` mode indicators |
 
@@ -219,7 +219,11 @@ conda init zsh
 source ~/.zshrc
 ```
 
-Plugins (`zsh-autosuggestions`, `zsh-history-substring-search`, `fast-syntax-highlighting`) clone themselves into `~/.zsh/plugins/` automatically on first launch.
+Plugins (`deja`, `zsh-history-substring-search`, `fast-syntax-highlighting`) clone themselves into `~/.zsh/plugins/` automatically on first launch.
+
+`deja` also needs its binary: if it's missing, `.zsh_plugins` runs `brew install Giammarco-Ferranti/deja/deja && deja import` once (importing `~/.zsh_history`). If that fails, `zsh-autosuggestions` is loaded instead — never both, since deja stands down when it sees zsh-autosuggestions. Key overrides (`DEJA_*_KEY`) are exported in `.zsh_plugins` right before deja loads: `Ctrl+L` accepts, `Ctrl+N` cycles alternatives, Tab is left for completion.
+
+`eza` is also self-healing: if it's missing when `.zsh_aliases` is sourced (e.g. you skipped step 3), it runs `brew install eza` once. If that fails, the `ls` aliases fall back to plain BSD `ls`.
 
 ---
 
@@ -230,12 +234,15 @@ starship --version        # prompt
 z --version               # zoxide
 fzf --version             # fuzzy finder — Ctrl+R and Ctrl+T should work
 ls                        # eza with icons (needs Nerd Font in terminal)
+ll                        # eza long view with hidden files + git status
+n                         # nvim
 cat ~/.zshrc              # bat — syntax highlighted
 grep foo ~/.zshrc         # ripgrep
 jj                        # global just recipes
 lg                        # lazygit TUI
 zellij                    # terminal multiplexer
 zplugin-update            # pull latest for all zsh plugins
+deja ping                 # autosuggestion daemon → pong
 ```
 
 ---

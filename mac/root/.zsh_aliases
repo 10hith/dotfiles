@@ -7,15 +7,33 @@
 # ── Color support ─────────────────────────────────────────────────────────────
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
-alias ls='ls -G'
-alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-# ── ls shortcuts ──────────────────────────────────────────────────────────────
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# ── eza (modern ls) ───────────────────────────────────────────────────────────
+# Auto-installs via Homebrew on first launch (same idea as .zsh_plugins).
+# Falls back to BSD ls aliases if eza is still unavailable.
+if ! command -v eza >/dev/null 2>&1 && command -v brew >/dev/null 2>&1; then
+  echo "Installing eza..."
+  brew install eza || echo "ERROR: failed to install eza" >&2
+fi
+
+if command -v eza >/dev/null 2>&1; then
+  alias ls='eza --icons=always --group-directories-first'
+  alias la='eza --all --icons=always --group-directories-first'
+  alias ll='eza --long --all --git --icons=always --group-directories-first'
+  alias l='eza --classify --icons=always --group-directories-first'
+  alias tree='eza --tree --icons'
+else
+  alias ls='ls -G'
+  alias ll='ls -alF'
+  alias la='ls -A'
+  alias l='ls -CF'
+fi
+
+# ── Modern CLI replacements ───────────────────────────────────────────────────
+alias cat='bat'
+alias grep='rg --color=auto'
 
 # ── AWS profiles ──────────────────────────────────────────────────────────────
 alias awsBtl='export AWS_PROFILE=byteloop && echo "Switched to ByteLoop"'
@@ -73,6 +91,7 @@ alias drmi='docker rmi -f'
 alias reload='source ~/.zshrc'
 alias aliases='cat ~/.zsh_aliases'
 alias y='yazi'
+alias n='nvim'
 
 # ── Dev workflow ──────────────────────────────────────────────────────────────
 alias setPyPath='export PYTHONPATH=$(pwd)'

@@ -21,7 +21,33 @@ zplugin-update() {
   done
 }
 
-_zplugin_load zsh-users zsh-autosuggestions
+# ── Autosuggestions: deja (falls back to zsh-autosuggestions) ─────────────────
+# deja needs its binary; auto-install via Homebrew on first launch and import
+# existing zsh history once. Without Homebrew (Ubuntu), install it manually —
+# see setup_ubuntu.md. Never load both — deja stands down if it sees
+# zsh-autosuggestions.
+# The curl installer puts deja in ~/.local/bin, which .zshrc only adds to PATH
+# after this file is sourced.
+(( ! $+commands[deja] )) && [[ -x "$HOME/.local/bin/deja" ]] && path+=("$HOME/.local/bin")
+
+if (( ! $+commands[deja] )) && (( $+commands[brew] )); then
+  echo "Installing deja binary via Homebrew..."
+  { brew install Giammarco-Ferranti/deja/deja && deja import; } \
+    || echo "ERROR: failed to install deja" >&2
+fi
+
+if (( $+commands[deja] )); then
+  # Key overrides — must be exported before deja loads. Empty = unbound.
+  export DEJA_ACCEPT_KEY='^L'          # Ctrl+L accepts (→ still accepts too)
+  export DEJA_CYCLE_KEY='^N'           # Ctrl+N cycles alternatives; frees Tab
+  export DEJA_CYCLE_FUZZY_KEY=
+  export DEJA_CYCLE_FUZZY_BACK_KEY=
+  export DEJA_TOGGLE_EMPTY_KEY=
+  _zplugin_load Giammarco-Ferranti deja
+else
+  _zplugin_load zsh-users zsh-autosuggestions
+fi
+
 _zplugin_load zsh-users zsh-history-substring-search
 _zplugin_load zdharma-continuum fast-syntax-highlighting
 

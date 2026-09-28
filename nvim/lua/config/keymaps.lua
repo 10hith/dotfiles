@@ -200,6 +200,13 @@ if not vim.g.vscode then
   -- disambiguating escape. Ghostty binds ctrl+tab to next_tab by default, so
   -- ghostty/config unbinds it to let the key through.
   vim.keymap.set("n", "<C-Tab>", "<cmd>BufferLinePick<cr>", { desc = "Pick Buffer" })
+
+  -- And Cmd+Shift+E for the file explorer, mirroring LazyVim's <leader>e
+  -- ("Explorer Snacks (root dir)"), which stays bound as the fallback. Ghostty
+  -- doesn't claim super+shift+e, so unlike Cmd+Shift+G this needs no unbind.
+  vim.keymap.set("n", "<D-S-e>", function()
+    Snacks.explorer({ cwd = LazyVim.root() })
+  end, { desc = "Explorer Snacks (root dir)" })
 end
 
 local ok, wk = pcall(require, "which-key")

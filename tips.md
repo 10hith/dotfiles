@@ -70,33 +70,49 @@ This replaces blindly hammering `↑` until you find what you want.
 
 ## Autosuggestions — Accept Without Retyping
 
-`zsh-autosuggestions` shows a greyed-out completion based on history as you type:
+[deja](https://github.com/Giammarco-Ferranti/deja) shows greyed-out ghost text as you type. Unlike plain prefix matching it uses fuzzy matching, directory awareness (commands you run in this dir rank higher) and sequence prediction (suggests what you usually run next — even on an empty prompt):
 
 | Key | Action |
 |-----|--------|
-| `→` or `End` | Accept the full suggestion |
+| `→` or `Ctrl+L` | Accept the full suggestion |
 | `Ctrl+→` | Accept one word of the suggestion |
+| `Ctrl+N` | Cycle through ranked alternatives (Tab stays normal completion) |
+| `Ctrl+X` | Suppress suggestions for this shell session |
 | Keep typing | Ignore it and continue |
 
 ```zsh
-# You type: git push
-# Shell suggests: git push origin main   (greyed out)
-# Press → to accept the whole thing
+# You type: gco
+# deja suggests: git checkout main   (greyed out, fuzzy match)
+# Press → or Ctrl+L to accept the whole thing
 ```
+
+> `Ctrl+L` no longer clears the screen — use `clear` instead. `Enter` runs only what's literally typed; accept the ghost first.
+
+```zsh
+deja fuzzy tight|smart|loose   # how far apart typed letters may be (default: smart)
+deja empty off                 # stop suggesting on an empty prompt
+deja ping                      # daemon health check → pong
+deja daemon --restart          # after `brew upgrade deja`
+```
+
+Leading-space commands (`HIST_IGNORE_SPACE`) are never learned. History lives in `~/.local/share/deja/deja.db` (local only).
 
 ---
 
 ## Listing Files — eza
 
 ```zsh
-ls              # icons, colour-coded by type
-ll              # detailed: permissions, size, date, git status per file
-la              # same as ll but includes hidden files (dotfiles)
+ls              # icons, colour-coded by type, directories first
+la              # same grid view as ls, including hidden files (dotfiles)
+ll              # long view incl. hidden files: permissions, size, date, git status per file
+l               # grid view with type indicators (/ for dirs, * for executables)
 tree            # tree view of the current directory
 tree src/       # tree view of a specific directory
 ```
 
-The `--git` flag in `ll` / `la` shows whether each file is modified, staged, or untracked — useful when you can't remember what you changed.
+The `--git` flag in `ll` shows whether each file is modified, staged, or untracked — useful when you can't remember what you changed.
+
+> eza is auto-installed via Homebrew the first time `.zsh_aliases` is sourced and it's missing. If it can't be installed, `ls`/`ll`/`la`/`l` fall back to plain BSD `ls`.
 
 ---
 
@@ -236,10 +252,11 @@ Previews: syntax-highlighted code (bat), images, PDFs, video thumbnails. Files s
 ## Plugin Management
 
 ```zsh
-zplugin-update  # pull latest for all 3 plugins
+zplugin-update  # pull latest for all plugins (deja, history-substring-search, fast-syntax-highlighting)
+brew upgrade deja && deja daemon --restart   # update the deja binary itself
 ```
 
-Plugins are cloned into `~/.zsh/plugins/` on first shell launch. You never need to install them manually.
+Plugins are cloned into `~/.zsh/plugins/` on first shell launch. You never need to install them manually. The `deja` binary is brew-installed (and your history imported) on first launch too; if that fails, `zsh-autosuggestions` is loaded instead.
 
 ---
 
@@ -248,5 +265,7 @@ Plugins are cloned into `~/.zsh/plugins/` on first shell launch. You never need 
 ```zsh
 reload          # source ~/.zshrc — picks up alias/config changes without restarting
 aliases         # print all your aliases to the terminal
+n               # nvim
+y               # yazi (no cd-on-quit)
 jj              # list global just recipes (zwork, zattach, zdump)
 ```

@@ -92,9 +92,10 @@ shell-integration-features = cursor,sudo,title
 quick-terminal-size = 60%
 
 # --- macOS / input ---
-# Left Option = Alt so zellij's Alt-h/j/k/l bindings fire; right Option keeps
-# native macOS composed keys (matches wezterm send_composed_key_when_*).
-macos-option-as-alt = left
+# Right Option = Alt so terminal Alt bindings (herdr/zellij Alt-h/j/k/l, etc.)
+# fire; left Option keeps native macOS composed keys (å, ∂, ™...). Note this is
+# the reverse of wezterm's send_composed_key_when_* settings.
+macos-option-as-alt = right
 
 # Convenience keys mirroring wezterm's CTRL|SHIFT R / CTRL|SHIFT Z
 keybind = super+shift+r=reload_config

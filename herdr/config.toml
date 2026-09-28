@@ -4,8 +4,8 @@ onboarding = false
 prefix = ";"
 open_notification_target = ""   # free up prefix+o
 last_pane = "prefix+o"
-focus_agent = "ctrl+1..9"
-switch_workspace = ["ctrl+alt+1..9", "cmd+1..9"]
+focus_agent = "prefix+shift+1..9"
+switch_workspace = "prefix+alt+1..9"
 
 [theme]
 name = "gruvbox"
