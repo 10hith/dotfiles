@@ -8,5 +8,5 @@ focus_agent = "prefix+shift+1..9"
 switch_workspace = "prefix+alt+1..9"
 
 [theme]
-name = "gruvbox"
+name = "terminal"
 auto_switch = false

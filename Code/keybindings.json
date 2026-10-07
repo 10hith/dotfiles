@@ -134,5 +134,10 @@
         "key": "ctrl+enter",
         "command": "pgsql.runCurrentStatement",
         "when": "editorTextFocus && editorLangId == 'sql'"
+    },
+    {
+        "key": "ctrl+/",
+        "command": "editor.action.commentLine",
+        "when": "editorTextFocus && !editorReadonly"
     }
 ]
