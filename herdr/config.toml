@@ -7,6 +7,22 @@ last_pane = "prefix+o"
 focus_agent = "prefix+shift+1..9"
 switch_workspace = "prefix+alt+1..9"
 
+[ui.sidebar.spaces]
+rows = [
+  ["state_icon", { token = "$num", bold = true }, "workspace"],
+  ["branch", "git_status"],
+]
+
+[ui.sidebar.agents]
+rows = [
+  ["state_icon", { token = "$num", bold = true }, "machine", "workspace", "tab"],
+  ["agent"],
+]
+
+
 [theme]
 name = "terminal"
 auto_switch = false
+
+[experimental]
+kitty_graphics = true
