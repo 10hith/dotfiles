@@ -1,4 +1,5 @@
 {
+    "terminal.integrated.enableImages": true,
     // "terminal.external.osxExec": "WezTerm.app",
     // Editor settings
     "editor.wordWrap": "on",

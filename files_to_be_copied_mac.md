@@ -74,6 +74,9 @@ Copy below to cloudflared
 Copy below to claude
 ~/.claude/statusline-command.sh
 
+Copy below to codex/skills/herdr-cli
+~/.codex/skills/herdr-cli/SKILL.md
+
 Copy below to claude/hooks
 ~/.claude/hooks/*
 
