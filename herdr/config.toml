@@ -7,6 +7,14 @@ last_pane = "prefix+o"
 focus_agent = "prefix+shift+1..9"
 switch_workspace = "prefix+alt+1..9"
 
+[[keys.command]]
+key = "prefix+t"
+type = "popup"
+command = "exec \"${SHELL:-sh}\""
+description = "Floating scratch terminal"
+width = "80%"
+height = "80%"
+
 [ui.sidebar.spaces]
 rows = [
   ["state_icon", { token = "$num", bold = true }, "workspace"],
