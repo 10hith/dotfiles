@@ -67,7 +67,9 @@ eval "$(starship init zsh)"
 # ── Auto-start multiplexer ───────────────────────────────────────────────────
 # herdr sets HERDR_PANE_ID inside its panes; ZELLIJ guard keeps a manually
 # started zellij session from spawning herdr in each of its panes.
-if [[ -z "$HERDR_PANE_ID" ]] && [[ -z "$ZELLIJ" ]] && [[ -o interactive ]]; then
+# REX_SESSION is set inside Rex panes — Rex is its own multiplexer, so herdr
+# must not nest there.
+if [[ -z "$HERDR_PANE_ID" ]] && [[ -z "$ZELLIJ" ]] && [[ -z "$REX_SESSION" ]] && [[ -o interactive ]]; then
     herdr
 fi
 

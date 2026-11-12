@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Workspace.activePaneBorderColor</key>
+	<string>cyan</string>
+	<key>Workspace.activityGrouping</key>
+	<string>priority</string>
+	<key>Workspace.animationStyle</key>
+	<string>off</string>
+	<key>Workspace.appIcon</key>
+	<string>light</string>
+	<key>Workspace.appearance</key>
+	<string>dark</string>
+	<key>Workspace.cursorShader</key>
+	<string>blaze</string>
+	<key>Workspace.cursorShadersEnabled</key>
+	<false/>
+	<key>Workspace.darkThemeID</key>
+	<string>velvet-dusk</string>
+	<key>Workspace.experiments.usesNewQuickSwitcher</key>
+	<true/>
+	<key>Workspace.inactivePaneFadeMode</key>
+	<string>both</string>
+	<key>Workspace.interfaceStyle</key>
+	<string>blendTheme</string>
+	<key>Workspace.lightThemeID</key>
+	<string>merino-light</string>
+	<key>Workspace.playsProgramActivitySounds</key>
+	<true/>
+	<key>Workspace.programActivityStatusPreferences</key>
+	<data>
+	eyJkb25lIjp7InNob3dzSW5UYWJzIjp0cnVlLCJpc0VuYWJsZWQiOnRydWUsInNob3dz
+	Tm90aWZpY2F0aW9uIjp0cnVlLCJwbGF5c1NvdW5kIjp0cnVlLCJiYWRnZXNEb2NrSWNv
+	biI6dHJ1ZSwic291bmQiOiJzdWNjZXNzIn19
+	</data>
+	<key>Workspace.showsActivePaneBorder</key>
+	<true/>
+	<key>Workspace.sidebarCollapsed</key>
+	<true/>
+	<key>Workspace.sidebarPosition</key>
+	<string>left</string>
+	<key>Workspace.sidebarShowsActivity</key>
+	<true/>
+	<key>Workspace.tabIconTintMode</key>
+	<string>off</string>
+	<key>Workspace.tabStyle</key>
+	<string>vertical</string>
+	<key>Workspace.terminalCopyOnSelect</key>
+	<true/>
+	<key>Workspace.terminalFontName</key>
+	<string>Menlo</string>
+	<key>Workspace.terminalFontPointSize</key>
+	<real>16.0</real>
+	<key>Workspace.terminalSmoothScrolling</key>
+	<false/>
+	<key>Workspace.usesPaneGlass</key>
+	<true/>
+	<key>Workspace.usesStandardInactiveWindowPaneStyles</key>
+	<true/>
+</dict>
+</plist>

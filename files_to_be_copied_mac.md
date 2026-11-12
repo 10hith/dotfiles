@@ -29,6 +29,7 @@
 
 Copy below to mac
 ~/Library/LaunchAgents/com.lohith.mac-defaults.plist
+~/Library/LaunchAgents/com.lohith.rex-pane-focus-tracker.plist
 
 Copy below to mac/automation
 ~/Library/LaunchAgents/com.lohith.citrix-caffeinate.plist
@@ -89,8 +90,34 @@ Copy below to claude/output-styles
 # Copy below to claude/output-styles/.claude
 # ~/.claude/output-styles/.claude/*
 
+# --- Rex (terminal workspace) ---
+# Only the init.lua config and its helper scripts are tracked — everything
+# else in ~/.config/rex/ is runtime state (pane-navigation-state.json,
+# pane-focus-tracker*.log, sockets), so never glob the directory.
+# The focus-tracker LaunchAgent is synced above; re-bootstrap after edits:
+#   launchctl bootstrap "gui/$(id -u)" ~/Library/LaunchAgents/com.lohith.rex-pane-focus-tracker.plist
+
+Copy below to rex
+~/.config/rex/init.lua
+~/.config/rex/copy-pane.sh
+~/.config/rex/copy-mode.lua
+~/.config/rex/pane-navigation.lua
+~/.config/rex/pane-focus-tracker.lua
+
+Copy below to rex/appearance
+~/.config/rex/appearance/restore-appearance.py
+
+# preferences/ subdir must stay beside restore-appearance.py — it reads
+# preferences/rex-portable-preferences.plist relative to its own path.
+Copy below to rex/appearance/preferences
+~/.config/rex/appearance/preferences/rex-portable-preferences.plist
+
 Copy below to nvim
 ~/.config/nvim/init.lua
+
+Copy below to nvim/lua/config
+~/.config/nvim/lua/config/keymaps.lua
+~/.config/nvim/lua/config/rex-selection.lua
 
 # ~/.local/bin/vim shims plain `vim` invocations to nvim (Apple's bundled
 # /usr/bin/vim lacks +clipboard, which broke herdr's edit_scrollback popup).

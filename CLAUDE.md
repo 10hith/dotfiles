@@ -23,6 +23,7 @@ This script reads `files_to_be_copied.md` and copies the listed configuration fi
 - `wezterm/` - WezTerm terminal configuration (`.wezterm.lua`)
 - `ghostty/` - Ghostty terminal config (`config`, symlinked to `~/.config/ghostty/config` on Mac). See `ghostty/README.md` for the cursor-trail shader setup.
 - `herdr/` - herdr terminal workspace manager config (`config.toml` and `renumber.sh`, symlinked into `~/.config/herdr/` on Mac). `renumber.sh` refreshes the `$num` sidebar tokens that show workspace/agent index numbers. Only these files are tracked; the rest of `~/.config/herdr/` is runtime state (`session.json`, logs, sockets). herdr is the multiplexer auto-started by `mac/root/.zshrc` (it replaced zellij; the old block is kept commented there).
+- `rex/` - Rex terminal workspace config (`init.lua` plus helpers: `copy-pane.sh`/`copy-mode.lua` for the `;[` Vim copy viewer, `pane-navigation.lua` for `;m`/`;'`/`;o` marks and last-pane history, `pane-focus-tracker.lua` event listener). `rex/appearance/` holds `restore-appearance.py` + `preferences/` for merging saved Workspace prefs (quit Rex, run with `--apply`). The focus tracker runs as LaunchAgent `mac/com.lohith.rex-pane-focus-tracker.plist`. Tracked files only — `~/.config/rex/` runtime state (navigation JSON, tracker logs) is never synced.
 - `root/` - Shell configuration (`.bashrc`, sanitized of secrets)
 - `cloudflared/` - Cloudflare tunnel configuration
 - `claude/` - Claude Code configuration (settings, hooks, commands, output-styles)

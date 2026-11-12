@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>KeepAlive</key>
+	<true/>
+	<key>Label</key>
+	<string>com.lohith.rex-pane-focus-tracker</string>
+	<key>ProcessType</key>
+	<string>Background</string>
+	<key>ProgramArguments</key>
+	<array>
+		<string>/Users/basavaraj/Library/Application Support/com.superlogical.rex/RexServer/Versions/Current/Rex Server.app/Contents/MacOS/rex</string>
+		<string>-S</string>
+		<string>unix:///Users/basavaraj/Library/Application%20Support/rex/server.sock</string>
+		<string>--autostart=false</string>
+		<string>do</string>
+		<string>/Users/basavaraj/.config/rex/pane-focus-tracker.lua</string>
+		<string>--all</string>
+	</array>
+	<key>RunAtLoad</key>
+	<true/>
+	<key>StandardErrorPath</key>
+	<string>/Users/basavaraj/.config/rex/pane-focus-tracker-error.log</string>
+	<key>StandardOutPath</key>
+	<string>/Users/basavaraj/.config/rex/pane-focus-tracker.log</string>
+	<key>ThrottleInterval</key>
+	<integer>15</integer>
+	<key>WorkingDirectory</key>
+	<string>/Users/basavaraj/.config/rex</string>
+</dict>
+</plist>
