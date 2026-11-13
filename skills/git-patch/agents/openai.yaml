@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Patch"
+  short_description: "Export one portable patch with agent handoff instructions"
+  default_prompt: "Use $git-patch to export the requested Git changes into one self-contained patch file with instructions for the receiving agent."

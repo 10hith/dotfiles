@@ -123,3 +123,14 @@ Copy below to nvim/lua/config
 # /usr/bin/vim lacks +clipboard, which broke herdr's edit_scrollback popup).
 Copy below to mac/local-bin
 ~/.local/bin/vim
+
+# --- Shared agent skills ---
+
+Copy below to skills/git-patch
+~/.codex/skills/git-patch/SKILL.md
+
+Copy below to skills/git-patch/agents
+~/.codex/skills/git-patch/agents/openai.yaml
+
+Copy below to skills/git-patch/scripts
+~/.codex/skills/git-patch/scripts/export_patch.py
